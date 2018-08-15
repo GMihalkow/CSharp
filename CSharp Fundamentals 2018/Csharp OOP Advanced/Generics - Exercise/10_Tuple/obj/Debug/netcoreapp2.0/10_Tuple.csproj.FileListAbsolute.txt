@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\bin\Debug\netcoreapp2.0\10_Tuple.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\bin\Debug\netcoreapp2.0\10_Tuple.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\bin\Debug\netcoreapp2.0\10_Tuple.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\bin\Debug\netcoreapp2.0\10_Tuple.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\bin\Debug\netcoreapp2.0\10_Tuple.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\10_Tuple\obj\Debug\netcoreapp2.0\10_Tuple.pdb

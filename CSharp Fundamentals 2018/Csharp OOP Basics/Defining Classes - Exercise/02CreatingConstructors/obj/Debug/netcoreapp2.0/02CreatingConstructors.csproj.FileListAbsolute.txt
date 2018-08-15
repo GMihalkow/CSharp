@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\bin\Debug\netcoreapp2.0\02CreatingConstructors.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\bin\Debug\netcoreapp2.0\02CreatingConstructors.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\bin\Debug\netcoreapp2.0\02CreatingConstructors.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\bin\Debug\netcoreapp2.0\02CreatingConstructors.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\bin\Debug\netcoreapp2.0\02CreatingConstructors.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\02CreatingConstructors\obj\Debug\netcoreapp2.0\02CreatingConstructors.csprojResolveAssemblyReference.cache

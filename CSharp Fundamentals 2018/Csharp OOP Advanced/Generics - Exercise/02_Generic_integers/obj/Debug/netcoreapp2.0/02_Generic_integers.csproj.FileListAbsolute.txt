@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\bin\Debug\netcoreapp2.0\02_Generic_integers.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\bin\Debug\netcoreapp2.0\02_Generic_integers.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\bin\Debug\netcoreapp2.0\02_Generic_integers.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\bin\Debug\netcoreapp2.0\02_Generic_integers.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\bin\Debug\netcoreapp2.0\02_Generic_integers.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_integers\obj\Debug\netcoreapp2.0\02_Generic_integers.pdb

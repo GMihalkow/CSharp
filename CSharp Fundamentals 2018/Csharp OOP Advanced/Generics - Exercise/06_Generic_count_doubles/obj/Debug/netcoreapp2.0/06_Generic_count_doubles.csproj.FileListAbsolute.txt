@@ -1,0 +1,10 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\bin\Debug\netcoreapp2.0\06_Generic_count_doubles.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\bin\Debug\netcoreapp2.0\06_Generic_count_doubles.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\bin\Debug\netcoreapp2.0\06_Generic_count_doubles.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\bin\Debug\netcoreapp2.0\06_Generic_count_doubles.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\bin\Debug\netcoreapp2.0\06_Generic_count_doubles.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\obj\Debug\netcoreapp2.0\06_Generic_count_doubles.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\obj\Debug\netcoreapp2.0\06_Generic_count_doubles.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\obj\Debug\netcoreapp2.0\06_Generic_count_doubles.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\obj\Debug\netcoreapp2.0\06_Generic_count_doubles.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\06_Generic_count_doubles\obj\Debug\netcoreapp2.0\06_Generic_count_doubles.pdb

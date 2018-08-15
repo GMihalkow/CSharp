@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\bin\Debug\netcoreapp2.0\01 Define a Class Person.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\bin\Debug\netcoreapp2.0\01 Define a Class Person.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\bin\Debug\netcoreapp2.0\01 Define a Class Person.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\bin\Debug\netcoreapp2.0\01 Define a Class Person.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\bin\Debug\netcoreapp2.0\01 Define a Class Person.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\Solution\obj\Debug\netcoreapp2.0\01 Define a Class Person.pdb

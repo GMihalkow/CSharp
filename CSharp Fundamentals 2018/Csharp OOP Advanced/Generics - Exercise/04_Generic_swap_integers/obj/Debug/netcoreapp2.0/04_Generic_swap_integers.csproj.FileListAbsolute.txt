@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\bin\Debug\netcoreapp2.0\04_Generic_swap_integers.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\bin\Debug\netcoreapp2.0\04_Generic_swap_integers.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\bin\Debug\netcoreapp2.0\04_Generic_swap_integers.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\bin\Debug\netcoreapp2.0\04_Generic_swap_integers.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\bin\Debug\netcoreapp2.0\04_Generic_swap_integers.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\04_Generic_swap_integers\obj\Debug\netcoreapp2.0\04_Generic_swap_integers.csprojResolveAssemblyReference.cache

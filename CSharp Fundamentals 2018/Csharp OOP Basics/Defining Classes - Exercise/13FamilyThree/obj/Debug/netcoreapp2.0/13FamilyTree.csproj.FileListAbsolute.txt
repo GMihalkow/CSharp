@@ -1,0 +1,10 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\bin\Debug\netcoreapp2.0\13FamilyTree.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\bin\Debug\netcoreapp2.0\13FamilyTree.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\bin\Debug\netcoreapp2.0\13FamilyTree.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\bin\Debug\netcoreapp2.0\13FamilyTree.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\bin\Debug\netcoreapp2.0\13FamilyTree.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\obj\Debug\netcoreapp2.0\13FamilyTree.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\obj\Debug\netcoreapp2.0\13FamilyTree.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\obj\Debug\netcoreapp2.0\13FamilyTree.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\obj\Debug\netcoreapp2.0\13FamilyTree.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\13FamilyThree\obj\Debug\netcoreapp2.0\13FamilyTree.pdb

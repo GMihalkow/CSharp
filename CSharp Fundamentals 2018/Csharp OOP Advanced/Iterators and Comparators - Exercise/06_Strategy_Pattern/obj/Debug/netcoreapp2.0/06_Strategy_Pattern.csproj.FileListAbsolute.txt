@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\bin\Debug\netcoreapp2.0\06_Strategy_Pattern.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\bin\Debug\netcoreapp2.0\06_Strategy_Pattern.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\bin\Debug\netcoreapp2.0\06_Strategy_Pattern.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\bin\Debug\netcoreapp2.0\06_Strategy_Pattern.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\bin\Debug\netcoreapp2.0\06_Strategy_Pattern.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\06_Strategy_Pattern\obj\Debug\netcoreapp2.0\06_Strategy_Pattern.pdb

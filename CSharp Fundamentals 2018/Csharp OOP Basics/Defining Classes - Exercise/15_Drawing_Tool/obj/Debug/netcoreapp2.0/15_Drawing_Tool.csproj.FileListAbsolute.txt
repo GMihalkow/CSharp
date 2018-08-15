@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\bin\Debug\netcoreapp2.0\15_Drawing_Tool.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\bin\Debug\netcoreapp2.0\15_Drawing_Tool.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\bin\Debug\netcoreapp2.0\15_Drawing_Tool.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\bin\Debug\netcoreapp2.0\15_Drawing_Tool.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\bin\Debug\netcoreapp2.0\15_Drawing_Tool.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\15_Drawing_Tool\obj\Debug\netcoreapp2.0\15_Drawing_Tool.pdb

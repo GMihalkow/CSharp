@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\bin\Debug\netcoreapp2.0\12Google.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\bin\Debug\netcoreapp2.0\12Google.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\bin\Debug\netcoreapp2.0\12Google.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\bin\Debug\netcoreapp2.0\12Google.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\bin\Debug\netcoreapp2.0\12Google.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\12Google\obj\Debug\netcoreapp2.0\12Google.pdb

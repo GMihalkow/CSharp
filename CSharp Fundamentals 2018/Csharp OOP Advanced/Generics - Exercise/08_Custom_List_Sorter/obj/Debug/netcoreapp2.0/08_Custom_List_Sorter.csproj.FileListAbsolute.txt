@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\bin\Debug\netcoreapp2.0\08_Custom_List_Sorter.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\bin\Debug\netcoreapp2.0\08_Custom_List_Sorter.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\bin\Debug\netcoreapp2.0\08_Custom_List_Sorter.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\bin\Debug\netcoreapp2.0\08_Custom_List_Sorter.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\bin\Debug\netcoreapp2.0\08_Custom_List_Sorter.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\08_Custom_List_Sorter\obj\Debug\netcoreapp2.0\08_Custom_List_Sorter.pdb

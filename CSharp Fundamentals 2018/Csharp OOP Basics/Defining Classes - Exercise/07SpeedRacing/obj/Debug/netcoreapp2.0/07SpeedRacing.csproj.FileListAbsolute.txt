@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\bin\Debug\netcoreapp2.0\07SpeedRacing.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\bin\Debug\netcoreapp2.0\07SpeedRacing.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\bin\Debug\netcoreapp2.0\07SpeedRacing.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\bin\Debug\netcoreapp2.0\07SpeedRacing.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\bin\Debug\netcoreapp2.0\07SpeedRacing.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\07SpeedRacing\obj\Debug\netcoreapp2.0\07SpeedRacing.pdb

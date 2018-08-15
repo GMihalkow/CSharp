@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\bin\Debug\netcoreapp2.0\07_Inferno_Infinity.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\bin\Debug\netcoreapp2.0\07_Inferno_Infinity.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\bin\Debug\netcoreapp2.0\07_Inferno_Infinity.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\bin\Debug\netcoreapp2.0\07_Inferno_Infinity.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\bin\Debug\netcoreapp2.0\07_Inferno_Infinity.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\07_Inferno_Infinity\obj\Debug\netcoreapp2.0\07_Inferno_Infinity.pdb

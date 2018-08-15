@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\bin\Debug\netcoreapp2.0\11_Threeuple.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\bin\Debug\netcoreapp2.0\11_Threeuple.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\bin\Debug\netcoreapp2.0\11_Threeuple.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\bin\Debug\netcoreapp2.0\11_Threeuple.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\bin\Debug\netcoreapp2.0\11_Threeuple.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\11_Threeuple\obj\Debug\netcoreapp2.0\11_Threeuple.pdb

@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\bin\Debug\netcoreapp2.0\07_Custom_List.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\bin\Debug\netcoreapp2.0\07_Custom_List.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\bin\Debug\netcoreapp2.0\07_Custom_List.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\bin\Debug\netcoreapp2.0\07_Custom_List.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\bin\Debug\netcoreapp2.0\07_Custom_List.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\07_Custom_List\obj\Debug\netcoreapp2.0\07_Custom_List.pdb

@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\bin\Debug\netcoreapp2.0\05_Traffic_Lights.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\bin\Debug\netcoreapp2.0\05_Traffic_Lights.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\bin\Debug\netcoreapp2.0\05_Traffic_Lights.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\bin\Debug\netcoreapp2.0\05_Traffic_Lights.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\bin\Debug\netcoreapp2.0\05_Traffic_Lights.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\05_Traffic_Lights\obj\Debug\netcoreapp2.0\05_Traffic_Lights.pdb

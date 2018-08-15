@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\bin\Debug\netcoreapp2.0\05DateModifier.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\bin\Debug\netcoreapp2.0\05DateModifier.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\bin\Debug\netcoreapp2.0\05DateModifier.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\bin\Debug\netcoreapp2.0\05DateModifier.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\bin\Debug\netcoreapp2.0\05DateModifier.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\05DateModifier\obj\Debug\netcoreapp2.0\05DateModifier.pdb

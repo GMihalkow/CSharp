@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\bin\Debug\netcoreapp2.0\06CompanyROster.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\bin\Debug\netcoreapp2.0\06CompanyROster.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\bin\Debug\netcoreapp2.0\06CompanyROster.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\bin\Debug\netcoreapp2.0\06CompanyROster.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\bin\Debug\netcoreapp2.0\06CompanyROster.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\06CompanyROster\obj\Debug\netcoreapp2.0\06CompanyROster.pdb

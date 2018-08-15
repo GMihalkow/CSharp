@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\bin\Debug\netcoreapp2.0\02_Generic_Box_of_String.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\bin\Debug\netcoreapp2.0\02_Generic_Box_of_String.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\bin\Debug\netcoreapp2.0\02_Generic_Box_of_String.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\bin\Debug\netcoreapp2.0\02_Generic_Box_of_String.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\bin\Debug\netcoreapp2.0\02_Generic_Box_of_String.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\02_Generic_Box_of_String\obj\Debug\netcoreapp2.0\02_Generic_Box_of_String.pdb

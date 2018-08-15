@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\bin\Debug\netcoreapp2.0\01_Harvesting_fields.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\bin\Debug\netcoreapp2.0\01_Harvesting_fields.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\bin\Debug\netcoreapp2.0\01_Harvesting_fields.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\bin\Debug\netcoreapp2.0\01_Harvesting_fields.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\bin\Debug\netcoreapp2.0\01_Harvesting_fields.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\Reflection_exercise\obj\Debug\netcoreapp2.0\01_Harvesting_fields.pdb

@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\bin\Debug\netcoreapp2.0\10CarSalseman.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\bin\Debug\netcoreapp2.0\10CarSalseman.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\bin\Debug\netcoreapp2.0\10CarSalseman.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\bin\Debug\netcoreapp2.0\10CarSalseman.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\bin\Debug\netcoreapp2.0\10CarSalseman.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\11CarSalseman\obj\Debug\netcoreapp2.0\10CarSalseman.pdb

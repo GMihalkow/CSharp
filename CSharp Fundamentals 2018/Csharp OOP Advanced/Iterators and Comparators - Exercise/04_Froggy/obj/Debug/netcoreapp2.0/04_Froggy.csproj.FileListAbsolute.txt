@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\bin\Debug\netcoreapp2.0\04_Froggy.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\bin\Debug\netcoreapp2.0\04_Froggy.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\bin\Debug\netcoreapp2.0\04_Froggy.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\bin\Debug\netcoreapp2.0\04_Froggy.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\bin\Debug\netcoreapp2.0\04_Froggy.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\04_Froggy\obj\Debug\netcoreapp2.0\04_Froggy.pdb

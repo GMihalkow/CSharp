@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\bin\Debug\netcoreapp2.0\09RectangleIntersection.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\bin\Debug\netcoreapp2.0\09RectangleIntersection.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\bin\Debug\netcoreapp2.0\09RectangleIntersection.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\bin\Debug\netcoreapp2.0\09RectangleIntersection.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\bin\Debug\netcoreapp2.0\09RectangleIntersection.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\09RectangleIntersection\obj\Debug\netcoreapp2.0\09RectangleIntersection.pdb

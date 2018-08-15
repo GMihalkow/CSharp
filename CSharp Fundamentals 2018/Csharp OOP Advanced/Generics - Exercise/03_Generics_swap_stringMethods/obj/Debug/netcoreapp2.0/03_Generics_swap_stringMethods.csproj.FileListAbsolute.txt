@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\bin\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\bin\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\bin\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\bin\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\bin\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\03_Generics_swap_stringMethods\obj\Debug\netcoreapp2.0\03_Generics_swap_stringMethods.pdb

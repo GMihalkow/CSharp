@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\bin\Debug\netcoreapp2.0\02_Black_box_integer.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\bin\Debug\netcoreapp2.0\02_Black_box_integer.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\bin\Debug\netcoreapp2.0\02_Black_box_integer.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\bin\Debug\netcoreapp2.0\02_Black_box_integer.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\bin\Debug\netcoreapp2.0\02_Black_box_integer.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\02_Black_box_integer\obj\Debug\netcoreapp2.0\02_Black_box_integer.pdb

@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\bin\Debug\netcoreapp2.0\05_ Generic_Count_strings.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\bin\Debug\netcoreapp2.0\05_ Generic_Count_strings.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\bin\Debug\netcoreapp2.0\05_ Generic_Count_strings.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\bin\Debug\netcoreapp2.0\05_ Generic_Count_strings.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\bin\Debug\netcoreapp2.0\05_ Generic_Count_strings.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Generics_Exercise\05_ Generic_Count_strings\obj\Debug\netcoreapp2.0\05_ Generic_Count_strings.pdb

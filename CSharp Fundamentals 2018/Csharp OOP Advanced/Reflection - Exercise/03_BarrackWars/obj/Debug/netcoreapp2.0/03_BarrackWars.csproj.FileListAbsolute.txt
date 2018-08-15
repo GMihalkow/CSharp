@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\bin\Debug\netcoreapp2.0\03_BarrackWars.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\bin\Debug\netcoreapp2.0\03_BarrackWars.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\bin\Debug\netcoreapp2.0\03_BarrackWars.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\bin\Debug\netcoreapp2.0\03_BarrackWars.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\bin\Debug\netcoreapp2.0\03_BarrackWars.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Reflection_exercise\03_BarrackWars\obj\Debug\netcoreapp2.0\03_BarrackWars.pdb

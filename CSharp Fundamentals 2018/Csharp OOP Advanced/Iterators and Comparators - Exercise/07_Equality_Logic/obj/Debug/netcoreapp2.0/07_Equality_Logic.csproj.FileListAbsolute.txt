@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\bin\Debug\netcoreapp2.0\07_Equality_Logic.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\bin\Debug\netcoreapp2.0\07_Equality_Logic.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\bin\Debug\netcoreapp2.0\07_Equality_Logic.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\bin\Debug\netcoreapp2.0\07_Equality_Logic.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\bin\Debug\netcoreapp2.0\07_Equality_Logic.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\07_Equality_Logic\obj\Debug\netcoreapp2.0\07_Equality_Logic.pdb

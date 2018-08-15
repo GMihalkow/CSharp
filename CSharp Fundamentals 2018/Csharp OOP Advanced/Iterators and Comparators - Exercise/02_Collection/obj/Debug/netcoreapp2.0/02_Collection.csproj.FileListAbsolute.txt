@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\bin\Debug\netcoreapp2.0\02_Collection.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\bin\Debug\netcoreapp2.0\02_Collection.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\bin\Debug\netcoreapp2.0\02_Collection.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\bin\Debug\netcoreapp2.0\02_Collection.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\bin\Debug\netcoreapp2.0\02_Collection.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Iterators_Comparators_exercise\02_Collection\obj\Debug\netcoreapp2.0\02_Collection.pdb

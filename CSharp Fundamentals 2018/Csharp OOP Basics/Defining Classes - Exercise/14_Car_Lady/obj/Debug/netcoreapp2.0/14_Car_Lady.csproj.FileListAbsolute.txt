@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\bin\Debug\netcoreapp2.0\14_Car_Lady.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\bin\Debug\netcoreapp2.0\14_Car_Lady.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\bin\Debug\netcoreapp2.0\14_Car_Lady.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\bin\Debug\netcoreapp2.0\14_Car_Lady.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\bin\Debug\netcoreapp2.0\14_Car_Lady.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\14_Car_Lady\obj\Debug\netcoreapp2.0\14_Car_Lady.pdb

@@ -1,0 +1,11 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\bin\Debug\netcoreapp2.0\04OpinionPoll.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\bin\Debug\netcoreapp2.0\04OpinionPoll.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\bin\Debug\netcoreapp2.0\04OpinionPoll.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\bin\Debug\netcoreapp2.0\04OpinionPoll.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\bin\Debug\netcoreapp2.0\04OpinionPoll.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Solution\04OpinionPoll\obj\Debug\netcoreapp2.0\04OpinionPoll.pdb
