@@ -1,0 +1,21 @@
+﻿<hr style="background-color:#33cc59; height: 2px" />
+<div class="row">
+    <div class="col-sm-6">
+        <center><img width="240" height="320" src="{{{url}}}" alt="Album Picture" /><br /></center>
+        <h2 style="text-align:center">Name: {{{name}}}</h2>
+        <h2 style="text-align:center">Price: {{{price}}}</h2>
+        <div class="row">
+            <div style="text-align:center;" class="col-sm-5">
+                <button class="btn btn-success" onclick="location.href='/Albums/All'">Back To All</button>
+            </div>
+            <div class="col-sm-2"></div>
+            <div style="text-align:center;" class="col-sm-5">
+                <button class="btn btn-success" onclick="location.href='/Tracks/Create?albumId=\{\{\{create-track}}}'">Create Track</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h2>Tracks</h2>
+        {{{tracks}}}
+    </div>
+</div>
