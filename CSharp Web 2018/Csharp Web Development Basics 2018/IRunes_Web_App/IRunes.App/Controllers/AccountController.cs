@@ -58,7 +58,7 @@
             if (this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password))
             {
                 IHttpResponse response = new HtmlResult(view, HttpResponseStatusCode.Ok);
-                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.EncryptService.Encrypt(usernameOrEmail, EncryptKey));
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.EncryptService.Encrypt(username, EncryptKey));
 
                 request.Cookies.Add(cookie);
                 response.Cookies.Add(cookie);

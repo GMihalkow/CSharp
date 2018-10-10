@@ -103,11 +103,12 @@
 
             var cookie = request.Cookies.GetCookie(AuthenticationCookieKey);
             string username = EncryptService.Decrypt(cookie.Value, EncryptKey);
+            string email = this.Context.Users.Where(ua => ua.Username == username).First().Email;
 
             var albums =
                 this.Context
                 .UserAlbums
-                .Where(ua => ua.User.Username == username)
+                .Where(ua => ua.User.Username == username || ua.User.Email == email)
                 .Select(ua => new
                 {
                     ua.Album.Name,
