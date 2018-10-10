@@ -2,6 +2,6 @@
 {
     public class Configuration
     {
-        public const string ConnectionString = @"Server.;Database=ByTheCakeDb;Trusted_Connection=true";
+        public const string ConnectionString = @"Server=DESKTOP-9SI8PGG\SQLEXPRESS;Database=ByTheCakeDb;Trusted_Connection=true";
     }
 }

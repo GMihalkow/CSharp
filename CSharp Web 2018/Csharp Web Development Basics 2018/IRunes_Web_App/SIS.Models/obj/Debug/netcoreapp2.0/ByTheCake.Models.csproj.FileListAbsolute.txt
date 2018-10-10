@@ -6,3 +6,4 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.csprojResolveAssemblyReference.cache

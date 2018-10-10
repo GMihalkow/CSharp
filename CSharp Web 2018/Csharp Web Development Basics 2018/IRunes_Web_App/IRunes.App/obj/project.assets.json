@@ -986,14 +986,18 @@
           "bin/placeholder/SIS.HTTP.dll": {}
         }
       },
-      "SIS.Services/1.0.0": {
+      "SIS.MvcFramework/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "SIS.HTTP": "1.0.0",
+          "SIS.WebServer": "1.0.0"
+        },
         "compile": {
-          "bin/placeholder/SIS.Services.dll": {}
+          "bin/placeholder/SIS.MvcFramework.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SIS.Services.dll": {}
+          "bin/placeholder/SIS.MvcFramework.dll": {}
         }
       },
       "SIS.WebServer/1.0.0": {
@@ -3624,10 +3628,10 @@
       "path": "../SIS.HTTP/SIS.HTTP.csproj",
       "msbuildProject": "../SIS.HTTP/SIS.HTTP.csproj"
     },
-    "SIS.Services/1.0.0": {
+    "SIS.MvcFramework/1.0.0": {
       "type": "project",
-      "path": "../SIS.Services/SIS.Services.csproj",
-      "msbuildProject": "../SIS.Services/SIS.Services.csproj"
+      "path": "../SIS.MvcFramework/SIS.MvcFramework.csproj",
+      "msbuildProject": "../SIS.MvcFramework/SIS.MvcFramework.csproj"
     },
     "SIS.WebServer/1.0.0": {
       "type": "project",
@@ -3640,9 +3644,7 @@
       "IRunes.Data >= 1.0.0",
       "IRunes.Models >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "SIS.HTTP >= 1.0.0",
-      "SIS.Services >= 1.0.0",
-      "SIS.WebServer >= 1.0.0"
+      "SIS.MvcFramework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3681,20 +3683,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.HTTP\\SIS.HTTP.csproj": {
-              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.HTTP\\SIS.HTTP.csproj"
+            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.MvcFramework\\SIS.MvcFramework.csproj": {
+              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.MvcFramework\\SIS.MvcFramework.csproj"
             },
             "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\IRunes.Data\\IRunes.Data.csproj": {
               "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\IRunes.Data\\IRunes.Data.csproj"
             },
             "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\IRunes.Models\\IRunes.Models.csproj": {
               "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\IRunes.Models\\IRunes.Models.csproj"
-            },
-            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.WebServer\\SIS.WebServer.csproj": {
-              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.WebServer\\SIS.WebServer.csproj"
-            },
-            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.Services\\SIS.Services.csproj": {
-              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\parallell-WebServer_v2\\SIS.Services\\SIS.Services.csproj"
             }
           }
         }

@@ -10,12 +10,10 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\IRunes.Data.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\IRunes.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.HTTP.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.Services.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.WebServer.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\IRunes.Data.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\IRunes.Models.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.HTTP.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.Services.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.WebServer.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\obj\Debug\netcoreapp2.0\IRunes.App.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\obj\Debug\netcoreapp2.0\IRunes.App.pdb
@@ -26,3 +24,5 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\Resources\js\popper.min.js
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\Resources\HTML\_LoggedOutLayout.html
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\Resources\HTML\_LoggedInLayout.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.MvcFramework.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.App\bin\Debug\netcoreapp2.0\SIS.MvcFramework.pdb

@@ -1,6 +1,7 @@
 ﻿namespace IRunes.App.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Net;
@@ -12,6 +13,7 @@
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
+    using SIS.MvcFramework;
     using SIS.WebServer.Results;
 
     public class AlbumsController : BaseController
@@ -19,22 +21,25 @@
         private const string InvalidAlbumInformationError = "<p style=\"text-align:center;\">Invalid cover link/album name!</p>";
         private const string AlbumAlreadyExistsError = "<p style=\"text-align:center;\">Album already exists!</p>";
 
-        public IHttpResponse GetCreatePage(IHttpRequest request)
+        [HttpGetAttribute("/Albums/Create")]
+        public IHttpResponse GetCreatePage()
         {
-            string registerView = new CreateAlbumView().View();
-            registerView = registerView.Replace("{{{error}}}", string.Empty);
+            Dictionary<string, string> createAlbumPageParameters = new Dictionary<string, string>()
+            {
+                {"{{{error}}}", string.Empty }
+            };
 
-            var response = new HtmlResult(registerView, HttpResponseStatusCode.Ok);
-
-            return response;
+            return this.View("Albums-Create",  HttpResponseStatusCode.Ok, createAlbumPageParameters);
         }
 
-        public IHttpResponse PostCreateAlbum(IHttpRequest request)
+        [HttpPostAttribute("/Albums/Create")]
+        public IHttpResponse PostCreateAlbum()
         {
             Regex albumNameRegex = new Regex(@"^\w{3,30}$");
             Regex coverUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
 
-            string username = EncryptService.Decrypt(request.Cookies.GetCookie(AuthenticationCookieKey).Value, EncryptKey);
+            string cookieValue = this.Request.Cookies.GetCookie(AuthenticationCookieKey).Value;
+            string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookieValue, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
 
             string userId = this.Context
                             .Users
@@ -42,8 +47,8 @@
                             .Id;
 
             string albumId = Guid.NewGuid().ToString();
-            string albumName = request.FormData["name"].ToString();
-            string cover = request.FormData["cover"].ToString();
+            string albumName = this.Request.FormData["name"].ToString();
+            string cover = this.Request.FormData["cover"].ToString();
             cover = WebUtility.UrlDecode(cover);
 
             Album album = new Album()
@@ -62,17 +67,21 @@
 
             if (!albumNameRegex.Match(albumName).Success || !coverUrlRegex.Match(cover).Success)
             {
-                string createAlbumView = new CreateAlbumView().View();
-                createAlbumView = createAlbumView.Replace("{{{error}}}", InvalidAlbumInformationError);
+                Dictionary<string, string> createAlbumErrorParameters = new Dictionary<string, string>()
+                {
+                    {"{{{error}}}", InvalidAlbumInformationError }
+                };
 
-                return new HtmlResult(createAlbumView, HttpResponseStatusCode.BadRequest);
+                return this.View("Albums-Create", HttpResponseStatusCode.BadRequest, createAlbumErrorParameters);
             }
             else if (this.Context.UserAlbums.Where(ua => ua.UserId == userId).Any(a => a.Album.Name == albumName))
             {
-                string createAlbumView = new CreateAlbumView().View();
-                createAlbumView = createAlbumView.Replace("{{{error}}}", AlbumAlreadyExistsError);
+                Dictionary<string, string> createAlbumErrorParameters = new Dictionary<string, string>()
+                {
+                    {"{{{error}}}", AlbumAlreadyExistsError}
+                };
 
-                return new HtmlResult(createAlbumView, HttpResponseStatusCode.BadRequest);
+                return this.View("Albums-Create",  HttpResponseStatusCode.BadRequest, createAlbumErrorParameters);
             }
 
             using (this.Context)
@@ -86,23 +95,26 @@
 
                 this.Context.SaveChanges();
             }
+            
+            Dictionary<string, string> createdAlbumParameters = new Dictionary<string, string>()
+            {
+                { "{{{url}}}", cover },
+                { @"\{\{\{create-track}}}", albumId },
+                {"{{{name}}}", albumName },
+                {"{{{price}}}", album.Price.ToString(CultureInfo.InvariantCulture) },
+                {"{{{tracks}}}", string.Empty }
+            };
 
-            string view = new AlbumDetailsView().View();
-            view = view.Replace("{{{url}}}", cover);
-            view = view.Replace(@"\{\{\{create-track}}}", albumId);
-            view = view.Replace("{{{name}}}", albumName);
-            view = view.Replace("{{{price}}}", album.Price.ToString(CultureInfo.InvariantCulture));
-            view = view.Replace("{{{tracks}}}", string.Empty);
-
-            return new HtmlResult(view, HttpResponseStatusCode.Ok);
+            return this.View("album",  HttpResponseStatusCode.Ok, createdAlbumParameters);
         }
 
-        public IHttpResponse GetAllALbums(IHttpRequest request)
+        [HttpGetAttribute("/Albums/All")]
+        public IHttpResponse GetAllALbums()
         {
             StringBuilder sb = new StringBuilder();
 
-            var cookie = request.Cookies.GetCookie(AuthenticationCookieKey);
-            string username = EncryptService.Decrypt(cookie.Value, EncryptKey);
+            var cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
+            string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookie.Value, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
             string email = this.Context.Users.Where(ua => ua.Username == username).First().Email;
 
             var albums =
@@ -121,19 +133,20 @@
                 sb.AppendLine($"<a href=\"/Albums/Details?id={album.Id}\">{album.Name}</a><br />");
             }
 
-            string view = new AlbumsView().View();
-            view = view.Replace("{{{albums}}}", string.Join("<br />", sb));
+            Dictionary<string, string> allAlbumsParameters = new Dictionary<string, string>()
+            {
+                {"{{{albums}}}", string.Join("<br />", sb) }
+            };
 
-            var response = new HtmlResult(view, HttpResponseStatusCode.Ok);
-
-            return response;
+            return this.View("all-albums",  HttpResponseStatusCode.Ok, allAlbumsParameters);
         }
 
-        public IHttpResponse GetAlbum(IHttpRequest request)
+        [HttpGetAttribute("/Albums/Details")]
+        public IHttpResponse GetAlbum()
         {
             StringBuilder sb = new StringBuilder();
 
-            string albumId = request.QueryData["id"].ToString();
+            string albumId = this.Request.QueryData["id"].ToString();
 
             Album album =
                 this.Context
@@ -146,8 +159,6 @@
                 .Where(at => at.AlbumId == albumId)
                 .Sum(track => track.Track.Price)
                 * 0.87m;
-
-            ;
 
             var tracks =
                 this.Context
@@ -167,16 +178,16 @@
             }
             sb.AppendLine("</ul>");
 
-            var view = new AlbumDetailsView().View();
-            view = view.Replace("{{{url}}}", album.Cover);
-            view = view.Replace("{{{name}}}", album.Name);
-            view = view.Replace("{{{price}}}", $"${albumPrice:f2}");
-            view = view.Replace(@"\{\{\{create-track}}}", $"{album.Id}");
-            view = view.Replace("{{{tracks}}}", sb.ToString().TrimEnd());
+            Dictionary<string, string> albumsDetailsParameters = new Dictionary<string, string>()
+            {
+                {"{{{url}}}", album.Cover },
+                {"{{{name}}}", album.Name },
+                {"{{{price}}}", $"{albumPrice:f2}"},
+                {@"\{\{\{create-track}}}", $"{album.Id}" },
+                {"{{{tracks}}}", sb.ToString().TrimEnd() }
+            };
 
-            var response = new HtmlResult(view, HttpResponseStatusCode.Ok);
-
-            return response;
+            return this.View("album",  HttpResponseStatusCode.Ok, albumsDetailsParameters);
         }
     }
 }

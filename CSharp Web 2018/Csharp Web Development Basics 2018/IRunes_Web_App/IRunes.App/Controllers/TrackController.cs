@@ -6,8 +6,10 @@
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
+    using SIS.MvcFramework;
     using SIS.WebServer.Results;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Net;
@@ -19,34 +21,39 @@
 
         private const string TrackAlreadyExistsError = "<p style=\"text-align:center;\">This track already exists!</p>";
 
-        public IHttpResponse CreateTrack(IHttpRequest request)
+        [HttpGetAttribute("/Tracks/Create")]
+        public IHttpResponse CreateTrack()
         {
-            string albumId = request.QueryData["albumId"].ToString();
+            string albumId = this.Request.QueryData["albumId"].ToString();
 
             string path = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
             string postPath = WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}");
-            var view = new CreateTrackView().View();
-            view = view.Replace(WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), path);
-            view = view.Replace("{{{create-path}}}", postPath);
-            view = view.Replace("{{{error}}}", string.Empty);
 
-            return new HtmlResult(view, HttpResponseStatusCode.Ok);
+            Dictionary<string, string> createTrackParameters = new Dictionary<string, string>()
+            {
+                {WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), path},
+                {"{{{create-path}}}", postPath },
+                {"{{{error}}}", string.Empty }
+            };
+
+            return this.View("create-track", HttpResponseStatusCode.Ok, createTrackParameters);
         }
 
-        public IHttpResponse PostCreateTrack(IHttpRequest request)
+        [HttpPostAttribute("/Tracks/Create")]
+        public IHttpResponse PostCreateTrack()
         {
             Regex trackNameRegex = new Regex(@"^\w{3,30}$");
             Regex linkUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
 
-            string albumId = request.QueryData["albumId"].ToString();
+            string albumId = this.Request.QueryData["albumId"].ToString();
 
             string backToAlbumPath = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
 
-            string trackName = request.FormData["name"].ToString();
-            string trackLink = WebUtility.UrlDecode(request.FormData["link"].ToString());
+            string trackName = this.Request.FormData["name"].ToString();
+            string trackLink = WebUtility.UrlDecode(this.Request.FormData["link"].ToString());
             decimal trackPrice = 0;
 
-            bool IsDecimal = decimal.TryParse(request.FormData["price"].ToString(), out trackPrice);
+            bool IsDecimal = decimal.TryParse(this.Request.FormData["price"].ToString(), out trackPrice);
 
             Track track = new Track()
             {
@@ -61,7 +68,7 @@
                 AlbumId = albumId,
                 TrackId = track.Id
             };
-            
+
             if (!IsDecimal
                 ||
                 !linkUrlRegex.Match(trackLink).Success
@@ -71,23 +78,26 @@
                 track.Price < 0
                 )
             {
+                Dictionary<string, string> createTrackErroParameters = new Dictionary<string, string>()
+                {
+                    {@"\{\{\{back-to-album}}}", backToAlbumPath },
+                    {"{{{error}}}", InvalidTrackInformationError },
+                    {@"{{{create-path}}}",  WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                };
 
-                string createTrackView = new CreateTrackView().View();
-                createTrackView = createTrackView.Replace(@"\{\{\{back-to-album}}}", backToAlbumPath);
-                createTrackView = createTrackView.Replace("{{{error}}}", InvalidTrackInformationError);
-                createTrackView = createTrackView.Replace(@"{{{create-path}}}", WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}"));
-
-                return new HtmlResult(createTrackView, HttpResponseStatusCode.BadRequest);
+                return this.View("crate-track", HttpResponseStatusCode.BadRequest, createTrackErroParameters);
 
             }
             else if (this.Context.AlbumTracks.Where(at => at.AlbumId == albumId).Any(tr => tr.Track.Name == trackName))
             {
-                string createTrackView = new CreateTrackView().View();
-                createTrackView = createTrackView.Replace(@"\{\{\{back-to-album}}}", backToAlbumPath);
-                createTrackView = createTrackView.Replace("{{{error}}}", TrackAlreadyExistsError);
-                createTrackView= createTrackView.Replace(@"{{{create-path}}}", WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}"));
+                Dictionary<string, string> createTrackErrorParameters = new Dictionary<string, string>()
+                {
+                    {@"\{\{\{back-to-album}}}", backToAlbumPath },
+                    {"{{{error}}}", TrackAlreadyExistsError },
+                    {@"{{{create-path}}}",  WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                };
 
-                return new HtmlResult(createTrackView, HttpResponseStatusCode.BadRequest);
+                return this.View("create-track", HttpResponseStatusCode.BadRequest, createTrackErrorParameters);
             }
 
             using (this.Context)
@@ -108,22 +118,24 @@
                     .SaveChanges();
             }
 
-            string view = new TrackDetailsView().View();
-            view = view.Replace("{{{link}}}", track.Link);
-            view = view.Replace("{{{name}}}", track.Name);
-            view = view.Replace("{{{price}}}", $"${track.Price.ToString(CultureInfo.InvariantCulture):f2}");
-            view = view.Replace(WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backToAlbumPath);
-            view = view.Replace(@"{{{create-path}}}", WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}"));
+            Dictionary<string, string> trackDetailsParameters = new Dictionary<string, string>()
+            {
+                {"{{{link}}}", track.Link },
+                {"{{{name}}}", track.Name },
+                {"{{{price}}}", $"${track.Price.ToString(CultureInfo.InvariantCulture):f2}" },
+                {WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backToAlbumPath },
+                {@"{{{create-path}}}", WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+            };
 
-            return new HtmlResult(view, HttpResponseStatusCode.Ok);
+            return this.View("track", HttpResponseStatusCode.Ok, trackDetailsParameters);
         }
 
-        public IHttpResponse TrackDetails(IHttpRequest request)
+        [HttpGetAttribute("/Tracks/Details")]
+        public IHttpResponse TrackDetails()
         {
-            string view = new TrackDetailsView().View();
 
-            string albumId = request.QueryData["albumId"].ToString();
-            string trackId = request.QueryData["trackId"].ToString();
+            string albumId = this.Request.QueryData["albumId"].ToString();
+            string trackId = this.Request.QueryData["trackId"].ToString();
 
             string backtoAlbumPath = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
 
@@ -131,12 +143,15 @@
                 .Tracks
                 .First(tr => tr.Id == trackId);
 
-            view = view.Replace("{{{link}}}", track.Link);
-            view = view.Replace("{{{name}}}", track.Name);
-            view = view.Replace("{{{price}}}", $"${track.Price:f2}");
-            view = view.Replace(WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backtoAlbumPath);
+            Dictionary<string, string> trackDetailsParameters = new Dictionary<string, string>()
+            {
+                {"{{{link}}}", track.Link },
+                {"{{{name}}}", track.Name },
+                {"{{{price}}}", $"${track.Price:f2}" },
+                { WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backtoAlbumPath}
+            };
 
-            return new HtmlResult(view, HttpResponseStatusCode.Ok);
+            return this.View("track", HttpResponseStatusCode.Ok, trackDetailsParameters);
         }
     }
 }

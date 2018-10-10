@@ -1,6 +1,7 @@
 ﻿namespace IRunes.App.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Text.RegularExpressions;
@@ -9,8 +10,8 @@
     using SIS.HTTP.Cookies;
     using SIS.HTTP.Enums;
     using SIS.HTTP.Requests.Contracts;
-    using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
+    using SIS.MvcFramework;
     using SIS.WebServer.Results;
 
     public class AccountController : BaseController
@@ -21,29 +22,35 @@
 
         private const string UsernameAlreadyExistsErrorMessage = "<p style=\"text-align:center;\">Username already exists!</p>";
 
-        public IHttpResponse GetLogin(IHttpRequest request)
+        [HttpGetAttribute("/Users/Login")]
+        public IHttpResponse GetLogin()
         {
-            if (request.Cookies.ContainsCookie(AuthenticationCookieKey))
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
             {
-                string username = EncryptService.Decrypt(request.Cookies.GetCookie(AuthenticationCookieKey).Value, EncryptKey);
+                string cookieValue = this.Request.Cookies.GetCookie(AuthenticationCookieKey).Value;
+                string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookieValue, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
 
-                string loggedInView = new LoggedInView().View();
-                loggedInView = loggedInView.Replace("{{{name}}}", username);
-                return new HtmlResult(loggedInView, HttpResponseStatusCode.Ok);
+                Dictionary<string, string> loggedInReplaceParameters = new Dictionary<string, string>()
+                {
+                    {"{{{name}}}", username }
+                };
+
+                return this.View("Logged", HttpResponseStatusCode.Ok, loggedInReplaceParameters);
             }
 
-            string loginView = new LoginView().View();
-            loginView = loginView.Replace("{{{error}}}", string.Empty);
+            Dictionary<string, string> loginParameters = new Dictionary<string, string>()
+            {
+                {"{{{error}}}", string.Empty }
+            };
 
-            IHttpResponse response = new HtmlResult(loginView, HttpResponseStatusCode.Ok);
-
-            return response;
+            return this.View("Login", HttpResponseStatusCode.Ok, loginParameters);
         }
 
-        public IHttpResponse PostLogin(IHttpRequest request)
+        [HttpPostAttribute("/Users/Login")]
+        public IHttpResponse PostLogin()
         {
-            string usernameOrEmail = WebUtility.UrlDecode(request.FormData["username-or-email"].ToString().Trim());
-            string password = this.HashService.Compute256Hash(request.FormData["password"].ToString().Trim());
+            string usernameOrEmail = WebUtility.UrlDecode(this.Request.FormData["username-or-email"].ToString().Trim());
+            string password = SIS.MvcFramework.Services.HashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
 
             string username =
                 this.Context
@@ -52,61 +59,66 @@
                 .First()
                 .Username;
 
-            string view = new LoggedInView().View();
-            view = view.Replace("{{{name}}}", username);
+            Dictionary<string, string> loginReplaceParameters = new Dictionary<string, string>()
+            {
+                {"{{{name}}}", username }
+            };
 
             if (this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password))
             {
-                IHttpResponse response = new HtmlResult(view, HttpResponseStatusCode.Ok);
-                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.EncryptService.Encrypt(username, EncryptKey));
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
 
-                request.Cookies.Add(cookie);
-                response.Cookies.Add(cookie);
+                this.Request.Cookies.Add(cookie);
+                this.Response.Cookies.Add(cookie);
 
-                return response;
+                return this.View("Logged",  HttpResponseStatusCode.Ok, loginReplaceParameters);
             }
             else
             {
-                string errorView = new LoginView().View();
-                errorView = errorView.Replace("{{{error}}}", InvalidLoginInformationMessage);
+                Dictionary<string, string> backToLoginParameters = new Dictionary<string, string>()
+                {
+                    {"{{{error}}}", InvalidLoginInformationMessage }
+                };
 
-                return new HtmlResult(errorView, HttpResponseStatusCode.BadRequest);
+                return this.View("Login", HttpResponseStatusCode.BadRequest, backToLoginParameters);
             }
         }
 
-        public IHttpResponse GetRegister(IHttpRequest request)
+        [HttpGetAttribute("/Users/Register")]
+        public IHttpResponse GetRegister()
         {
-            string registerView = new RegisterView().View();
-            registerView = registerView.Replace("{{{error}}}", string.Empty);
-
-            var response = new HtmlResult(registerView, HttpResponseStatusCode.Ok);
-
             HttpCookie cookie;
 
-            if (request.Cookies.ContainsCookie(AuthenticationCookieKey))
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
             {
-                request.Cookies.GetCookie(AuthenticationCookieKey).Delete();
+                this.Request.Cookies.GetCookie(AuthenticationCookieKey).Delete();
 
-                cookie = request.Cookies.GetCookie(AuthenticationCookieKey);
+                cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
 
-                response.AddCookie(cookie);
+                this.Response.AddCookie(cookie);
             }
 
-            return response;
+            Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+            {
+                {"{{{error}}}", string.Empty }
+            };
+
+            return this.View("Register",  HttpResponseStatusCode.Ok, registerErrorParameters);
         }
 
-        public IHttpResponse PostRegister(IHttpRequest request)
+        [HttpPostAttribute("/Users/Register")]
+        public IHttpResponse PostRegister()
         {
             Regex usernameAndPasswordRegex = new Regex(@"^\w+$");
             Regex emailRegex = new Regex(@"^[A-z]+\@[A-z]+\.[A-z]{1,4}$");
 
-            string username = request.FormData["username"].ToString();
-            string rawPassword = request.FormData["password"].ToString();
+            string username = this.Request.FormData["username"].ToString();
+            string rawPassword = this.Request.FormData["password"].ToString();
 
-            string hashedPassword = this.HashService.Compute256Hash(rawPassword);
-            string hashedConfirmPassword = this.HashService.Compute256Hash(rawPassword);
+            string hashedPassword = SIS.MvcFramework.Services.HashService.Compute256Hash(rawPassword);
+            string hashedConfirmPassword = SIS.MvcFramework.Services.HashService.Compute256Hash(rawPassword);
 
-            string email = request.FormData["email"].ToString();
+            string email = this.Request.FormData["email"].ToString();
             email = email.Replace("%40", "@");
 
             if (emailRegex.Match(email).Success == false ||
@@ -117,10 +129,13 @@
                username.Length < 3 ||
                username.Length > 30))
             {
-                string registerView = new RegisterView().View();
-                registerView = registerView.Replace("{{{error}}}", InvalidRegisterInformationMessage);
 
-                return new HtmlResult(registerView, HttpResponseStatusCode.BadRequest);
+                Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                {
+                    {"{{{error}}}", InvalidRegisterInformationMessage }
+                };
+
+                return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
             }
 
             if (hashedConfirmPassword == hashedPassword)
@@ -138,10 +153,12 @@
                 {
                     if (this.Context.Users.Any(u => u.Username == username) == true)
                     {
-                        string registerView = new RegisterView().View();
-                        registerView = registerView.Replace("{{{error}}}", UsernameAlreadyExistsErrorMessage);
+                        Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                        {
+                            { "{{{error}}}", UsernameAlreadyExistsErrorMessage}
+                        };
 
-                        return new HtmlResult(registerView, HttpResponseStatusCode.BadRequest);
+                        return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
                     }
 
                     this.Context.Users.Add(user);
@@ -149,17 +166,18 @@
                 }
             }
 
-            string view = new LoggedInView().View();
-            view = view.Replace("{{{name}}}", username);
-
             //Adding cookie
-            IHttpResponse response = new HtmlResult(view, HttpResponseStatusCode.Ok);
-            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.EncryptService.Encrypt(username, EncryptKey));
+            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
 
-            request.Cookies.Add(cookie);
-            response.Cookies.Add(cookie);
+            this.Request.Cookies.Add(cookie);
+            this.Response.Cookies.Add(cookie);
 
-            return response;
+            Dictionary<string, string> loggedInParameters = new Dictionary<string, string>()
+            {
+                {"{{{name}}}", username }
+            };
+
+            return this.View("Logged",  HttpResponseStatusCode.Ok, loggedInParameters);
         }
     }
 }

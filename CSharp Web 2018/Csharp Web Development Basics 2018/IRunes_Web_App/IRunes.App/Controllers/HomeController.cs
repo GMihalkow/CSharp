@@ -4,33 +4,34 @@
     using SIS.HTTP.Enums;
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses.Contracts;
+    using SIS.MvcFramework;
     using SIS.WebServer.Results;
     using SIS.WebServer.Routing;
+    using System.Collections.Generic;
 
     public class HomeController : BaseController
     {
-        public IHttpResponse Index(IHttpRequest request)
+        [HttpGetAttribute("/")]
+        public IHttpResponse Index()
         {
-            IHttpResponse response;
-
-            if (request.Cookies.ContainsCookie(AuthenticationCookieKey))
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
             {
-                if (request.Cookies.ContainsCookie(AuthenticationCookieKey))
-                {
-                    string username = EncryptService.Decrypt(request.Cookies.GetCookie(AuthenticationCookieKey).Value, EncryptKey);
+                string cookieValue = this.Request.Cookies.GetCookie(AuthenticationCookieKey).Value;
 
-                    string view = new LoggedInView().View();
-                    view = view.Replace("{{{name}}}", username);
-                    return new HtmlResult(view, HttpResponseStatusCode.Ok);
-                }
+                string username =
+                    SIS.MvcFramework.Services.UserCookieService
+                    .DecryptString(cookieValue, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
 
-                response = new HtmlResult(new LoginView().View(), HttpResponseStatusCode.Ok);
+                Dictionary<string, string> loggedInParameters = new Dictionary<string, string>()
+                    {
+                        {"{{{name}}}", username}
+                    };
 
-                return response;
+                return this.View("Logged",  HttpResponseStatusCode.Ok, loggedInParameters);
             }
             else
             {
-                return new HtmlResult(new HomeView().View(), HttpResponseStatusCode.Ok);
+                return this.View("Index",  HttpResponseStatusCode.Ok, null);
             }
         }
     }
