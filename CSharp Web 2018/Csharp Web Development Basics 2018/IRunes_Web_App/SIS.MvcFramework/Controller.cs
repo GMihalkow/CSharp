@@ -47,12 +47,12 @@
         {
             get
             {
-                if (!this.Request.Cookies.ContainsCookie("-auth"))
+                if (!this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
                 {
                     return null;
                 }
 
-                var cookie = this.Request.Cookies.GetCookie("-auth");
+                var cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
                 var cookieContent = cookie.Value;
                 var userName = this.UserCookieService.GetUserData(cookieContent);
                 return userName;
@@ -112,7 +112,7 @@
             string layoutContent = string.Empty;
             string content = System.IO.File.ReadAllText(PathService.HtmlFinder(viewName));
 
-            if (this.Request.Cookies.ContainsCookie("-auth"))
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
             {
                 layoutContent = System.IO.File.ReadAllText(PathService.HtmlFinder("_LoggedInLayout"));
             }

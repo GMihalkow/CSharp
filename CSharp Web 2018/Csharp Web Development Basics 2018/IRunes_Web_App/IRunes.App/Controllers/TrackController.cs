@@ -17,9 +17,9 @@
 
     public class TrackController : BaseController
     {
-        private const string InvalidTrackInformationError = "<p style=\"text-align:center;\">Invalid name/url/price information!</p>";
+        private const string InvalidTrackInformationError = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid name/url/price information!</div></center>";
 
-        private const string TrackAlreadyExistsError = "<p style=\"text-align:center;\">This track already exists!</p>";
+        private const string TrackAlreadyExistsError = "<center><div class=\"alert alert-danger\" role=\"alert\">This track already exists!</div></center>";
 
         [HttpGetAttribute("/Tracks/Create")]
         public IHttpResponse CreateTrack()

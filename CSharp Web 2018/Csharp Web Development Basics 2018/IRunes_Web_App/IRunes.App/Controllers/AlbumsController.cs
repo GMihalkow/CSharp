@@ -18,8 +18,8 @@
 
     public class AlbumsController : BaseController
     {
-        private const string InvalidAlbumInformationError = "<p style=\"text-align:center;\">Invalid cover link/album name!</p>";
-        private const string AlbumAlreadyExistsError = "<p style=\"text-align:center;\">Album already exists!</p>";
+        private const string InvalidAlbumInformationError = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid cover link/album name!</div></center>";
+        private const string AlbumAlreadyExistsError = "<center><div class=\"alert alert-danger\" role=\"alert\">Album already exists!</div></center>";
 
         [HttpGetAttribute("/Albums/Create")]
         public IHttpResponse GetCreatePage()

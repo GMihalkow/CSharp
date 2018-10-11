@@ -6,3 +6,4 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Models\obj\Debug\netcoreapp2.0\IRunes.Models.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Models\obj\Debug\netcoreapp2.0\IRunes.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Models\obj\Debug\netcoreapp2.0\IRunes.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Models\obj\Debug\netcoreapp2.0\IRunes.Models.csprojResolveAssemblyReference.cache

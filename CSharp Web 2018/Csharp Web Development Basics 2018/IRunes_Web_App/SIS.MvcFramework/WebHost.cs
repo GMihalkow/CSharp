@@ -1,19 +1,19 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using SIS.HTTP.Enums;
-using SIS.HTTP.Requests;
-using SIS.HTTP.Requests.Contracts;
-using SIS.HTTP.Responses;
-using SIS.HTTP.Responses.Contracts;
-using SIS.MvcFramework.Contracts;
-using SIS.WebServer;
-using SIS.WebServer.Results;
-using SIS.WebServer.Routing;
-
-namespace SIS.MvcFramework
+﻿namespace SIS.MvcFramework
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using SIS.HTTP.Enums;
+    using SIS.HTTP.Requests;
+    using SIS.HTTP.Requests.Contracts;
+    using SIS.HTTP.Responses;
+    using SIS.HTTP.Responses.Contracts;
+    using SIS.MvcFramework.Contracts;
+    using SIS.WebServer;
+    using SIS.WebServer.Results;
+    using SIS.WebServer.Routing;
+
     public static class WebHost
     {
         public static void Start(IMvcApplication application)
@@ -72,7 +72,7 @@ namespace SIS.MvcFramework
             controllerInstance.Request = request;
 
             var httpResponse = methodInfo.Invoke(controllerInstance, new object[] { }) as IHttpResponse;
-            
+
             return httpResponse;
         }
     }

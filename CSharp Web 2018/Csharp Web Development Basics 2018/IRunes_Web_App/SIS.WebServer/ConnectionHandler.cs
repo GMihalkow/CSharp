@@ -17,6 +17,7 @@
     using SIS.HTTP.Responses.Contracts;
     using System.IO;
     using System.Net;
+    using System.Reflection;
 
     public class ConnectionHandler
     {
@@ -68,7 +69,7 @@
 
         private IHttpResponse ReturnIfResource(string path)
         {
-            path = "/IRunes.App/Resources/" + path;
+            path = $"/{Assembly.GetEntryAssembly().GetName(true).Name}/Resources/" + path;
             string fixedPath = WebUtility.UrlDecode(path);
             string fullPath = Path.GetFullPath(".." + fixedPath);
 

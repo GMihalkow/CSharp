@@ -16,11 +16,17 @@
 
     public class AccountController : BaseController
     {
-        private const string InvalidRegisterInformationMessage = "<p style=\"text-align:center;\">Invalid password/username/email, please try again!</p>";
+        private const string InvalidRegisterInformationMessage
+            = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid password/username/email, please try again!</div></center>";
 
-        private const string InvalidLoginInformationMessage = "<p style=\"text-align:center;\">Invalid username/password combination!<p>";
+        private const string InvalidLoginInformationMessage
+            = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid username/password combination!<div></center>";
 
-        private const string UsernameAlreadyExistsErrorMessage = "<p style=\"text-align:center;\">Username already exists!</p>";
+        private const string UsernameAlreadyExistsErrorMessage
+            = "<center><div class=\"alert alert-danger\" role=\"alert\">Username already exists!</div></center>";
+
+        private const string EmailAlreadyExistsErrorMessage
+            = "<center><div class=\"alert alert-danger\" role=\"alert\">Email is already taken!</div></center>";
 
         [HttpGetAttribute("/Users/Login")]
         public IHttpResponse GetLogin()
@@ -52,28 +58,7 @@
             string usernameOrEmail = WebUtility.UrlDecode(this.Request.FormData["username-or-email"].ToString().Trim());
             string password = SIS.MvcFramework.Services.HashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
 
-            string username =
-                this.Context
-                .Users
-                .Where(user => user.Username == usernameOrEmail || user.Email == usernameOrEmail)
-                .First()
-                .Username;
-
-            Dictionary<string, string> loginReplaceParameters = new Dictionary<string, string>()
-            {
-                {"{{{name}}}", username }
-            };
-
-            if (this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password))
-            {
-                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
-
-                this.Request.Cookies.Add(cookie);
-                this.Response.Cookies.Add(cookie);
-
-                return this.View("Logged",  HttpResponseStatusCode.Ok, loginReplaceParameters);
-            }
-            else
+            if (!(this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password)))
             {
                 Dictionary<string, string> backToLoginParameters = new Dictionary<string, string>()
                 {
@@ -81,6 +66,30 @@
                 };
 
                 return this.View("Login", HttpResponseStatusCode.BadRequest, backToLoginParameters);
+            }
+            else
+            {
+                string username =
+                    this.Context
+                    .Users
+                    .Where(user => user.Username == usernameOrEmail || user.Email == usernameOrEmail)
+                    .First()
+                    .Username;
+
+                Dictionary<string, string> loginReplaceParameters = new Dictionary<string, string>()
+            {
+                {"{{{name}}}", username }
+            };
+
+                //if (this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password))
+                //{
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
+
+                this.Request.Cookies.Add(cookie);
+                this.Response.Cookies.Add(cookie);
+
+                return this.View("Logged", HttpResponseStatusCode.Ok, loginReplaceParameters);
+                //}
             }
         }
 
@@ -103,7 +112,7 @@
                 {"{{{error}}}", string.Empty }
             };
 
-            return this.View("Register",  HttpResponseStatusCode.Ok, registerErrorParameters);
+            return this.View("Register", HttpResponseStatusCode.Ok, registerErrorParameters);
         }
 
         [HttpPostAttribute("/Users/Register")]
@@ -137,7 +146,15 @@
 
                 return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
             }
+            if (this.Context.Users.Any(user => user.Email == email))
+            {
+                Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                {
+                    {"{{{error}}}", EmailAlreadyExistsErrorMessage }
+                };
 
+                return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
+            }
             if (hashedConfirmPassword == hashedPassword)
             {
                 //Adding user to db User user = new User()
@@ -177,7 +194,7 @@
                 {"{{{name}}}", username }
             };
 
-            return this.View("Logged",  HttpResponseStatusCode.Ok, loggedInParameters);
+            return this.View("Logged", HttpResponseStatusCode.Ok, loggedInParameters);
         }
     }
 }

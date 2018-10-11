@@ -2,13 +2,19 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
     using System.Text;
 
     public class PathService
     {
         public static string HtmlFinder(string htmlName)
         {
-            return $"../IRunes.App/Resources/HTML/{htmlName}.html";
+            string result = $"../{Assembly.GetEntryAssembly().GetName(true).Name}/Resources/HTML/{htmlName}.html";
+            string test = Path.GetFullPath(result);
+ 
+            ;
+            return result;
         }
     }
 }
