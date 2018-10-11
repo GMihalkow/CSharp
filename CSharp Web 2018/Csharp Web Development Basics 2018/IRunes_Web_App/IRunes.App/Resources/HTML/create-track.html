@@ -1,16 +1,20 @@
 ﻿<hr style="background-color:#33cc59; height: 2px" />
-<div class="container">
+<div class="container w-50">
     <h1 style="text-align:center;">Create Track</h1>
     <hr style="background-color:#33cc59; height: 2px" />
     <form action="{{{create-path}}}" method="post">
         <div class="row">
-            <label>Name</label>
-            <input class="form-control" type="text" required name="name" placeholder="Name..." />
-            <div class="col-sm-6">
+            <div class="col">
+                <label>Name</label>
+                <input class="form-control" type="text" required name="name" placeholder="Name..." />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label>Link</label>
                 <input class="form-control" type="url" required name="link" placeholder="Link..." />
             </div>
-            <div class="col-sm-6">
+            <div class="form-group col-md-6">
                 <label>Price</label>
                 <input class="form-control" type="text" required name="price" placeholder="Price..." />
             </div>
