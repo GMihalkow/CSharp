@@ -5,15 +5,14 @@
     using System.Linq;
     using System.Net;
     using System.Text.RegularExpressions;
-    using IRunes.App.Views;
+    using IRunes.App.ViewModels.Account;
     using IRunes.Models;
     using SIS.HTTP.Cookies;
     using SIS.HTTP.Enums;
-    using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
+    using SIS.MvcFramework.Extenstions;
     using SIS.MvcFramework.Services.Contracts;
-    using SIS.WebServer.Results;
 
     public class AccountController : BaseController
     {
@@ -61,12 +60,13 @@
         }
 
         [HttpPostAttribute("/Users/Login")]
-        public IHttpResponse PostLogin()
+        public IHttpResponse PostLogin(DoLoginInputModel model)
         {
-            string usernameOrEmail = WebUtility.UrlDecode(this.Request.FormData["username-or-email"].ToString().Trim());
-            string password = this.hashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
+            model.Password = this.hashService.Compute256Hash(model.Password);
 
-            if (!(this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password)))
+            if (!(this.Context.Users.Any(user =>
+                (user.Username == model.UsernameOrEmail.Trim() || user.Email == model.UsernameOrEmail.Trim())
+            && user.Password == model.Password)))
             {
                 Dictionary<string, string> backToLoginParameters = new Dictionary<string, string>()
                 {
@@ -80,7 +80,7 @@
                 string username =
                     this.Context
                     .Users
-                    .Where(user => user.Username == usernameOrEmail || user.Email == usernameOrEmail)
+                    .Where(user => user.Username == model.UsernameOrEmail.Trim() || user.Email == model.UsernameOrEmail.Trim())
                     .First()
                     .Username;
 
@@ -95,7 +95,6 @@
                 this.Response.Cookies.Add(cookie);
 
                 return this.View("Logged", HttpResponseStatusCode.Ok, loginReplaceParameters);
-
             }
         }
 
@@ -122,27 +121,24 @@
         }
 
         [HttpPostAttribute("/Users/Register")]
-        public IHttpResponse PostRegister()
+        public IHttpResponse PostRegister(DoRegisterInputModel model)
         {
             Regex usernameAndPasswordRegex = new Regex(@"^\w+$");
             Regex emailRegex = new Regex(@"^[A-z]+\@[A-z]+\.[A-z]{1,4}$");
 
-            string username = this.Request.FormData["username"].ToString();
-            string rawPassword = this.Request.FormData["password"].ToString();
 
-            string hashedPassword = this.hashService.Compute256Hash(rawPassword);
-            string hashedConfirmPassword = this.hashService.Compute256Hash(rawPassword);
+            string hashedPassword = this.hashService.Compute256Hash(model.Password);
+            string hashedConfirmPassword = this.hashService.Compute256Hash(model.Password);
 
-            string email = this.Request.FormData["email"].ToString();
-            email = email.Replace("%40", "@");
+            model.Email = StringExtensions.UrlDecode(model.Email);
 
-            if (emailRegex.Match(email).Success == false ||
-                usernameAndPasswordRegex.Match(rawPassword).Success == false ||
-                rawPassword.Length < 3 ||
-                rawPassword.Length > 50 ||
-               (usernameAndPasswordRegex.Match(username).Success == false ||
-               username.Length < 3 ||
-               username.Length > 30))
+            if (emailRegex.Match(model.Email).Success == false ||
+                usernameAndPasswordRegex.Match(model.Password).Success == false ||
+                model.Password.Length < 3 ||
+                model.Password.Length > 50 ||
+               (usernameAndPasswordRegex.Match(model.Username).Success == false ||
+               model.Username.Length < 3 ||
+               model.Username.Length > 30))
             {
                 Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
                 {
@@ -151,7 +147,7 @@
 
                 return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
             }
-            if (this.Context.Users.Any(user => user.Email == email))
+            if (this.Context.Users.Any(user => user.Email == model.Email))
             {
                 Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
                 {
@@ -166,14 +162,14 @@
                 User user = new User
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Username = username,
+                    Username = model.Username,
                     Password = hashedPassword,
-                    Email = email
+                    Email = model.Email
                 };
 
                 using (this.Context)
                 {
-                    if (this.Context.Users.Any(u => u.Username == username) == true)
+                    if (this.Context.Users.Any(u => u.Username == model.Username) == true)
                     {
                         Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
                         {
@@ -189,14 +185,14 @@
             }
 
             //Adding cookie
-            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(username, EncryptKey));
+            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(model.Username, EncryptKey));
 
             this.Request.Cookies.Add(cookie);
             this.Response.Cookies.Add(cookie);
 
             Dictionary<string, string> loggedInParameters = new Dictionary<string, string>()
             {
-                {"{{{name}}}", username }
+                {"{{{name}}}", model.Username }
             };
 
             return this.View("Logged", HttpResponseStatusCode.Ok, loggedInParameters);

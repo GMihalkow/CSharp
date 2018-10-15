@@ -10,6 +10,9 @@
     using System.Linq;
     using System.Net;
     using System.Text.RegularExpressions;
+    using SIS.MvcFramework.Extenstions;
+    using IRunes.App.ViewModels.Tracks;
+    using IRunes.App.ViewModels.AlbumTracks;
 
     public class TrackController : BaseController
     {
@@ -22,8 +25,8 @@
         {
             string albumId = this.Request.QueryData["albumId"].ToString();
 
-            string path = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
-            string postPath = WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}");
+            string path = StringExtensions.UrlDecode($"/Albums/Details?id={albumId}");
+            string postPath = StringExtensions.UrlDecode($"/Tracks/Create?albumId={albumId}");
 
             Dictionary<string, string> createTrackParameters = new Dictionary<string, string>()
             {
@@ -36,27 +39,26 @@
         }
 
         [HttpPostAttribute("/Tracks/Create")]
-        public IHttpResponse PostCreateTrack()
+        public IHttpResponse PostCreateTrack(DoTrackInputModel model)
         {
             Regex trackNameRegex = new Regex(@"^\w{3,30}$");
             Regex linkUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
 
             string albumId = this.Request.QueryData["albumId"].ToString();
 
-            string backToAlbumPath = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
+            string backToAlbumPath = StringExtensions.UrlDecode($"/Albums/Details?id={albumId}");
 
-            string trackName = this.Request.FormData["name"].ToString();
-            string trackLink = WebUtility.UrlDecode(this.Request.FormData["link"].ToString());
+            model.Link = StringExtensions.UrlDecode(model.Link);
             decimal trackPrice = 0;
 
-            bool IsDecimal = decimal.TryParse(this.Request.FormData["price"].ToString(), out trackPrice);
+            bool IsDecimal = decimal.TryParse(model.Price.ToString(), out trackPrice);
 
             Track track = new Track()
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = trackName,
+                Name = model.Name,
                 Price = trackPrice,
-                Link = trackLink
+                Link = model.Link
             };
 
             AlbumTrack albumTrack = new AlbumTrack()
@@ -67,9 +69,9 @@
 
             if (!IsDecimal
                 ||
-                !linkUrlRegex.Match(trackLink).Success
+                !linkUrlRegex.Match(model.Link).Success
                 ||
-                !trackNameRegex.Match(trackName).Success
+                !trackNameRegex.Match(model.Name).Success
                 ||
                 track.Price < 0
                 )
@@ -84,7 +86,7 @@
                 return this.View("crate-track", HttpResponseStatusCode.BadRequest, createTrackErroParameters);
 
             }
-            else if (this.Context.AlbumTracks.Where(at => at.AlbumId == albumId).Any(tr => tr.Track.Name == trackName))
+            else if (this.Context.AlbumTracks.Where(at => at.AlbumId == albumId).Any(tr => tr.Track.Name == model.Name))
             {
                 Dictionary<string, string> createTrackErrorParameters = new Dictionary<string, string>()
                 {
@@ -120,24 +122,20 @@
                 {"{{{name}}}", track.Name },
                 {"{{{price}}}", $"${track.Price.ToString(CultureInfo.InvariantCulture):f2}" },
                 {WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backToAlbumPath },
-                {@"{{{create-path}}}", WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                {@"{{{create-path}}}", StringExtensions.UrlDecode($"/Tracks/Create?albumId={albumId}")}
             };
 
             return this.View("track", HttpResponseStatusCode.Ok, trackDetailsParameters);
         }
 
         [HttpGetAttribute("/Tracks/Details")]
-        public IHttpResponse TrackDetails()
+        public IHttpResponse TrackDetails(AlbumTrackViewModel model)
         {
-
-            string albumId = this.Request.QueryData["albumId"].ToString();
-            string trackId = this.Request.QueryData["trackId"].ToString();
-
-            string backtoAlbumPath = WebUtility.UrlDecode($"/Albums/Details?id={albumId}");
+            string backtoAlbumPath = StringExtensions.UrlDecode($"/Albums/Details?id={model.AlbumId}");
 
             Track track = this.Context
                 .Tracks
-                .First(tr => tr.Id == trackId);
+                .First(tr => tr.Id == model.TrackId);
 
             Dictionary<string, string> trackDetailsParameters = new Dictionary<string, string>()
             {

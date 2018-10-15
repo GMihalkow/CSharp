@@ -7,11 +7,13 @@
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
+    using IRunes.App.ViewModels.Albums;
     using IRunes.Models;
     using SIS.HTTP.Enums;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
     using SIS.MvcFramework.Contracts.Services;
+    using SIS.MvcFramework.Extenstions;
 
     public class AlbumsController : BaseController
     {
@@ -28,11 +30,11 @@
                 {"{{{error}}}", string.Empty }
             };
 
-            return this.View("Albums-Create",  HttpResponseStatusCode.Ok, createAlbumPageParameters);
+            return this.View("Albums-Create", HttpResponseStatusCode.Ok, createAlbumPageParameters);
         }
 
         [HttpPostAttribute("/Albums/Create")]
-        public IHttpResponse PostCreateAlbum()
+        public IHttpResponse PostCreateAlbum(DoAlbumInputModel model)
         {
             Regex albumNameRegex = new Regex(@"^\w{3,30}$");
             Regex coverUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
@@ -46,15 +48,14 @@
                             .Id;
 
             string albumId = Guid.NewGuid().ToString();
-            string albumName = this.Request.FormData["name"].ToString();
-            string cover = this.Request.FormData["cover"].ToString();
-            cover = WebUtility.UrlDecode(cover);
+
+            model.Cover = StringExtensions.UrlDecode(model.Cover);
 
             Album album = new Album()
             {
                 Id = albumId,
-                Name = albumName,
-                Cover = cover
+                Name = model.Name,
+                Cover = model.Cover
             };
 
             UserAlbum userAlbum = new UserAlbum()
@@ -64,7 +65,7 @@
                 AlbumId = albumId
             };
 
-            if (!albumNameRegex.Match(albumName).Success || !coverUrlRegex.Match(cover).Success)
+            if (!albumNameRegex.Match(model.Name).Success || !coverUrlRegex.Match(model.Cover).Success)
             {
                 Dictionary<string, string> createAlbumErrorParameters = new Dictionary<string, string>()
                 {
@@ -73,14 +74,14 @@
 
                 return this.View("Albums-Create", HttpResponseStatusCode.BadRequest, createAlbumErrorParameters);
             }
-            else if (this.Context.UserAlbums.Where(ua => ua.UserId == userId).Any(a => a.Album.Name == albumName))
+            else if (this.Context.UserAlbums.Where(ua => ua.UserId == userId).Any(a => a.Album.Name == model.Name))
             {
                 Dictionary<string, string> createAlbumErrorParameters = new Dictionary<string, string>()
                 {
                     {"{{{error}}}", AlbumAlreadyExistsError}
                 };
 
-                return this.View("Albums-Create",  HttpResponseStatusCode.BadRequest, createAlbumErrorParameters);
+                return this.View("Albums-Create", HttpResponseStatusCode.BadRequest, createAlbumErrorParameters);
             }
 
             using (this.Context)
@@ -94,17 +95,17 @@
 
                 this.Context.SaveChanges();
             }
-            
+
             Dictionary<string, string> createdAlbumParameters = new Dictionary<string, string>()
             {
-                { "{{{url}}}", cover },
+                { "{{{url}}}", model.Cover },
                 { @"\{\{\{create-track}}}", albumId },
-                {"{{{name}}}", albumName },
+                {"{{{name}}}", model.Name},
                 {"{{{price}}}", album.Price.ToString(CultureInfo.InvariantCulture) },
                 {"{{{tracks}}}", string.Empty }
             };
 
-            return this.View("album",  HttpResponseStatusCode.Ok, createdAlbumParameters);
+            return this.View("album", HttpResponseStatusCode.Ok, createdAlbumParameters);
         }
 
         [HttpGetAttribute("/Albums/All")]
@@ -137,32 +138,30 @@
                 {"{{{albums}}}", string.Join("<br />", sb) }
             };
 
-            return this.View("all-albums",  HttpResponseStatusCode.Ok, allAlbumsParameters);
+            return this.View("all-albums", HttpResponseStatusCode.Ok, allAlbumsParameters);
         }
 
         [HttpGetAttribute("/Albums/Details")]
-        public IHttpResponse GetAlbum()
+        public IHttpResponse GetAlbum(AlbumDetailsViewModel model)
         {
             StringBuilder sb = new StringBuilder();
-
-            string albumId = this.Request.QueryData["id"].ToString();
 
             Album album =
                 this.Context
                 .Albums
-                .First(a => a.Id == albumId);
+                .First(a => a.Id == model.Id);
 
             decimal albumPrice =
                 this.Context
                 .AlbumTracks
-                .Where(at => at.AlbumId == albumId)
+                .Where(at => at.AlbumId == model.Id)
                 .Sum(track => track.Track.Price)
                 * 0.87m;
 
             var tracks =
                 this.Context
                 .AlbumTracks
-                .Where(at => at.AlbumId == albumId)
+                .Where(at => at.AlbumId == model.Id)
                 .Select(at => new
                 {
                     at.Track.Name,
@@ -173,7 +172,7 @@
             sb.AppendLine("<ul>");
             foreach (var track in tracks)
             {
-                sb.AppendLine($"<li><a href=\"/Tracks/Details?albumId={albumId}&trackId={track.TrackId}\">{track.Name}</a></li>");
+                sb.AppendLine($"<li><a href=\"/Tracks/Details?albumId={model.Id}&trackId={track.TrackId}\">{track.Name}</a></li>");
             }
             sb.AppendLine("</ul>");
 
@@ -186,7 +185,7 @@
                 {"{{{tracks}}}", sb.ToString().TrimEnd() }
             };
 
-            return this.View("album",  HttpResponseStatusCode.Ok, albumsDetailsParameters);
+            return this.View("album", HttpResponseStatusCode.Ok, albumsDetailsParameters);
         }
     }
 }

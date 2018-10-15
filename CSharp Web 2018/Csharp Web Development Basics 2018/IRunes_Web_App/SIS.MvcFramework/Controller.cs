@@ -8,8 +8,8 @@
     using SIS.MvcFramework.Contracts.Services;
     using SIS.MvcFramework.Logger;
     using SIS.MvcFramework.Services;
-    using SIS.MvcFramework.Services.Contracts;
     using SIS.Services.MvcFramework;
+    using System;
     using System.Collections.Generic;
     using System.Text;
 
@@ -114,7 +114,7 @@
             string layoutContent = string.Empty;
             string content = System.IO.File.ReadAllText(PathService.HtmlFinder(viewName));
 
-            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey) && this.Request.Cookies.GetCookie(AuthenticationCookieKey).Expires >= DateTime.UtcNow)
             {
                 layoutContent = System.IO.File.ReadAllText(PathService.HtmlFinder("_LoggedInLayout"));
             }
