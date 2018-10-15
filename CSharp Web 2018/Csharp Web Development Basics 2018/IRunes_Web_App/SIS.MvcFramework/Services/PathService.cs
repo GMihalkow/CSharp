@@ -13,7 +13,6 @@
             string result = $"../{Assembly.GetEntryAssembly().GetName(true).Name}/Resources/HTML/{htmlName}.html";
             string test = Path.GetFullPath(result);
  
-            ;
             return result;
         }
     }

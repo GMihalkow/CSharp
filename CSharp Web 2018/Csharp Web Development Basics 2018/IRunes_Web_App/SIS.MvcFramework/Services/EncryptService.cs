@@ -1,12 +1,13 @@
 ﻿namespace SIS.Services.MvcFramework
 {
+    using SIS.MvcFramework.Services.Contracts;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Security.Cryptography;
     using System.Text;
 
-    public class EncryptService
+    public class EncryptService : IEncryptService
     {
         public string Encrypt(string clearText, string encryprionKey)
         {

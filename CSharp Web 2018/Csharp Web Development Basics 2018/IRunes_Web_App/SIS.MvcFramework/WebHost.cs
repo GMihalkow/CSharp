@@ -1,15 +1,16 @@
 ﻿namespace SIS.MvcFramework
 {
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
     using SIS.HTTP.Enums;
-    using SIS.HTTP.Requests;
     using SIS.HTTP.Requests.Contracts;
-    using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework.Contracts;
+    using SIS.MvcFramework.Contracts.Services;
+    using SIS.MvcFramework.Services;
+    using SIS.MvcFramework.Services.Contracts;
     using SIS.WebServer;
     using SIS.WebServer.Results;
     using SIS.WebServer.Routing;
@@ -18,10 +19,13 @@
     {
         public static void Start(IMvcApplication application)
         {
-            application.ConfigureServices();
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+
+            var dependencyContainer = new ServiceCollection();
+            application.ConfigureServices(dependencyContainer);
 
             var serverRoutingTable = new ServerRoutingTable();
-            AutoRegisterRoutes(serverRoutingTable, application);
+            AutoRegisterRoutes(serverRoutingTable, application, dependencyContainer);
 
             application.Configure();
 
@@ -29,7 +33,7 @@
             server.Run();
         }
 
-        private static void AutoRegisterRoutes(ServerRoutingTable routingTable, IMvcApplication application)
+        private static void AutoRegisterRoutes(ServerRoutingTable routingTable, IMvcApplication application, IServiceCollection serviceCollection)
         {
             var controllers = application.GetType().Assembly.GetTypes()
                 .Where(myType => myType.IsClass
@@ -53,16 +57,16 @@
                     }
 
                     routingTable.Add(httpAttribute.Method, httpAttribute.Path,
-                        (request) => ExecuteAction(controller, methodInfo, request));
+                        (request) => ExecuteAction(controller, methodInfo, request, serviceCollection));
                     Console.WriteLine($"Route registered: {controller.Name}.{methodInfo.Name} => {httpAttribute.Method} => {httpAttribute.Path}");
                 }
             }
         }
 
         private static IHttpResponse ExecuteAction(Type controllerType,
-            MethodInfo methodInfo, IHttpRequest request)
+            MethodInfo methodInfo, IHttpRequest request, IServiceCollection serviceCollection)
         {
-            var controllerInstance = Activator.CreateInstance(controllerType) as Controller;
+            var controllerInstance = serviceCollection.CreateInstance(controllerType) as Controller;
             if (controllerInstance == null)
             {
                 return new TextResult("Controller not found.",
@@ -70,6 +74,7 @@
             }
 
             controllerInstance.Request = request;
+            controllerInstance.UserCookieService = serviceCollection.CreateInstance<UserCookieService>();
 
             var httpResponse = methodInfo.Invoke(controllerInstance, new object[] { }) as IHttpResponse;
 

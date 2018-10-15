@@ -7,19 +7,18 @@
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
-    using IRunes.App.Views;
     using IRunes.Models;
     using SIS.HTTP.Enums;
-    using SIS.HTTP.Requests.Contracts;
-    using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
-    using SIS.WebServer.Results;
+    using SIS.MvcFramework.Contracts.Services;
 
     public class AlbumsController : BaseController
     {
         private const string InvalidAlbumInformationError = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid cover link/album name!</div></center>";
+
         private const string AlbumAlreadyExistsError = "<center><div class=\"alert alert-danger\" role=\"alert\">Album already exists!</div></center>";
+
 
         [HttpGetAttribute("/Albums/Create")]
         public IHttpResponse GetCreatePage()
@@ -39,7 +38,7 @@
             Regex coverUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
 
             string cookieValue = this.Request.Cookies.GetCookie(AuthenticationCookieKey).Value;
-            string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookieValue, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
+            string username = this.UserCookieService.DecryptString(cookieValue, EncryptKey);
 
             string userId = this.Context
                             .Users
@@ -114,7 +113,7 @@
             StringBuilder sb = new StringBuilder();
 
             var cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
-            string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookie.Value, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
+            string username = this.UserCookieService.DecryptString(cookie.Value, EncryptKey);
             string email = this.Context.Users.Where(ua => ua.Username == username).First().Email;
 
             var albums =

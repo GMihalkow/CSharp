@@ -1,11 +1,12 @@
 ﻿namespace SIS.MvcFramework.Services
 {
+    using SIS.MvcFramework.Services.Contracts;
     using System.Security.Cryptography;
     using System.Text;
 
-    public class HashService
+    public class HashService : IHashService
     {
-        public static string Compute256Hash(string rawData)
+        public string Compute256Hash(string rawData)
         {
             //Create a Sha256
             using (SHA256 sha256Hash = SHA256.Create())

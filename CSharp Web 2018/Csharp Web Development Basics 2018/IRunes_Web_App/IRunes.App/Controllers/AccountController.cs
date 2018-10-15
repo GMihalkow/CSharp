@@ -12,6 +12,7 @@
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
+    using SIS.MvcFramework.Services.Contracts;
     using SIS.WebServer.Results;
 
     public class AccountController : BaseController
@@ -28,13 +29,20 @@
         private const string EmailAlreadyExistsErrorMessage
             = "<center><div class=\"alert alert-danger\" role=\"alert\">Email is already taken!</div></center>";
 
+        private readonly IHashService hashService;
+
+        public AccountController(IHashService hashService)
+        {
+            this.hashService = hashService;
+        }
+
         [HttpGetAttribute("/Users/Login")]
         public IHttpResponse GetLogin()
         {
             if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
             {
                 string cookieValue = this.Request.Cookies.GetCookie(AuthenticationCookieKey).Value;
-                string username = SIS.MvcFramework.Services.UserCookieService.DecryptString(cookieValue, SIS.MvcFramework.Services.UserCookieService.EncryptKey);
+                string username = this.UserCookieService.DecryptString(cookieValue, EncryptKey);
 
                 Dictionary<string, string> loggedInReplaceParameters = new Dictionary<string, string>()
                 {
@@ -56,7 +64,7 @@
         public IHttpResponse PostLogin()
         {
             string usernameOrEmail = WebUtility.UrlDecode(this.Request.FormData["username-or-email"].ToString().Trim());
-            string password = SIS.MvcFramework.Services.HashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
+            string password = this.hashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
 
             if (!(this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password)))
             {
@@ -81,15 +89,13 @@
                 {"{{{name}}}", username }
             };
 
-                //if (this.Context.Users.Any(user => (user.Username == usernameOrEmail || user.Email == usernameOrEmail) && user.Password == password))
-                //{
-                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(username, EncryptKey));
 
                 this.Request.Cookies.Add(cookie);
                 this.Response.Cookies.Add(cookie);
 
                 return this.View("Logged", HttpResponseStatusCode.Ok, loginReplaceParameters);
-                //}
+
             }
         }
 
@@ -124,8 +130,8 @@
             string username = this.Request.FormData["username"].ToString();
             string rawPassword = this.Request.FormData["password"].ToString();
 
-            string hashedPassword = SIS.MvcFramework.Services.HashService.Compute256Hash(rawPassword);
-            string hashedConfirmPassword = SIS.MvcFramework.Services.HashService.Compute256Hash(rawPassword);
+            string hashedPassword = this.hashService.Compute256Hash(rawPassword);
+            string hashedConfirmPassword = this.hashService.Compute256Hash(rawPassword);
 
             string email = this.Request.FormData["email"].ToString();
             email = email.Replace("%40", "@");
@@ -138,7 +144,6 @@
                username.Length < 3 ||
                username.Length > 30))
             {
-
                 Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
                 {
                     {"{{{error}}}", InvalidRegisterInformationMessage }
@@ -184,7 +189,7 @@
             }
 
             //Adding cookie
-            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, SIS.MvcFramework.Services.UserCookieService.EncryptString(username, SIS.MvcFramework.Services.UserCookieService.EncryptKey));
+            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(username, EncryptKey));
 
             this.Request.Cookies.Add(cookie);
             this.Response.Cookies.Add(cookie);

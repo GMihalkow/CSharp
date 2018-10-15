@@ -6,28 +6,30 @@
     using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework.Contracts.Services;
+    using SIS.MvcFramework.Logger;
     using SIS.MvcFramework.Services;
+    using SIS.MvcFramework.Services.Contracts;
     using SIS.Services.MvcFramework;
     using System.Collections.Generic;
     using System.Text;
 
     public abstract class Controller
     {
+        protected const string EncryptKey = "186fd62b-5806-4b7b-8f76-3b04ad02bee3";
+
         protected const string AuthenticationCookieKey = "-auth";
 
         protected Controller()
         {
             this.Response = new HttpResponse();
-            this.UserCookieService = new UserCookieService();
+            this.UserCookieService = new UserCookieService(new FileLogger());
         }
 
         public IHttpRequest Request { get; set; }
 
         public IHttpResponse Response { get; set; }
 
-        protected IUserCookieService UserCookieService { get; }
-
-        protected HashService HashService { get; }
+        public IUserCookieService UserCookieService { get; internal set; }
 
         protected IHttpResponse View(string viewName, HttpResponseStatusCode statusCode, IDictionary<string, string> viewBag = null)
         {
@@ -54,7 +56,7 @@
 
                 var cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
                 var cookieContent = cookie.Value;
-                var userName = this.UserCookieService.GetUserData(cookieContent);
+                var userName = this.UserCookieService.GetUserData(cookieContent, EncryptKey);
                 return userName;
             }
         }

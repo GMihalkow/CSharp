@@ -1,14 +1,10 @@
 ﻿namespace IRunes.App.Controllers
 {
-    using IRunes.App.Views;
+    using System;
     using IRunes.Models;
     using SIS.HTTP.Enums;
-    using SIS.HTTP.Requests.Contracts;
-    using SIS.HTTP.Responses;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
-    using SIS.WebServer.Results;
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
