@@ -1,9 +1,9 @@
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\bin\Debug\netcoreapp2.0\ByTheCake.Models.deps.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\bin\Debug\netcoreapp2.0\ByTheCake.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\bin\Debug\netcoreapp2.0\ByTheCake.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.csprojResolveAssemblyReference.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.csproj.CoreCompileInputs.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.AssemblyInfoInputs.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.0\ByTheCake.Models.csprojResolveAssemblyReference.cache

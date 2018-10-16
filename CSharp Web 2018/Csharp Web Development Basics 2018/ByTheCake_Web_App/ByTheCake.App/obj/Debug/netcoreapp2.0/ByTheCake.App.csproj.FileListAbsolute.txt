@@ -1,7 +1,7 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.csprojResolveAssemblyReference.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.csproj.CoreCompileInputs.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.AssemblyInfoInputs.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.AssemblyInfo.cs
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.csprojResolveAssemblyReference.cache
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.App.deps.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.App.runtimeconfig.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.App.runtimeconfig.dev.json
@@ -9,13 +9,13 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.App.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Data.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Models.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Data.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Models.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.Framework.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.HTTP.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.WebServer.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Data.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\ByTheCake.Models.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.Framework.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.HTTP.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\bin\Debug\netcoreapp2.0\SIS.WebServer.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.App\obj\Debug\netcoreapp2.0\ByTheCake.App.pdb

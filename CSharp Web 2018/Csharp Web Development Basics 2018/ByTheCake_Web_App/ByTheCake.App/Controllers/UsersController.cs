@@ -9,6 +9,7 @@
     using System.Collections.Generic;
     using SIS.Framework.Services;
     using System.Text.RegularExpressions;
+    using System.Text;
 
     public class UsersController : BaseController
     {
@@ -26,6 +27,37 @@
             "<div class=\"alert alert-danger\" style=\"text-align:center\">" +
             "<strong>Warning!</strong> Invalid username and password combination!" +
             "</div>";
+
+        [HttpGet]
+        public IActionResult Profile(IHttpRequest request)
+        {
+            string cookieData = request.Cookies.GetCookie("-auth").Value.ToString();
+
+            string username = cookieService.GetUserData(cookieData, EncryptKey);
+
+            User user =
+                this.DbContext
+                .Users
+                .First(u => u.Username == username);
+
+            StringBuilder sb = new StringBuilder();
+
+            int ordersCount =
+                this.DbContext
+                .Orders
+                .Where(order => order.UserId == user.Id)
+                .ToArray()
+                .Count();
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>()
+            {
+                {"@Name", username },
+                {"@RegDate", user.DateOfRegistration.ToString("R") },
+                {"@OrdersCount", ordersCount.ToString() },
+            };
+
+            return this.View("profile", parameters);
+        }
 
         [HttpGet]
         public IActionResult GetRegister(IHttpRequest request)
