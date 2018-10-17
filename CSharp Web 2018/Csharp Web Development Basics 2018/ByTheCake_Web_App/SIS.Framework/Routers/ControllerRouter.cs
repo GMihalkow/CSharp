@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.IO;
     using System.Linq;
-    using System.Net;
     using System.Reflection;
     using SIS.Framework.ActionsResults.Base;
     using SIS.Framework.ActionsResults.Contracts;
@@ -28,11 +28,10 @@
         public IHttpResponse Handle(IHttpRequest request)
         {
             this.request = request;
-
             var isResourceRequest = this.IsResourceRequest(request);
             if (isResourceRequest)
             {
-                return this.ReturnIfResource(request.Path);
+                return new ResourceRouter().Handle(request);
             }
 
             var controllerName = string.Empty;
@@ -63,7 +62,7 @@
                 throw new NullReferenceException();
             }
 
-            object[] actionParameters = this.MapActionParameters(action, request);
+            object[] actionParameters = this.MapActionParameters(controller, action, request);
             IActionResult actionResult = this.InvokeAction(controller, action, actionParameters);
 
             return this.PrepareResponse(actionResult);
@@ -74,7 +73,7 @@
             return (IActionResult)action.Invoke(controller, actionParameters);
         }
 
-        private object[] MapActionParameters(MethodInfo action, IHttpRequest httpRequest)
+        private object[] MapActionParameters(Controller controller, MethodInfo action, IHttpRequest httpRequest)
         {
             ParameterInfo[] actionParametersInfo = action.GetParameters();
             object[] mappedActionParameters = new object[actionParametersInfo.Length];
@@ -98,12 +97,46 @@
                     }
                     else
                     {
-                        mappedActionParameters[index] = ProcessBindingModelParameters(currentParameterInfo, httpRequest);
+                        object bindingModel = ProcessBindingModelParameters(currentParameterInfo, httpRequest);
+                        controller.ModelState.IsValid = this.IsValidModel(bindingModel);
+                        mappedActionParameters[index] = bindingModel;
                     }
                 }
             }
 
             return mappedActionParameters;
+        }
+
+        private bool IsValidModel(object bindingModel)
+        {
+            Type bindingModelType = bindingModel.GetType();
+            var bindingModelProperties = bindingModelType.GetProperties();
+
+            foreach (var property in bindingModelProperties)
+            {
+                var attributes = property.GetCustomAttributes();
+                foreach (var attribute in attributes)
+                {
+                    if (attribute is ValidationAttribute)
+                    {
+                        var propertyValue = property.GetValue(bindingModel);
+
+                        bool IsValid = (attribute as ValidationAttribute).IsValid(propertyValue);
+                        if (IsValid == false)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            //TODO: Traverse all ofthe bindingModel's properties.
+            //TODO: Extract all ValidationAttributes from the current Property (if any).
+
+            //TODO: Call IsValid() method of the property's value, for each ValidationAttribute.
+
+            //TODO: If EVEN ONE returns false, this method should return false.
+            //TODO: If "everything is valid", this method sould return true.
+            return true;
         }
 
         private object ProcessBindingModelParameters(ParameterInfo param, IHttpRequest httpRequest)
@@ -154,23 +187,6 @@
             return false;
         }
 
-        private IHttpResponse ReturnIfResource(string path)
-        {
-            path = $"/{Assembly.GetEntryAssembly().GetName(true).Name}/Resources/" + path;
-            string fixedPath = WebUtility.UrlDecode(path);
-            string fullPath = Path.GetFullPath(".." + fixedPath);
-
-            if (File.Exists(fullPath))
-            {
-                byte[] resourceFileContent = File.ReadAllBytes(fullPath);
-                return new InlineResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
-            }
-            else
-            {
-                return new HtmlResult("<h1>Error 404 Not Found!</h1>", HttpResponseStatusCode.NotFound);
-            }
-        }
-
         private IHttpResponse PrepareResponse(IActionResult actionResult)
         {
             string invocationResult = actionResult.Invoke();
@@ -204,7 +220,6 @@
 
             throw new InvalidOperationException(UnsupportedActionMessage);
         }
-
 
         private MethodInfo GetMethod(
             string requestMethod,

@@ -28,11 +28,14 @@
             this.Model = new ViewModel();
         }
 
-        protected ViewModel Model { get; }
 
         public IHttpResponse Response { get; set; }
 
         public IHttpRequest Request { get; set; }
+
+        public Model ModelState { get; } = new Model();
+
+        protected ViewModel Model { get; }
 
         protected IViewable View([CallerMemberName] string viewName = "", Dictionary<string, object> parameters = null)
         {
