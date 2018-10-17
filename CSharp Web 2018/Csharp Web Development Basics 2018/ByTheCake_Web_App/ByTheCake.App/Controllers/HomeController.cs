@@ -18,13 +18,14 @@
         [HttpGet]
         public IActionResult Index(IHttpRequest request)
         {
-            if (request.Cookies.ContainsCookie("-auth"))
+            if (request.Cookies.ContainsCookie(AuthenticationCookieKey)
+                && request.Cookies.GetCookie(AuthenticationCookieKey).Expires >= DateTime.UtcNow)
             {
-                string cookieData = request.Cookies.GetCookie("-auth").Value;
+                string cookieData = request.Cookies.GetCookie(AuthenticationCookieKey).Value;
 
                 string username = this.cookieService.GetUserData(cookieData, EncryptKey);
 
-                Dictionary<string, string> parameters = new Dictionary<string, string>()
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
                     {"@Name", username }
                 };
@@ -34,43 +35,5 @@
 
             return this.View("index");
         }
-
-        //[HttpPostAttribute]
-        //public IHttpResponse PostIndex()
-        //{
-        //    HashService hashService = new HashService();
-
-        //    string username = this.Request.FormData["username"].ToString().Trim();
-
-        //    string password = hashService.Compute256Hash(this.Request.FormData["password"].ToString().Trim());
-
-        //    string confirmPassword = hashService.Compute256Hash(this.Request.FormData["confirm-password"].ToString().Trim());
-
-        //    if (password != confirmPassword)
-        //    {
-        //        return new HtmlResult(new RegisterView().View() + "<p>Password don't match!</p>", HttpResponseStatusCode.Ok);
-        //    }
-
-        //    ByTheCakeDbContext context = new ByTheCakeDbContext();
-        //    EncryptService encryptService = new EncryptService();
-
-        //    using (context)
-        //    {
-        //        User user = new User()
-        //        {
-        //            Username = username,
-        //            Password = password,
-        //            ConfirmPassword = confirmPassword
-        //        };
-
-        //        context.Users.Add(user);
-        //        context.SaveChanges();
-        //    }
-        //    var response = new RedirectResult("/");
-        //    this.Response.Cookies.Add(new HttpCookie("-auth", encryptService.Encrypt(username, "123")));
-        //    this.Request.Cookies.Add(new HttpCookie("-auth", encryptService.Encrypt(username, "123")));
-        //    ;
-        //    return response;
-        //}
     }
 }

@@ -16,6 +16,8 @@
     {
         protected const string EncryptKey = "db69b189-4f79-4fc0-aa81-94dc9182f761";
 
+        protected const string AuthenticationCookieKey = "-auth.cakes";
+
         protected HashService hashService;
 
         protected IUserCookieService cookieService;

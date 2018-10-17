@@ -6,6 +6,7 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using SIS.Framework.ActionsResults;
     using SIS.Framework.ActionsResults.Base;
     using SIS.Framework.ActionsResults.Contracts;
     using SIS.Framework.Attributes.Methods.Base;
@@ -50,7 +51,7 @@
                     StringSplitOptions.RemoveEmptyEntries);
 
                 controllerName = requestUrlSplit[0];
-                actionName = requestUrlSplit[1];
+                actionName = requestUrlSplit[1].Split("?")[0];
             }
 
             var controller = this.GetController(controllerName, request);
@@ -129,13 +130,6 @@
                     }
                 }
             }
-            //TODO: Traverse all ofthe bindingModel's properties.
-            //TODO: Extract all ValidationAttributes from the current Property (if any).
-
-            //TODO: Call IsValid() method of the property's value, for each ValidationAttribute.
-
-            //TODO: If EVEN ONE returns false, this method should return false.
-            //TODO: If "everything is valid", this method sould return true.
             return true;
         }
 
@@ -191,7 +185,7 @@
         {
             string invocationResult = actionResult.Invoke();
 
-            if ((request.Cookies.ContainsCookie("-auth") && request.Cookies.GetCookie("-auth").Expires < DateTime.UtcNow) || (!request.Cookies.ContainsCookie("-auth")))
+            if ((request.Cookies.ContainsCookie("-auth.cakes") && request.Cookies.GetCookie("-auth.cakes").Expires < DateTime.UtcNow) || (!request.Cookies.ContainsCookie("-auth.cakes")))
             {
                 layout = File.ReadAllText($"../" + Assembly.GetEntryAssembly().GetName().Name + "/Views/Layouts/_LoggedOutLayout.html");
             }
@@ -206,16 +200,16 @@
             {
                 var response = new HtmlResult(layout, HttpResponseStatusCode.Ok);
 
-                if (this.request.Cookies.ContainsCookie("-auth"))
+                if (this.request.Cookies.ContainsCookie("-auth.cakes"))
                 {
-                    response.AddCookie(this.request.Cookies.GetCookie("-auth"));
+                    response.AddCookie(this.request.Cookies.GetCookie("-auth.cakes"));
                 }
 
                 return response;
             }
             else if (actionResult is IRedirectable)
             {
-                return new RedirectResult(layout);
+                return new SIS.WebServer.Results.RedirectResult((actionResult as IRedirectable).RedirectUrl);
             }
 
             throw new InvalidOperationException(UnsupportedActionMessage);

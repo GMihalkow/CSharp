@@ -1,0 +1,4 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.2\ByTheCake.Models.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.2\ByTheCake.Models.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.2\ByTheCake.Models.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ByTheCakeApp\ByTheCake.Models\obj\Debug\netcoreapp2.2\ByTheCake.Models.AssemblyInfo.cs

@@ -31,7 +31,7 @@
         [HttpGet]
         public IActionResult Profile(IHttpRequest request)
         {
-            string cookieData = request.Cookies.GetCookie("-auth").Value.ToString();
+            string cookieData = request.Cookies.GetCookie(AuthenticationCookieKey).Value.ToString();
 
             string username = cookieService.GetUserData(cookieData, EncryptKey);
 
@@ -49,7 +49,7 @@
                 .ToArray()
                 .Count();
 
-            Dictionary<string, string> parameters = new Dictionary<string, string>()
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
                 {"@Name", username },
                 {"@RegDate", user.DateOfRegistration.ToString("R") },
@@ -62,9 +62,9 @@
         [HttpGet]
         public IActionResult GetRegister(IHttpRequest request)
         {
-            if (request.Cookies.ContainsCookie("-auth"))
+            if (request.Cookies.ContainsCookie("-auth.cakes"))
             {
-                request.Cookies.GetCookie("-auth").Delete();
+                request.Cookies.GetCookie("-auth.cakes").Delete();
             }
 
             return this.View("register");
@@ -85,7 +85,7 @@
             string password = this.hashService.Compute256Hash(request.FormData["password"].ToString());
             string confirmPassword = this.hashService.Compute256Hash(request.FormData["confirm-password"].ToString());
 
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
 
             if (this.DbContext.Users.Any(user => user.Username == username))
             {
@@ -95,7 +95,9 @@
 
             if (password == confirmPassword)
             {
-                HttpCookie cookie = new HttpCookie("-auth", this.cookieService.Encrypt(username, EncryptKey));
+                string encryptData = this.cookieService.Encrypt(username, EncryptKey);
+
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, encryptData);
 
                 request.Cookies.Add(cookie);
                 this.Response.AddCookie(cookie);
@@ -135,9 +137,9 @@
 
             if (this.DbContext.Users.Any(user => user.Username == username && user.Password == password))
             {
-                request.Cookies.Add(new HttpCookie("-auth", this.cookieService.Encrypt(username, EncryptKey)));
+                request.Cookies.Add(new HttpCookie(AuthenticationCookieKey, this.cookieService.Encrypt(username, EncryptKey)));
 
-                Dictionary<string, string> parameters = new Dictionary<string, string>()
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
                     {"@Name", username }
                 };
@@ -146,7 +148,7 @@
             }
             else
             {
-                Dictionary<string, string> parameters = new Dictionary<string, string>()
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
                     {"@Error", InvalidLoginError}
                 };
