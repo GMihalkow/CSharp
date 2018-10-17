@@ -1,7 +1,6 @@
 ﻿namespace ByTheCake.App.Controllers
 {
     using ByTheCake.Models;
-    using Microsoft.EntityFrameworkCore;
     using SIS.Framework.ActionsResults.Base;
     using SIS.Framework.Attributes.Methods;
     using SIS.Framework.Attributes.Property;
@@ -44,6 +43,9 @@
         public IActionResult ViewProduct(IHttpRequest request)
         {
             int productId = int.Parse(request.QueryData["productId"].ToString());
+
+            if (!this.DbContext.Products.Any(pr => pr.Id == productId))
+                return this.View("error");
 
             Product product =
                 this.DbContext
@@ -92,12 +94,12 @@
 
                 return this.View("add-product-error", parameters);
             }
-            //else if (this.DbContext.Users.First(u => u.Username == username).Orders.Any(x => x.Products.Any(p => p.Product.Name == name)))
-            //{
-            //    parameters.Add("@Error", ProductAlreadyExistsError);
+            else if (this.DbContext.Products.Any(pr => pr.Name == name))
+            {
+                parameters.Add("@Error", ProductAlreadyExistsError);
 
-            //    return this.View("add-product-error", parameters);
-            //}
+                return this.View("add-product-error", parameters);
+            }
 
             using (this.DbContext)
             {
@@ -152,7 +154,7 @@
                 .Where(p => p.Name == productName)
                 .First();
 
-            sb.AppendLine($"<a href=\"/Products/ViewProduct?productId={product.Id}\">{product.Name}</a> ${product.Price} <button style=\"margin-left:10%\" class=\"btn btn-primary\">Order</button>");
+            sb.AppendLine($"<a href=\"/Products/ViewProduct?productId={product.Id}\">{product.Name}</a> ${product.Price} <button style=\"margin-left:10%\" class=\"btn btn-primary\" onclick=\"location.href='/Orders/OrderProduct?productId={product.Id}'\">Order</button>");
 
             Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {

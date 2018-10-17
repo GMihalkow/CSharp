@@ -1,15 +1,8 @@
 ﻿namespace ByTheCake.App.Controllers
 {
     using System;
-    using ByTheCake.Data;
-    using SIS.HTTP.Cookies;
-    using SIS.HTTP.Enums;
     using SIS.HTTP.Requests.Contracts;
-    using SIS.HTTP.Responses.Contracts;
-    using ByTheCake.Models;
-    using SIS.WebServer.Results;
     using SIS.Framework.Attributes.Methods;
-    using SIS.Framework.ActionsResults.Contracts;
     using SIS.Framework.ActionsResults.Base;
     using System.Collections.Generic;
 
