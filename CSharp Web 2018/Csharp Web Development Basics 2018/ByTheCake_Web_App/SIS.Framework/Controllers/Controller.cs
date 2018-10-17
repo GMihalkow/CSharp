@@ -1,16 +1,16 @@
-﻿using System.Runtime.CompilerServices;
-using SIS.Framework.ActionsResults;
-using SIS.Framework.ActionsResults.Contracts;
-using SIS.Framework.Services;
-using SIS.Framework.Utilities;
-using SIS.Framework.Views;
-using SIS.HTTP.Requests;
-namespace SIS.Framework.Controllers
+﻿namespace SIS.Framework.Controllers
 {
+    using System.Runtime.CompilerServices;
+    using SIS.Framework.ActionsResults;
+    using SIS.Framework.ActionsResults.Contracts;
+    using SIS.Framework.Services;
+    using SIS.Framework.Utilities;
+    using SIS.Framework.Views;
     using SIS.Framework.Services.Contracts;
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses;
     using System.Collections.Generic;
+    using SIS.Framework.Models;
 
     public abstract class Controller
     {
@@ -25,13 +25,16 @@ namespace SIS.Framework.Controllers
             this.Response = new HttpResponse();
             this.hashService = new HashService();
             this.cookieService = new UserCookieService();
+            this.Model = new ViewModel();
         }
+
+        protected ViewModel Model { get; }
 
         public IHttpResponse Response { get; set; }
 
         public IHttpRequest Request { get; set; }
 
-        protected IViewable View([CallerMemberName] string viewName = "", Dictionary<string, string> parameters = null)
+        protected IViewable View([CallerMemberName] string viewName = "", Dictionary<string, object> parameters = null)
         {
             var controllerName = ControllerUtilities.GetControllerName(this);
 

@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using SIS.Framework.ActionsResults.Contracts;
-
-namespace SIS.Framework.Views
+﻿namespace SIS.Framework.Views
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using SIS.Framework.ActionsResults.Contracts;
+
     public class View : IRenderable
     {
         private readonly string fullyQualifiedTemplateName;
 
-        private readonly Dictionary<string, string> parameters;
+        private readonly IDictionary<string, object> viewData;
 
-        public View(string fullyQualifiedTemplateName, Dictionary<string, string> parameters = null)
+        public View(string fullyQualifiedTemplateName, Dictionary<string, object> viewData = null)
         {
-            if (parameters == null)
-                this.parameters = new Dictionary<string, string>();
+            if (viewData == null)
+                this.viewData = new Dictionary<string, object>();
             else
-                this.parameters = parameters;
+                this.viewData = viewData;
 
             this.fullyQualifiedTemplateName = fullyQualifiedTemplateName;
         }
@@ -36,9 +36,16 @@ namespace SIS.Framework.Views
         {
             var fullHtml = this.ReadFile();
 
-            foreach (var parameter in this.parameters)
+            fullHtml = RenderedHtml(fullHtml);
+
+            return fullHtml;
+        }
+
+        private string RenderedHtml(string fullHtml)
+        {
+            foreach (var parameter in this.viewData)
             {
-                fullHtml = fullHtml.Replace(parameter.Key, parameter.Value);
+                fullHtml = fullHtml.Replace(parameter.Key, parameter.Value.ToString());
             }
 
             return fullHtml;

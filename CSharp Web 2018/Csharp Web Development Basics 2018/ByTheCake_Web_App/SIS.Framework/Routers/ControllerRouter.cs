@@ -12,7 +12,6 @@
     using SIS.Framework.Controllers;
     using SIS.HTTP.Common;
     using SIS.HTTP.Enums;
-    using SIS.HTTP.Requests;
     using SIS.HTTP.Requests.Contracts;
     using SIS.HTTP.Responses;
     using SIS.WebServer.Api.Contracts;
@@ -20,6 +19,8 @@
 
     public class ControllerRouter : IHttpHandler
     {
+        private const string UnsupportedActionMessage = "The view result is not supported.";
+
         private string layout = string.Empty;
 
         private IHttpRequest request;
@@ -53,21 +54,92 @@
                 actionName = requestUrlSplit[1];
             }
 
-            // var result = new Controller.Action();
-            // handle => result
-
-            //Controller
             var controller = this.GetController(controllerName, request);
 
-            //Action
-            var method = this.GetMethod(requestMethod, controller, actionName);
+            var action = this.GetMethod(requestMethod, controller, actionName);
 
-            if (controller == null || method == null)
+            if (controller == null || action == null)
             {
                 throw new NullReferenceException();
             }
 
-            return this.PrepareResponse(controller, method);
+            object[] actionParameters = this.MapActionParameters(action, request);
+            IActionResult actionResult = this.InvokeAction(controller, action, actionParameters);
+
+            return this.PrepareResponse(actionResult);
+        }
+
+        private IActionResult InvokeAction(Controller controller, MethodInfo action, object[] actionParameters)
+        {
+            return (IActionResult)action.Invoke(controller, actionParameters);
+        }
+
+        private object[] MapActionParameters(MethodInfo action, IHttpRequest httpRequest)
+        {
+            ParameterInfo[] actionParametersInfo = action.GetParameters();
+            object[] mappedActionParameters = new object[actionParametersInfo.Length];
+
+            for (int index = 0; index < actionParametersInfo.Length; index++)
+            {
+                ParameterInfo currentParameterInfo = actionParametersInfo[index];
+
+                if (currentParameterInfo.ParameterType.IsPrimitive ||
+                    currentParameterInfo.ParameterType == typeof(string))
+                {
+                    mappedActionParameters[index] = ProcessPrimitiveParameter(currentParameterInfo, httpRequest);
+                }
+                else
+                {
+                    bool IsRequest = currentParameterInfo.ParameterType.FullName == typeof(IHttpRequest).ToString();
+
+                    if (IsRequest)
+                    {
+                        mappedActionParameters[index] = httpRequest;
+                    }
+                    else
+                    {
+                        mappedActionParameters[index] = ProcessBindingModelParameters(currentParameterInfo, httpRequest);
+                    }
+                }
+            }
+
+            return mappedActionParameters;
+        }
+
+        private object ProcessBindingModelParameters(ParameterInfo param, IHttpRequest httpRequest)
+        {
+            Type bindingModelType = param.ParameterType;
+
+            var bindingModelInstance = Activator.CreateInstance(bindingModelType);
+            var bindingModelProperties = bindingModelType.GetProperties();
+
+            foreach (var property in bindingModelProperties)
+            {
+                try
+                {
+                    object value = this.GetParameterFromRequestData(httpRequest, property.Name);
+                    property.SetValue(bindingModelInstance, Convert.ChangeType(value, property.PropertyType));
+                }
+                catch
+                {
+                    Console.WriteLine($"The {property.Name} field could not be mapped.");
+                }
+            }
+
+            return Convert.ChangeType(bindingModelInstance, bindingModelType);
+        }
+
+        private object ProcessPrimitiveParameter(ParameterInfo param, IHttpRequest httpRequest)
+        {
+            object value = this.GetParameterFromRequestData(httpRequest, param.Name);
+            return Convert.ChangeType(value, param.ParameterType);
+        }
+
+        private object GetParameterFromRequestData(IHttpRequest httpRequest, string paramName)
+        {
+            if (httpRequest.QueryData.ContainsKey(paramName)) return httpRequest.QueryData[paramName];
+            if (httpRequest.FormData.ContainsKey(paramName)) return httpRequest.FormData[paramName];
+            return null;
         }
 
         private bool IsResourceRequest(IHttpRequest httpRequest)
@@ -99,19 +171,9 @@
             }
         }
 
-        private IHttpResponse PrepareResponse(Controller controller, MethodInfo method)
+        private IHttpResponse PrepareResponse(IActionResult actionResult)
         {
-            IActionResult actionResult;
-
-            bool hasParameters = method.GetParameters().Count() > 0;
-            if (hasParameters)
-            {
-                actionResult = (IActionResult)method.Invoke(controller, new object[] { this.request });
-            }
-            else
-            {
-                actionResult = (IActionResult)method.Invoke(controller, null);
-            }
+            string invocationResult = actionResult.Invoke();
 
             if ((request.Cookies.ContainsCookie("-auth") && request.Cookies.GetCookie("-auth").Expires < DateTime.UtcNow) || (!request.Cookies.ContainsCookie("-auth")))
             {
@@ -122,9 +184,7 @@
                 layout = File.ReadAllText($"../" + Assembly.GetEntryAssembly().GetName().Name + "/Views/Layouts/_LoggedInLayout.html");
             }
 
-            string invocationType = actionResult.Invoke();
-
-            layout = layout.Replace("@Body", invocationType);
+            layout = layout.Replace("@Body", invocationResult);
 
             if (actionResult is IViewable)
             {
@@ -141,11 +201,10 @@
             {
                 return new RedirectResult(layout);
             }
-            else
-            {
-                throw new InvalidOperationException("The view result is not supported.");
-            }
+
+            throw new InvalidOperationException(UnsupportedActionMessage);
         }
+
 
         private MethodInfo GetMethod(
             string requestMethod,
