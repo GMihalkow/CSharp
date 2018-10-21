@@ -1,0 +1,9 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\bin\Debug\netcoreapp2.0\SIS.Services.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\bin\Debug\netcoreapp2.0\SIS.Services.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\bin\Debug\netcoreapp2.0\SIS.Services.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.Services\obj\Debug\netcoreapp2.0\SIS.Services.csprojResolveAssemblyReference.cache

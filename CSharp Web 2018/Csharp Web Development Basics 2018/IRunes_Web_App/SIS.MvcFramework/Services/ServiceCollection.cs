@@ -7,16 +7,24 @@
 
     public class ServiceCollection : IServiceCollection
     {
-        private IDictionary<Type, Type> dependencyContainer;
+        private readonly IDictionary<Type, Type> dependencyContainer;
+
+        private readonly IDictionary<Type, Func<object>> dependencyContainerWithFunc;
 
         public ServiceCollection()
         {
             dependencyContainer = new Dictionary<Type, Type>();
+            dependencyContainerWithFunc = new Dictionary<Type, Func<object>>();
         }
 
         public void AddService<TSource, TDestination>()
         {
             this.dependencyContainer[typeof(TSource)] = typeof(TDestination);
+        }
+
+        public void AddService<T>(Func<T> p)
+        {
+            this.dependencyContainerWithFunc.Add(typeof(T), () => p());
         }
 
         public T CreateInstance<T>()

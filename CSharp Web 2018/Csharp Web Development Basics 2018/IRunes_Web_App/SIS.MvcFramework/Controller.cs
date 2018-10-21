@@ -8,22 +8,27 @@
     using SIS.MvcFramework.Contracts.Services;
     using SIS.MvcFramework.Logger;
     using SIS.MvcFramework.Services;
+    using SIS.MvcFramework.ViewEngine.Contracts;
     using SIS.Services.MvcFramework;
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     public abstract class Controller
     {
         protected const string EncryptKey = "186fd62b-5806-4b7b-8f76-3b04ad02bee3";
 
-        protected const string AuthenticationCookieKey = "-auth";
+        protected const string AuthenticationCookieKey = "-auth.irunes";
 
         protected Controller()
         {
+            this.ViewEngine = new SIS.MvcFramework.ViewEngine.ViewEngine();
             this.Response = new HttpResponse();
-            this.UserCookieService = new UserCookieService(new FileLogger());
+            this.UserCookieService = new UserCookieService(new FileLogger("log.txt"));
         }
+
+        public IViewEngine ViewEngine { get; set; }
 
         public IHttpRequest Request { get; set; }
 
@@ -31,14 +36,10 @@
 
         public IUserCookieService UserCookieService { get; internal set; }
 
-        protected IHttpResponse View(string viewName, HttpResponseStatusCode statusCode, IDictionary<string, string> viewBag = null)
+        protected IHttpResponse View<T>(string viewName, HttpResponseStatusCode statusCode, T model = null)
+            where T : class
         {
-            if (viewBag == null)
-            {
-                viewBag = new Dictionary<string, string>();
-            }
-
-            var allContent = this.GetViewContent(viewName, viewBag);
+            var allContent = this.GetViewContent(viewName, model);
             this.PrepareHtmlResult(allContent);
             this.Response.StatusCode = statusCode;
 
@@ -108,11 +109,15 @@
 
             return this.Response;
         }
-
-        private string GetViewContent(string viewName, IDictionary<string, string> viewBag)
+        //Finish implementing ViewEngine
+        private string GetViewContent<T>(string viewName, T model)
         {
             string layoutContent = string.Empty;
-            string content = System.IO.File.ReadAllText(PathService.HtmlFinder(viewName));
+
+            var content = this.ViewEngine.GetHtml(viewName,
+                System.IO.File.ReadAllText(PathService.HtmlFinder(viewName)), model);
+
+            //string content = System.IO.File.ReadAllText(PathService.HtmlFinder(viewName));
 
             if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey) && this.Request.Cookies.GetCookie(AuthenticationCookieKey).Expires >= DateTime.UtcNow)
             {
@@ -123,13 +128,20 @@
                 layoutContent = System.IO.File.ReadAllText(PathService.HtmlFinder("_LoggedOutLayout"));
             }
 
-            foreach (var item in viewBag)
-            {
-                content = content.Replace(item.Key, item.Value);
-            }
-
             string allContent = layoutContent.Replace("@Body", content);
             return allContent;
+        }
+
+        private void GetLayout(string layoutContent)
+        {
+            if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey) && this.Request.Cookies.GetCookie(AuthenticationCookieKey).Expires >= DateTime.UtcNow)
+            {
+                layoutContent = System.IO.File.ReadAllText(PathService.HtmlFinder("_LoggedInayout"));
+            }
+            else
+            {
+                layoutContent = System.IO.File.ReadAllText(PathService.HtmlFinder("_LoggedOutLayout"));
+            }
         }
 
         private void PrepareHtmlResult(string content)

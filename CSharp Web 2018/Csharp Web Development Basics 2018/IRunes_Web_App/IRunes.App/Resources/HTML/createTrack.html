@@ -1,0 +1,37 @@
+﻿<hr style="background-color:#33cc59; height: 2px" />
+<div class="container w-50">
+    <h1 style="text-align:center;">Create Track</h1>
+    <hr style="background-color:#33cc59; height: 2px" />
+    <form action="@Model.CreatePath" method="post">
+        <div class="row">
+            <div class="col">
+                <label>Name</label>
+                <input class="form-control" type="text" required name="name" placeholder="Name..." />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Link</label>
+                <input class="form-control" type="url" required name="link" placeholder="Link..." />
+            </div>
+            <div class="form-group col-md-6">
+                <label>Price</label>
+                <input class="form-control" type="text" required name="price" placeholder="Price..." />
+            </div>
+        </div>
+        <div class="row" style="margin-top:2%;">
+            <div class="col-sm-6">
+                <div class="text-center">
+                    <button class="btn btn-success" type="submit">Create</button>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="text-center">
+                    <button type="button" class="btn btn-success" onclick="location.href=@Model.BackToAlbum">Back To Album</button>
+                </div>
+            </div>
+        </div>
+        <hr style="background-color:#33cc59; margin-bottom:5%; height: 2px" />
+    </form>
+    @Model.ErrorMessage
+</div>

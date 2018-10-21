@@ -5,7 +5,6 @@
     using SIS.HTTP.Enums;
     using SIS.HTTP.Responses.Contracts;
     using SIS.MvcFramework;
-    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Net;
@@ -16,37 +15,37 @@
 
     public class TrackController : BaseController
     {
-        private const string InvalidTrackInformationError = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid name/url/price information!</div></center>";
+        private const string InvalidTrackInformationError = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">Invalid name/url/price information!</div></center>";
 
-        private const string TrackAlreadyExistsError = "<center><div class=\"alert alert-danger\" role=\"alert\">This track already exists!</div></center>";
+        private const string TrackAlreadyExistsError = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">This track already exists!</div></center>";
 
         [HttpGetAttribute("/Tracks/Create")]
         public IHttpResponse CreateTrack()
         {
             string albumId = this.Request.QueryData["albumId"].ToString();
 
-            string path = StringExtensions.UrlDecode($"/Albums/Details?id={albumId}");
+            string path = StringExtensions.UrlDecode($"'/Albums/Details?id={albumId}'");
             string postPath = StringExtensions.UrlDecode($"/Tracks/Create?albumId={albumId}");
 
-            Dictionary<string, string> createTrackParameters = new Dictionary<string, string>()
+            CreateTrackViewModel viewModel = new CreateTrackViewModel()
             {
-                {WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), path},
-                {"{{{create-path}}}", postPath },
-                {"{{{error}}}", string.Empty }
+                BackToAlbum = path,
+                CreatePath = postPath,
+                ErrorMessage = string.Empty
             };
 
-            return this.View("create-track", HttpResponseStatusCode.Ok, createTrackParameters);
+            return this.View("createTrack", HttpResponseStatusCode.Ok, viewModel);
         }
 
         [HttpPostAttribute("/Tracks/Create")]
-        public IHttpResponse PostCreateTrack(DoTrackInputModel model)
+        public IHttpResponse PostCreateTrack(DoTrackViewModel model)
         {
             Regex trackNameRegex = new Regex(@"^\w{3,30}$");
             Regex linkUrlRegex = new Regex(@"^\b((http|https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$");
 
             string albumId = this.Request.QueryData["albumId"].ToString();
 
-            string backToAlbumPath = StringExtensions.UrlDecode($"/Albums/Details?id={albumId}");
+            string backToAlbumPath = StringExtensions.UrlDecode($"'/Albums/Details?id={albumId}'");
 
             model.Link = StringExtensions.UrlDecode(model.Link);
             decimal trackPrice = 0;
@@ -76,26 +75,26 @@
                 track.Price < 0
                 )
             {
-                Dictionary<string, string> createTrackErroParameters = new Dictionary<string, string>()
+                CreateTrackViewModel createTrackViewModel = new CreateTrackViewModel()
                 {
-                    {@"\{\{\{back-to-album}}}", backToAlbumPath },
-                    {"{{{error}}}", InvalidTrackInformationError },
-                    {@"{{{create-path}}}",  WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                    BackToAlbum = backToAlbumPath,
+                    ErrorMessage = InvalidTrackInformationError,
+                    CreatePath = WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")
                 };
 
-                return this.View("crate-track", HttpResponseStatusCode.BadRequest, createTrackErroParameters);
+                return this.View("createTrack", HttpResponseStatusCode.BadRequest, createTrackViewModel);
 
             }
             else if (this.Context.AlbumTracks.Where(at => at.AlbumId == albumId).Any(tr => tr.Track.Name == model.Name))
             {
-                Dictionary<string, string> createTrackErrorParameters = new Dictionary<string, string>()
+                CreateTrackViewModel createTrackViewModel = new CreateTrackViewModel()
                 {
-                    {@"\{\{\{back-to-album}}}", backToAlbumPath },
-                    {"{{{error}}}", TrackAlreadyExistsError },
-                    {@"{{{create-path}}}",  WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                    BackToAlbum = backToAlbumPath,
+                    ErrorMessage = TrackAlreadyExistsError,
+                    CreatePath = WebUtility.UrlDecode($"/Tracks/Create?albumId={albumId}")
                 };
 
-                return this.View("create-track", HttpResponseStatusCode.BadRequest, createTrackErrorParameters);
+                return this.View("createTrack", HttpResponseStatusCode.BadRequest, createTrackViewModel);
             }
 
             using (this.Context)
@@ -115,37 +114,37 @@
                 this.Context
                     .SaveChanges();
             }
-
-            Dictionary<string, string> trackDetailsParameters = new Dictionary<string, string>()
+            
+            TrackViewModel viewModel = new TrackViewModel()
             {
-                {"{{{link}}}", track.Link },
-                {"{{{name}}}", track.Name },
-                {"{{{price}}}", $"${track.Price.ToString(CultureInfo.InvariantCulture):f2}" },
-                {WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backToAlbumPath },
-                {@"{{{create-path}}}", StringExtensions.UrlDecode($"/Tracks/Create?albumId={albumId}")}
+                Link = track.Link,
+                Name = track.Name,
+                Price = $"{track.Price.ToString(CultureInfo.InvariantCulture):f2}",
+                BackToAlbum = backToAlbumPath,
+                CreatePath = StringExtensions.UrlDecode($"/Tracks/Create?albumId={albumId}")
             };
-
-            return this.View("track", HttpResponseStatusCode.Ok, trackDetailsParameters);
+            
+            return this.View("track", HttpResponseStatusCode.Ok, viewModel);
         }
 
         [HttpGetAttribute("/Tracks/Details")]
         public IHttpResponse TrackDetails(AlbumTrackViewModel model)
         {
-            string backtoAlbumPath = StringExtensions.UrlDecode($"/Albums/Details?id={model.AlbumId}");
+            string backtoAlbumPath = StringExtensions.UrlDecode($"'/Albums/Details?id={model.AlbumId}'");
 
             Track track = this.Context
                 .Tracks
                 .First(tr => tr.Id == model.TrackId);
 
-            Dictionary<string, string> trackDetailsParameters = new Dictionary<string, string>()
+            TrackViewModel viewModel = new TrackViewModel()
             {
-                {"{{{link}}}", track.Link },
-                {"{{{name}}}", track.Name },
-                {"{{{price}}}", $"${track.Price:f2}" },
-                { WebUtility.UrlDecode(@"\{\{\{back-to-album}}}"), backtoAlbumPath}
+                Link = track.Link,
+                Name = track.Name,
+                Price = $"{track.Price:f2}",
+                BackToAlbum = backtoAlbumPath
             };
 
-            return this.View("track", HttpResponseStatusCode.Ok, trackDetailsParameters);
+            return this.View("track", HttpResponseStatusCode.Ok, viewModel);
         }
     }
 }

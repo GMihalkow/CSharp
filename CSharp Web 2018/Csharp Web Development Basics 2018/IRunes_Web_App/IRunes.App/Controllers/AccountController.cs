@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
     using System.Text.RegularExpressions;
     using IRunes.App.ViewModels.Account;
     using IRunes.Models;
@@ -17,16 +16,16 @@
     public class AccountController : BaseController
     {
         private const string InvalidRegisterInformationMessage
-            = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid password/username/email, please try again!</div></center>";
+            = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">Invalid password/username/email, please try again!</div></center>";
 
         private const string InvalidLoginInformationMessage
-            = "<center><div class=\"alert alert-danger\" role=\"alert\">Invalid username/password combination!<div></center>";
+            = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">Invalid username/password combination!<div></center>";
 
         private const string UsernameAlreadyExistsErrorMessage
-            = "<center><div class=\"alert alert-danger\" role=\"alert\">Username already exists!</div></center>";
+            = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">Username already exists!</div></center>";
 
         private const string EmailAlreadyExistsErrorMessage
-            = "<center><div class=\"alert alert-danger\" role=\"alert\">Email is already taken!</div></center>";
+            = @"<center><div class=\""alert alert-danger\"" role=\""alert\"">Email is already taken!</div></center>";
 
         private readonly IHashService hashService;
 
@@ -51,16 +50,16 @@
                 return this.View("Logged", HttpResponseStatusCode.Ok, loggedInReplaceParameters);
             }
 
-            Dictionary<string, string> loginParameters = new Dictionary<string, string>()
+            GetLoginViewModel viewModel = new GetLoginViewModel()
             {
-                {"{{{error}}}", string.Empty }
+                ErrorMessage = string.Empty
             };
 
-            return this.View("Login", HttpResponseStatusCode.Ok, loginParameters);
+            return this.View("Login", HttpResponseStatusCode.Ok, viewModel);
         }
 
         [HttpPostAttribute("/Users/Login")]
-        public IHttpResponse PostLogin(DoLoginInputModel model)
+        public IHttpResponse PostLogin(DoLoginViewModel model)
         {
             model.Password = this.hashService.Compute256Hash(model.Password);
 
@@ -68,12 +67,12 @@
                 (user.Username == model.UsernameOrEmail.Trim() || user.Email == model.UsernameOrEmail.Trim())
             && user.Password == model.Password)))
             {
-                Dictionary<string, string> backToLoginParameters = new Dictionary<string, string>()
+                GetLoginViewModel viewModel = new GetLoginViewModel()
                 {
-                    {"{{{error}}}", InvalidLoginInformationMessage }
+                    ErrorMessage = InvalidLoginInformationMessage
                 };
 
-                return this.View("Login", HttpResponseStatusCode.BadRequest, backToLoginParameters);
+                return this.View("Login", HttpResponseStatusCode.BadRequest, viewModel);
             }
             else
             {
@@ -84,17 +83,17 @@
                     .First()
                     .Username;
 
-                Dictionary<string, string> loginReplaceParameters = new Dictionary<string, string>()
-            {
-                {"{{{name}}}", username }
-            };
+                DoLoginViewModel viewModel = new DoLoginViewModel()
+                {
+                    UsernameOrEmail = username
+                };
 
                 HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(username, EncryptKey));
 
                 this.Request.Cookies.Add(cookie);
                 this.Response.Cookies.Add(cookie);
 
-                return this.View("Logged", HttpResponseStatusCode.Ok, loginReplaceParameters);
+                return this.View("Logged", HttpResponseStatusCode.Ok, viewModel);
             }
         }
 
@@ -112,20 +111,19 @@
                 this.Response.AddCookie(cookie);
             }
 
-            Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+            GetRegisterViewModel viewModel = new GetRegisterViewModel()
             {
-                {"{{{error}}}", string.Empty }
+                ErrorMessage = string.Empty
             };
 
-            return this.View("Register", HttpResponseStatusCode.Ok, registerErrorParameters);
+            return this.View("Register", HttpResponseStatusCode.Ok, viewModel);
         }
 
         [HttpPostAttribute("/Users/Register")]
-        public IHttpResponse PostRegister(DoRegisterInputModel model)
+        public IHttpResponse PostRegister(DoRegisterViewModel model)
         {
             Regex usernameAndPasswordRegex = new Regex(@"^\w+$");
             Regex emailRegex = new Regex(@"^[A-z]+\@[A-z]+\.[A-z]{1,4}$");
-
 
             string hashedPassword = this.hashService.Compute256Hash(model.Password);
             string hashedConfirmPassword = this.hashService.Compute256Hash(model.Password);
@@ -140,25 +138,25 @@
                model.Username.Length < 3 ||
                model.Username.Length > 30))
             {
-                Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                GetRegisterViewModel viewModel = new GetRegisterViewModel()
                 {
-                    {"{{{error}}}", InvalidRegisterInformationMessage }
+                    ErrorMessage = InvalidRegisterInformationMessage
                 };
 
-                return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
+                return this.View("Register", HttpResponseStatusCode.BadRequest, viewModel);
             }
             if (this.Context.Users.Any(user => user.Email == model.Email))
             {
-                Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                GetRegisterViewModel viewModel = new GetRegisterViewModel()
                 {
-                    {"{{{error}}}", EmailAlreadyExistsErrorMessage }
+                    ErrorMessage = EmailAlreadyExistsErrorMessage
                 };
 
-                return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
+                return this.View("Register", HttpResponseStatusCode.BadRequest, viewModel);
             }
             if (hashedConfirmPassword == hashedPassword)
             {
-                //Adding user to db User user = new User()
+                //Adding user to db 
                 User user = new User
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -171,12 +169,12 @@
                 {
                     if (this.Context.Users.Any(u => u.Username == model.Username) == true)
                     {
-                        Dictionary<string, string> registerErrorParameters = new Dictionary<string, string>()
+                        GetRegisterViewModel viewModel = new GetRegisterViewModel()
                         {
-                            { "{{{error}}}", UsernameAlreadyExistsErrorMessage}
+                            ErrorMessage = UsernameAlreadyExistsErrorMessage
                         };
 
-                        return this.View("Register", HttpResponseStatusCode.BadRequest, registerErrorParameters);
+                        return this.View("Register", HttpResponseStatusCode.BadRequest, viewModel);
                     }
 
                     this.Context.Users.Add(user);
@@ -190,12 +188,7 @@
             this.Request.Cookies.Add(cookie);
             this.Response.Cookies.Add(cookie);
 
-            Dictionary<string, string> loggedInParameters = new Dictionary<string, string>()
-            {
-                {"{{{name}}}", model.Username }
-            };
-
-            return this.View("Logged", HttpResponseStatusCode.Ok, loggedInParameters);
+            return this.View("Logged", HttpResponseStatusCode.Ok, model);
         }
     }
 }
