@@ -13,7 +13,6 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using System.Threading.Tasks;
 
     public abstract class Controller
     {
@@ -58,6 +57,7 @@
                 var cookie = this.Request.Cookies.GetCookie(AuthenticationCookieKey);
                 var cookieContent = cookie.Value;
                 var userName = this.UserCookieService.GetUserData(cookieContent, EncryptKey);
+
                 return userName;
             }
         }

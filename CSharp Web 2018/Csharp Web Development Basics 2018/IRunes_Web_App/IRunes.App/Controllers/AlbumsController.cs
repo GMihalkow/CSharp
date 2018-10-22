@@ -99,10 +99,10 @@
                 Name = model.Name,
                 Price = $"{album.Price.ToString(CultureInfo.InvariantCulture):F2}",
                 Tracks = new AlbumTrack[0],
-                Url = model.Cover,
+                Cover = model.Cover,
                 CreateTrack = $"'/Tracks/Create?albumId={album.Id}'"
             };
-            
+
             return this.View("album", HttpResponseStatusCode.Ok, viewModel);
         }
 
@@ -155,14 +155,9 @@
                 .Where(at => at.AlbumId == model.Id)
                 .ToArray();
 
-            AlbumDetailsViewModel viewModel = new AlbumDetailsViewModel();
-
-            viewModel.Name = album.Name;
-            viewModel.Url = album.Cover;
-            viewModel.Price = $"{album.Price:F2}";
-            viewModel.Tracks = tracks;
+            var viewModel = album.To<AlbumDetailsViewModel>();
             viewModel.CreateTrack = $"'/Tracks/Create?albumId={album.Id}'";
-
+            
             return this.View("album", HttpResponseStatusCode.Ok, viewModel);
         }
     }

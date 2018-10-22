@@ -113,7 +113,6 @@ namespace MyAppViews
                     // CSharp
                     var firstAtSymbolIndex = line.IndexOf("@", StringComparison.InvariantCulture);
                     stringBuilder.AppendLine(this.RemoveAt(line, firstAtSymbolIndex));
-                    ;
                 }
                 else
                 {

@@ -136,13 +136,8 @@
                 .Tracks
                 .First(tr => tr.Id == model.TrackId);
 
-            TrackViewModel viewModel = new TrackViewModel()
-            {
-                Link = track.Link,
-                Name = track.Name,
-                Price = $"{track.Price:f2}",
-                BackToAlbum = backtoAlbumPath
-            };
+            var viewModel = track.To<TrackViewModel>();
+            viewModel.BackToAlbum = backtoAlbumPath;
 
             return this.View("track", HttpResponseStatusCode.Ok, viewModel);
         }

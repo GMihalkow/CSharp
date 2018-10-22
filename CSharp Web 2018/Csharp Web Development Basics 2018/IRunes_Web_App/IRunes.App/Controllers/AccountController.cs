@@ -83,10 +83,7 @@
                     .First()
                     .Username;
 
-                DoLoginViewModel viewModel = new DoLoginViewModel()
-                {
-                    UsernameOrEmail = username
-                };
+                var viewModel = model.To<DoLoginViewModel>();
 
                 HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(username, EncryptKey));
 
