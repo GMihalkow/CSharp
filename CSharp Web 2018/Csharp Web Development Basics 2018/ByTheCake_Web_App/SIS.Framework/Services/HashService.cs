@@ -1,9 +1,10 @@
 ﻿namespace SIS.Framework.Services
 {
+    using SIS.Framework.Services.Contracts;
     using System.Security.Cryptography;
     using System.Text;
 
-    public class HashService
+    public class HashService : IHashService
     {
         public string Compute256Hash(string rawData)
         {

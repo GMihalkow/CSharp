@@ -6,11 +6,12 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using SIS.Framework.ActionsResults;
     using SIS.Framework.ActionsResults.Base;
     using SIS.Framework.ActionsResults.Contracts;
     using SIS.Framework.Attributes.Methods.Base;
     using SIS.Framework.Controllers;
+    using SIS.Framework.Services;
+    using SIS.Framework.Services.Contracts;
     using SIS.HTTP.Common;
     using SIS.HTTP.Enums;
     using SIS.HTTP.Requests.Contracts;
@@ -22,9 +23,18 @@
     {
         private const string UnsupportedActionMessage = "The view result is not supported.";
 
+        private IDependencyContainer dependencyContainer;
+
         private string layout = string.Empty;
 
         private IHttpRequest request;
+
+        public ControllerRouter(IDependencyContainer dependencyContainer)
+        {
+            this.dependencyContainer = dependencyContainer;
+            this.dependencyContainer.RegisterDependency<IHashService, HashService>();
+            this.dependencyContainer.RegisterDependency<IUserCookieService, UserCookieService>();
+        }
 
         public IHttpResponse Handle(IHttpRequest request)
         {
@@ -54,7 +64,8 @@
                 actionName = requestUrlSplit[1].Split("?")[0];
             }
 
-            var controller = this.GetController(controllerName, request);
+            var controller = this.GetController(controllerName);
+            controller.Request = request;
 
             var action = this.GetMethod(requestMethod, controller, actionName);
 
@@ -270,22 +281,21 @@
                 .Where(mi => mi.Name.ToLower() == actionName.ToLower());
         }
 
-        private Controller GetController(string controllerName, IHttpRequest request)
+        private Controller GetController(string controllerName)
         {
             if (string.IsNullOrWhiteSpace(controllerName))
             {
                 return null;
             }
 
-
             var fullyQualifiedControllerName = string.Format("{0}.{1}.{2}{3}, {0}",
                 Assembly.GetEntryAssembly().GetName().Name,
                 MvcContext.Get.ControllersFolder,
                 controllerName,
                 MvcContext.Get.ControllerSuffix);
-
+            
             var controllerType = Type.GetType(fullyQualifiedControllerName);
-            var controller = (Controller)Activator.CreateInstance(controllerType);
+            var controller = this.dependencyContainer.CreateInstance(controllerType) as Controller;
             return controller;
         }
     }

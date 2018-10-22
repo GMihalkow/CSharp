@@ -6,6 +6,7 @@
     using SIS.Framework;
     using SIS.Framework.ActionsResults;
     using SIS.Framework.Routers;
+    using SIS.Framework.Services;
     using SIS.HTTP.Enums;
     using SIS.WebServer;
     using SIS.WebServer.Api.Contracts;
@@ -17,7 +18,9 @@
         {
             ConfigureDatabase();
 
-            ControllerRouter controllerRouter = new ControllerRouter();
+            DependencyContainer dependencyContainer = new DependencyContainer();
+
+            ControllerRouter controllerRouter = new ControllerRouter(dependencyContainer);
 
             Server server = new Server(8002, controllerRouter);
             MvcEngine.Run(server);

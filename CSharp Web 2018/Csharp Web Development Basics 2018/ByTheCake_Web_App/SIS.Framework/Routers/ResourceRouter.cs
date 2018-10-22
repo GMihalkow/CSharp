@@ -24,7 +24,7 @@
 
         private IHttpResponse ReturnIfResource(string path)
         {
-            path = $"/{Assembly.GetEntryAssembly().GetName(true).Name}/Resources/" + path;
+            path = $"/{Assembly.GetEntryAssembly().GetName(true).Name}/Resources" + path;
             string fixedPath = WebUtility.UrlDecode(path);
             string fullPath = Path.GetFullPath(".." + fixedPath);
 

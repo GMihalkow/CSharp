@@ -10,6 +10,7 @@
     using SIS.Framework.Services;
     using System.Text.RegularExpressions;
     using System.Text;
+    using SIS.Framework.Attributes.Property;
 
     public class UsersController : BaseController
     {
@@ -92,6 +93,11 @@
                 parameters.Add("@Error", UsernameAlreadyExistsError);
                 return this.View("registration-error", parameters);
             }
+            else if ((!UsernameAndPasswordRegex.Match(username).Success) || (!UsernameAndPasswordRegex.Match(username).Success))
+            {
+                parameters.Add("@Error", InvalidUsernameOrPasswordFormatError);
+                return this.View("registration-error", parameters);
+            }
 
             if (password == confirmPassword)
             {
@@ -101,12 +107,6 @@
 
                 request.Cookies.Add(cookie);
                 this.Response.AddCookie(cookie);
-
-                if ((!UsernameAndPasswordRegex.Match(username).Success) || (!UsernameAndPasswordRegex.Match(username).Success))
-                {
-                    parameters.Add("@Error", InvalidUsernameOrPasswordFormatError);
-                    return this.View("registration-error", parameters);
-                }
 
                 User user = new User()
                 {
