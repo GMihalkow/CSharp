@@ -1,0 +1,15 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.MvcFramework.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.MvcFramework.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.MvcFramework.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.HTTP.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.WebServer.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.HTTP.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\SIS.WebServer.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\obj\Debug\netcoreapp2.0\SIS.MvcFramework.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\IRunes.Models.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\SIS.MvcFramework\bin\Debug\netcoreapp2.0\IRunes.Models.pdb

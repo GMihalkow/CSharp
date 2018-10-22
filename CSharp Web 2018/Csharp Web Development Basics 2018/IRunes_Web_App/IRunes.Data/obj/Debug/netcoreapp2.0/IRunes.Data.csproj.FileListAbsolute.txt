@@ -1,0 +1,13 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Data.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Data.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Data.runtimeconfig.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Data.runtimeconfig.dev.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Data.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Models.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\bin\Debug\netcoreapp2.0\IRunes.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\parallell-WebServer_v2\IRunes.Data\obj\Debug\netcoreapp2.0\IRunes.Data.pdb
