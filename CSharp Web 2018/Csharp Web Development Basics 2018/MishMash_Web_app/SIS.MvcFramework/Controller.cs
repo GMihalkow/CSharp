@@ -104,7 +104,7 @@ namespace SIS.MvcFramework
 
             var layoutFileContent = System.IO.File.ReadAllText($"Views/{layoutName}.html");
             var allContent = layoutFileContent.Replace("@RenderBody()", content);
-            var layoutContent = this.ViewEngine.GetHtml("_Layout", allContent, model, this.User);
+            var layoutContent = this.ViewEngine.GetHtml(layoutName, allContent, model, this.User);
             return layoutContent;
         }
 

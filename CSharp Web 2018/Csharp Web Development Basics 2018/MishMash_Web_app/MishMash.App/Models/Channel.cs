@@ -1,6 +1,7 @@
 ﻿namespace MishMash.App.Models
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Channel
     {

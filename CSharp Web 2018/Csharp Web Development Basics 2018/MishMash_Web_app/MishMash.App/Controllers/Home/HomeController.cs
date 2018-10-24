@@ -22,7 +22,14 @@
 
             if (user != null)
             {
-                return this.View("Home/Index", user);
+                if(user.Role == Role.Admin)
+                {
+                    return this.View("Home/Index", user, "_AdminLayout");
+                }
+                else
+                {
+                    return this.View("Home/Index", user);
+                }
             }
             else
             {

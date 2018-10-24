@@ -41,6 +41,9 @@
             modelBuilder.ApplyConfiguration<UserChannel>(new UserChannelConfiguration());
 
             modelBuilder.ApplyConfiguration<ChannelTag>(new ChannelTagConfiguration());
+
+            modelBuilder.Entity<Tag>().HasKey(t => t.Id);
+            
         }
     }
 }

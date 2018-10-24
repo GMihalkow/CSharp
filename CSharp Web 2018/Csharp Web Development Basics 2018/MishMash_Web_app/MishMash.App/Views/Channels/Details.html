@@ -1,0 +1,32 @@
+﻿<hr class="bg-mishmash hr-2" />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"><h2 class="text-mishmash">Channel: @Model.Name</h2></div>
+        <div class="col-1"></div>
+        <div class="col-sm-3"><h2 class="text-mishmash">Type: @Model.Type</h2></div>
+        <div class="col-1"></div>
+        <div class="col-sm-3"><h2 class="text-mishmash">Followers: @Model.Followers.Count()</h2></div>
+    </div>
+</div>
+<hr class="bg-mishmash hr-2" />
+<h1 class="text-mishmash text-center">Tags</h1>
+<p class="text-center text-mishmash">
+    <strong>
+        @for(int index = 0; index < @Model.Tags.Count(); index++)
+        {
+        @if(index==0)
+        {
+        @Model.Tags.ElementAt(index).Tag.Name,
+        }
+        @else
+        {
+        @Model.Tags.ElementAt(index).Tag.Name
+        }
+        }
+    </strong>
+</p>
+<hr class="bg-mishmash hr-2" />
+<h1 class="text-mishmash text-center">Description</h1>
+<p class="text-center text-mishmash">@Model.Description</p>
+<hr class="bg-mishmash hr-2" />
+<center><button class="btn bg-mishmash text-white" onclick="window.history.back();">Back</button></center>

@@ -46,6 +46,7 @@ namespace MyAppViews
                 this.GetInstance(viewCodeAsCSharpCode, "MyAppViews." + viewTypeName, typeof(T)) as IView<T>;
             var html = instanceOfViewClass.GetHtml(model, user);
             return html;
+            
         }
 
         private object GetInstance(string cSharpCode, string typeName, Type viewModelType)
@@ -121,7 +122,7 @@ namespace MyAppViews
                     while (htmlLine.Contains("@"))
                     {
                         var specialSymbolIndex = htmlLine.IndexOf("@", StringComparison.InvariantCulture);
-                        var endOfCode = new Regex(@"[\s<\\!-]+").Match(htmlLine, specialSymbolIndex).Index;
+                        var endOfCode = new Regex(@"[\s<\\!,-]+").Match(htmlLine, specialSymbolIndex).Index;
                         string expression = null;
                         if (endOfCode == 0 || endOfCode == -1)
                         {
