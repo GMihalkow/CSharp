@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using MishMash.App.Models;
     using MishMash.App.ViewModels.Channels;
+    using MishMash.App.ViewModels.Users;
     using SIS.HTTP.Responses;
     using SIS.MvcFramework;
     using System;
@@ -79,17 +80,6 @@
                 this.DbContext.SaveChanges();
             }
 
-            User user = this.DbContext.Users.First(u => u.Username == this.User);
-
-            UserChannel userChannel = new UserChannel()
-            {
-                UserId = user.Id,
-                ChannelId = channel.Id
-            };
-
-            this.DbContext.Add(userChannel);
-            this.DbContext.SaveChanges();
-
             return this.Redirect($"/Channels/Details?Id={channel.Id}");
         }
 
@@ -123,6 +113,80 @@
 
 
 
+        }
+
+        [HttpGet("/Channels/Followed")]
+        public IHttpResponse Followed()
+        {
+            User user = null;
+
+            if (this.Request.Cookies.ContainsCookie("-auth.mish"))
+            {
+                string cookieValue = this.Request.Cookies.GetCookie("-auth.mish").Value;
+                string username = this.UserCookieService.DecryptString(cookieValue);
+
+                user = this.DbContext.Users.First(u => u.Username == username);
+            }
+
+            UserWithChannelsViewModel userModel = new UserWithChannelsViewModel()
+            {
+                Role = user.Role,
+
+                FollowedChannels =
+                               this.DbContext
+                               .UserChannels
+                               .Where(uc => uc.UserId == user.Id)
+                               .Include(uc => uc.Channel.Type)
+                               .Include(uc => uc.Channel)
+                               .Select(uc => uc.Channel)
+                               .Include(uc => uc.Followers)
+                               .ToArray(),
+
+            };
+
+            if (user.Role == Role.Admin)
+            {
+                return this.View("Channels/Followed", userModel, "_AdminLayout");
+            }
+            else
+            {
+                return this.View("Channels/Followed", userModel);
+            }
+        }
+
+        [HttpGet("/Channels/Unfollow")]
+        public IHttpResponse Unfollow(int Id)
+        {
+            if (!this.DbContext.Channels.Any(ch => ch.Id == Id))
+                return this.BadRequestError("Channel doesn't exist!");
+
+            var userChannel = this.DbContext.UserChannels.Where(w => w.ChannelId == Id && w.User.Username == this.User).First();
+            this.DbContext.UserChannels.Remove(userChannel);
+            this.DbContext.SaveChanges();
+
+            return this.Redirect("/Channels/Followed");
+        }
+
+        [HttpGet("/Channels/Follow")]
+        public IHttpResponse Follow(int Id)
+        {
+            if (!this.DbContext.Channels.Any(ch => ch.Id == Id))
+                return this.BadRequestError("Channel doesn't exist!");
+
+            int userId = this.DbContext.Users.Where(u => u.Username == this.User).First().Id;
+            UserChannel userChannel = new UserChannel()
+            {
+                UserId = userId,
+                ChannelId = Id
+            };
+            if (this.DbContext.UserChannels.Any(uc => uc.UserId == userId && uc.ChannelId == Id))
+            {
+                return this.BadRequestError("You have already followed this channel!");
+            }
+            this.DbContext.UserChannels.Add(userChannel);
+            this.DbContext.SaveChanges();
+
+            return this.Redirect("/");
         }
     }
 }

@@ -10,106 +10,119 @@
     <h2 class="text-mishmash">Your channels</h2>
     <hr class="hr-2 bg-mishmash" />
     <div class="container-fluid">
-        <div class="row"> <!--TODO: finish blocks-->
-            <div class="col-md-2 mb-2 mt-2 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
+        <div class="row">
+            @for(int index = 0; index < @Model.FollowedChannels.Count(); index++)
+            {
+            @if(index % 5 == 0 && (index != 1 || index != 0))
+            {
         </div>
         <div class="row">
-            <div class="col-md-2 mb-2 mt-2 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
+
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Name</p>
                 <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Type.ToString() Channel</p>
                 <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Followers.Count() Following</p>
                 <hr class="hr-2 bg-white" />
                 <p class="text-center nav-link-white">Following</p>
             </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
+            }
+            @else
+            {
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Name</p>
                 <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Type.ToString() Channel</p>
                 <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
+                <p class="text-center nav-link-white">@Model.FollowedChannels.ElementAt(index).Followers.Count() Following</p>
                 <hr class="hr-2 bg-white" />
                 <p class="text-center nav-link-white">Following</p>
+
             </div>
-            <div class="col-md-2 mb-2 mt-2 ml-5 bg-mishmash">
-                <p class="text-center nav-link-white">SoftUni</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Lesson Channel</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">10000 Followint</p>
-                <hr class="hr-2 bg-white" />
-                <p class="text-center nav-link-white">Following</p>
-            </div>
+            }
+            }
         </div>
     </div>
-
     <h2 class="text-mishmash">Suggested</h2>
     <hr class="hr-2 bg-mishmash" />
+    <div class="container-fluid">
+        <div class="row">
+            @for(int index = 0; index < @Model.SuggestedChannels.Count(); index++)
+            {
+            @if(index % 5 == 0 && (index != 1 || index != 0))
+            {
+        </div>
+        <div class="row">
 
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Name</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Type.ToString() Channel</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Followers.Count() Following</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white"><a class="nav-link-white" href="/Channels/Follow?Id=@Model.SuggestedChannels.ElementAt(index).Id">Follow</a>     <a class="nav-link-white" href="/Channels/Details?Id=@Model.SuggestedChannels.ElementAt(index).Id">Details</a></p>
+            </div>
+            }
+            @else
+            {
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Name</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Type.ToString() Channel</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SuggestedChannels.ElementAt(index).Followers.Count() Following</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white"><a class="nav-link-white" href="/Channels/Follow?Id=@Model.SuggestedChannels.ElementAt(index).Id">Follow</a>      <a class="nav-link-white" href="/Channels/Details?Id=@Model.SuggestedChannels.ElementAt(index).Id">Details</a></p>
+
+            </div>
+            }
+            }
+        </div>
+    </div>
     <h2 class="text-mishmash">See Other</h2>
     <hr class="hr-2 bg-mishmash" />
+    <div class="container-fluid">
+        <div class="row">
+            @for(int index = 0; index < @Model.SeeOtherChannels.Count(); index++)
+            {
+            @if(index % 5 == 0 && (index != 1 || index != 0))
+            {
+        </div>
+        <div class="row">
+
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Name</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Type.ToString() Channel</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Followers.Count() Following</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white"><a class="nav-link-white" href="/Channels/Follow?Id=@Model.SeeOtherChannels.ElementAt(index).Id">Follow</a>      <a class="nav-link-white" href="/Channels/Details?Id=@Model.SeeOtherChannels.ElementAt(index).Id">Details</a></p>
+            </div>
+            }
+            @else
+            {
+            <div class="rounded col-md-2 pt-3 pl-4 pr-4 mb-4 mt-2 ml-4 mr-4 bg-mishmash">
+
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Name</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Type.ToString() Channel</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white">@Model.SeeOtherChannels.ElementAt(index).Followers.Count() Following</p>
+                <hr class="hr-2 bg-white" />
+                <p class="text-center nav-link-white"><a class="nav-link-white" href="/Channels/Follow?Id=@Model.SeeOtherChannels.ElementAt(index).Id">Follow</a>       <a class="nav-link-white" href="/Channels/Details?Id=@Model.SeeOtherChannels.ElementAt(index).Id">Details</a></p>
+
+            </div>
+            }
+            }
+        </div>
+    </div>
 
 </main>

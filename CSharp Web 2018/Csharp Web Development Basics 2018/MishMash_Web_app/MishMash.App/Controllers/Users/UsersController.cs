@@ -38,11 +38,11 @@
 
                 if (model.Role == Role.Admin)
                 {
-                    return this.View("Home/Index", model, "_AdminLayout");
+                    return this.Redirect("/");
                 }
                 else
                 {
-                    return this.View("Home/Index", model, "_Layout");
+                    return this.Redirect("/");
                 }
             }
         }
@@ -119,11 +119,13 @@
             this.Response.Cookies.Add(cookie);
             if (model.Role == Role.Admin)
             {
-                return this.View("Home/Index", model, "_AdminLayout");
+                return this.Redirect("/");
+
             }
             else
             {
-                return this.View("Home/Index", model, "_Layout");
+                return this.Redirect("/");
+
             }
         }
 

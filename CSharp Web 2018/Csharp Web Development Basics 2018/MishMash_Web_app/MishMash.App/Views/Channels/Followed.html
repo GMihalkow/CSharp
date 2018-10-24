@@ -1,0 +1,30 @@
+﻿<h1 class="text-mishmash text-center">Following</h1>
+<hr class="bg-mishmash hr-2" />
+<table class="table">
+    <thread>
+        <tr>
+            <th>#</th>
+            <th>Channel</th>
+            <th>Type</th>
+            <th>Followers</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+            @for(int index = 0; index < @Model.FollowedChannels.Count(); index++)
+            { @int tableIndex = index + 1;
+
+            <tr>
+                <th>@tableIndex</th>
+                <td>@Model.FollowedChannels.ElementAt(index).Name</td>
+                <td>@Model.FollowedChannels.ElementAt(index).Type.ToString()</td>
+                <td>@Model.FollowedChannels.ElementAt(index).Followers.Count()</td>
+                <td>
+                    <button class="nav-link-white btn bg-mishmash" onclick="location.href = '/Channels/Details?Id=@Model.FollowedChannels.ElementAt(index).Id '">Details</button>
+                    <button class="nav-link-white btn bg-mishmash" onclick="location.href = '/Channels/Unfollow?Id=@Model.FollowedChannels.ElementAt(index).Id '">Unfollow</button>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </thread>
+</table>
