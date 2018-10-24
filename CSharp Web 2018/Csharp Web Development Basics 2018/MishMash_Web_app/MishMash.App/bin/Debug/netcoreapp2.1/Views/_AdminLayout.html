@@ -12,7 +12,6 @@
 <body>
     <div class="container-fluid">
         <header>
-
             <nav class="navbar navbar-expand-lg navbar-dark bg-mishmash">
                 <a class="navbar-brand nav-link-white" href="/">Mish Mash</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,25 +21,15 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link nav-link-white active" href="/">Home</a>
-                            @if(User == null)
-                            {
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-white active" href="/Users/Login">Login</a>
+                            <a class="nav-link nav-link-white active" href="/Channels/Followed">Create Channel</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-white active" href="/Users/Register">Register</a>
-                        </li>
-                        }
-                        @else if (User != null)
-                        {
                         <li class="nav-item">
                             <a class="nav-link nav-link-white active" href="/Channels/Followed">My Channels</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-link-white active" href="/Users/Logout">Logout</a>
                         </li>
-                        }
                     </ul>
                 </div>
             </nav>

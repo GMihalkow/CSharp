@@ -29,12 +29,21 @@
             }
             else
             {
+                model.Role = this.DbContext.Users.First(u => u.Username == model.Username.Trim()).Role;
+
                 HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(model.Username));
 
                 this.Request.Cookies.Add(cookie);
                 this.Response.Cookies.Add(cookie);
 
-                return this.View("Home/Index", model);
+                if (model.Role == Role.Admin)
+                {
+                    return this.View("Home/Index", model, "_AdminLayout");
+                }
+                else
+                {
+                    return this.View("Home/Index", model, "_Layout");
+                }
             }
         }
 
@@ -81,9 +90,15 @@
                     Email = model.Email
                 };
                 if (!this.DbContext.Users.Any())
+                {
                     user.Role = Role.Admin;
+                    model.Role = Role.Admin;
+                }
                 else
+                {
                     user.Role = Role.User;
+                    model.Role = Role.User;
+                }
 
                 using (this.DbContext)
                 {
@@ -102,8 +117,14 @@
 
             this.Request.Cookies.Add(cookie);
             this.Response.Cookies.Add(cookie);
-
-            return this.View("Home/Index", model);
+            if (model.Role == Role.Admin)
+            {
+                return this.View("Home/Index", model, "_AdminLayout");
+            }
+            else
+            {
+                return this.View("Home/Index", model, "_Layout");
+            }
         }
 
         [HttpGet("/Users/Logout")]

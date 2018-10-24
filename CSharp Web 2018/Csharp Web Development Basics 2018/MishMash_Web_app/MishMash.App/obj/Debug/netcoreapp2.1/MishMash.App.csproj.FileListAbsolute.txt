@@ -20,3 +20,5 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.Ap
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.App\bin\Debug\netcoreapp2.1\Views\Users\Login.html
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.App\bin\Debug\netcoreapp2.1\Views\Users\Register.html
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.App\bin\Debug\netcoreapp2.1\Views\Error.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.App\bin\Debug\netcoreapp2.1\Views\_AdminLayout.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\MishMash.App\bin\Debug\netcoreapp2.1\Views\Home\LoggedOutIndex.html

@@ -1,15 +1,10 @@
 ﻿<main>
-    @if(User != null)
+    @if(User != null && (int)Model.Role == 1)
     {
-    <h1 class="text-mishmash text-center">Welcome @User!</h1>
+    <h1 class="text-mishmash text-center">Welcome, @User!</h1>
     }
-    @else
+    @else if(User != null && (int)Model.Role == 2)
     {
-    <div class="jumbotron mt-3 bg-mishmash">
-        <h1 class="text-white">Welcome to Mish-Mash Media Channels</h1>
-        <hr class="bg-white hr-2" />
-        <h3 class="text-white"><a href="/Users/Login">Login</a> if you have an account.</h3>
-        <h3 class="text-white"><a href="/Users/Register">Register</a> if you don't.</h3>
-    </div>
+    <h1 class="text-mishmash text-center">Welcome, @Model.Role.ToString()-@User!</h1>
     }
 </main>
