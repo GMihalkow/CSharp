@@ -52,6 +52,7 @@ namespace SIS.MvcFramework
         protected IHttpResponse View<T>(string viewName, T model = null, string layoutName = "_GuestLayout")
             where T : class
         {
+
             var allContent = this.GetViewContent(viewName, model, layoutName);
             this.PrepareHtmlResult(allContent);
             return this.Response;
@@ -79,9 +80,9 @@ namespace SIS.MvcFramework
             return this.Response;
         }
 
-        protected IHttpResponse BadRequestError(string errorMessage)
+        protected IHttpResponse BadRequestError(string errorMessage, int role = 0)
         {
-            var viewModel = new ErrorViewModel { Error = errorMessage };
+            var viewModel = new ErrorViewModel { Error = errorMessage, Role = role };
             var allContent = this.GetViewContent("Error", viewModel);
             this.PrepareHtmlResult(allContent);
             this.Response.StatusCode = HttpResponseStatusCode.BadRequest;
@@ -97,8 +98,12 @@ namespace SIS.MvcFramework
             return this.Response;
         }
 
-        private string GetViewContent<T>(string viewName, T model, string layoutName = "_GuestLayout")
+        private string GetViewContent<T>(string viewName, T model, string layoutName = "_UserLayout")
         {
+            if (this.User == null)
+            {
+                layoutName = "_GuestLayout";
+            }
             var content = this.ViewEngine.GetHtml(viewName,
                 System.IO.File.ReadAllText("Views/" + viewName + ".html"), model, this.User);
 

@@ -23,6 +23,7 @@ namespace SIS.MvcFramework
 
                 var sourceProperty = source.GetType().GetProperties()
                     .FirstOrDefault(x => x.Name.ToLower() == destinationProperty.Name.ToLower());
+                
                 if (sourceProperty?.GetMethod != null)
                 {
                     var sourceValue = sourceProperty.GetMethod.Invoke(source, new object[0]);
@@ -46,6 +47,7 @@ namespace SIS.MvcFramework
         {
             var typeCode = Type.GetTypeCode(type);
             object value = null;
+            
             switch (typeCode)
             {
                 case TypeCode.Int32:

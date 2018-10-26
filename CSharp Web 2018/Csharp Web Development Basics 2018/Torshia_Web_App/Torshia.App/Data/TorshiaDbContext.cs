@@ -28,6 +28,7 @@
         public DbSet<TaskSector> TaskSectors { get; set; }
 
         public DbSet<TaskParticitpant> TaskParticipants { get; set; }
+        public User First { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

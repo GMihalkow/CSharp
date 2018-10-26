@@ -90,7 +90,7 @@ namespace SIS.WebServer
             else if (File.Exists(fullpath) && path.EndsWith(".js"))
             {
                 byte[] resourceFileContent = File.ReadAllBytes(path);
-                return new CssResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
+                return new JsResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
             }
             else
             {

@@ -10,7 +10,7 @@
             : base(responseStatusCode)
         {
             this.Headers.Add(new HttpHeader(HttpHeader.ContentLength, content.Length.ToString()));
-            this.Headers.Add(new HttpHeader(HttpHeader.ContentDisposition, "text/js"));
+            this.Headers.Add(new HttpHeader(HttpHeader.ContentType, "text/js"));
             this.Content = content;
         }
     }

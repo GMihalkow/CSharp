@@ -3,5 +3,7 @@
     public class ErrorViewModel
     {
         public string Error { get; set; }
+
+        public int Role { get; set; }
     }
 }

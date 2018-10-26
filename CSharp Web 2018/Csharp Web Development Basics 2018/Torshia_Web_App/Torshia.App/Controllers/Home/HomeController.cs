@@ -15,6 +15,7 @@
             {
                 User user = this.DbContext.Users.First(u => u.Username == this.User);
                 var viewModel = user.To<PostRegisterViewModel>();
+                viewModel.Role = user.Role;
 
                 return this.View("/Home/LoggedIndex", viewModel, "_UserLayout");
             }
