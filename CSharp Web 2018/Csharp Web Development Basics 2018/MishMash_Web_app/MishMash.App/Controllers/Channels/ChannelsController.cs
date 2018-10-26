@@ -57,7 +57,7 @@
                 index++;
                 Tag newTag = new Tag()
                 {
-                    Name = tag,
+                    Name = tag.Trim(),
                 };
 
                 if (this.DbContext.Tags.Any(t => t.Name == newTag.Name))

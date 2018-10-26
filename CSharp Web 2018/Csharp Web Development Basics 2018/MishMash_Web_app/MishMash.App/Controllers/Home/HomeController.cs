@@ -37,26 +37,41 @@
                                 .Include(uc => uc.Followers)
                                 .ToArray(),
 
-                    SuggestedChannels =
+                    CommonTags =
                             this.DbContext
-                            .Channels
-                            .Include(ch => ch.Tags)
-                            .Include(ch => ch.Followers)
-                            .Where(ch => ch.Tags.Any(t => t.Tag.Name == "common"))
+                            .ChannelTags
+                            .GroupBy(p => p.TagId)
+                            .Select(p => p.Select(w => w.Tag))
+                            .Where(t => t.Count() > 1)
+                            .SelectMany(x => x.Select(q => q.Name))
+                            .Distinct()
                             .ToArray(),
+                };
 
-                    SeeOtherChannels =
+                userModel.SuggestedChannels =
                             this.DbContext
                             .Channels
                             .Include(ch => ch.Tags)
                             .Include(ch => ch.Followers)
-                            .Where(ch => ch
-                                .Tags
-                                .Any(t => t.Tag.Name == "common") == false
-                                &&
-                                ch.Followers.Any(u => u.UserId == user.Id) == false)
-                            .ToArray()
-                };
+                            .Where(p => p.Tags
+                                        .Any(t => userModel
+                                            .CommonTags.Contains(t.Tag.Name))
+                                            &&
+                                  p.Followers.Any(u => u.UserId == user.Id) == false)
+                            .ToArray();
+
+                userModel.SeeOtherChannels =
+                           this.DbContext
+                           .Channels
+                           .Include(ch => ch.Tags)
+                           .Include(ch => ch.Followers)
+                           .Where(p => p.Tags
+                                        .Any(t => userModel
+                                            .CommonTags.Contains(t.Tag.Name)) == false
+                                            &&
+                                  p.Followers.Any(u => u.UserId == user.Id) == false)
+                           .ToArray();
+
 
                 if (user.Role == Role.Admin)
                 {

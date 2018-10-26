@@ -82,10 +82,15 @@ namespace SIS.WebServer
             path = $"../{Assembly.GetEntryAssembly().GetName(true).Name}/wwwroot/" + path.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries)[1];
             string fullpath = (Path.GetFullPath(path));
 
-            if (File.Exists(fullpath))
+            if (File.Exists(fullpath) && path.EndsWith(".css"))
             {
                 byte[] resourceFileContent = File.ReadAllBytes(path);
-                return new InlineResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
+                return new CssResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
+            }
+            else if (File.Exists(fullpath) && path.EndsWith(".js"))
+            {
+                byte[] resourceFileContent = File.ReadAllBytes(path);
+                return new CssResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
             }
             else
             {

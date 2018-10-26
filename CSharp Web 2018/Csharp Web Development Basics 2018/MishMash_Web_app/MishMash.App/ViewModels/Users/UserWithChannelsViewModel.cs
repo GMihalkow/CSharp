@@ -12,5 +12,7 @@
         public ICollection<Channel> SuggestedChannels { get; set; }
 
         public ICollection<Channel> SeeOtherChannels { get; set; }
+
+        public ICollection<string> CommonTags { get; set; }
     }
 }
