@@ -30,26 +30,26 @@ namespace SIS.MvcFramework
         {
             get
             {
-                if (!this.Request.Cookies.ContainsCookie("-auth.mish"))
+                if (!this.Request.Cookies.ContainsCookie("-auth.torshia"))
                 {
                     return null;
                 }
 
-                var cookie = this.Request.Cookies.GetCookie("-auth.mish");
+                var cookie = this.Request.Cookies.GetCookie("-auth.torshia");
                 var cookieContent = cookie.Value;
                 var userName = this.UserCookieService.GetUserData(cookieContent);
                 return userName;
             }
         }
 
-        protected IHttpResponse View(string viewName, string layoutName = "_Layout")
+        protected IHttpResponse View(string viewName, string layoutName = "_GuestLayout")
         {
             var allContent = this.GetViewContent(viewName, (object)null, layoutName);
             this.PrepareHtmlResult(allContent);
             return this.Response;
         }
 
-        protected IHttpResponse View<T>(string viewName, T model = null, string layoutName = "_Layout")
+        protected IHttpResponse View<T>(string viewName, T model = null, string layoutName = "_GuestLayout")
             where T : class
         {
             var allContent = this.GetViewContent(viewName, model, layoutName);
@@ -97,7 +97,7 @@ namespace SIS.MvcFramework
             return this.Response;
         }
 
-        private string GetViewContent<T>(string viewName, T model, string layoutName = "_Layout")
+        private string GetViewContent<T>(string viewName, T model, string layoutName = "_GuestLayout")
         {
             var content = this.ViewEngine.GetHtml(viewName,
                 System.IO.File.ReadAllText("Views/" + viewName + ".html"), model, this.User);

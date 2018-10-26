@@ -15,4 +15,22 @@
     <ProjectReference Include="..\SIS.MvcFramework\SIS.MvcFramework.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Views\Error.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Home\LoggedIndex.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Home\GuestIndex.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\_UserLayout.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\_GuestLayout.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,6 @@
     {
         public void Configure()
         {
-            throw new NotImplementedException();
         }
 
         public void ConfigureServices(IServiceCollection collection)
