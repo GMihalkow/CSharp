@@ -1,0 +1,4 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.2\Torshia.App.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.2\Torshia.App.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.2\Torshia.App.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.2\Torshia.App.AssemblyInfo.cs

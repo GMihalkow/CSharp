@@ -1,0 +1,17 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\bin\Debug\netcoreapp2.1\SIS.HTTP.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.pdb
