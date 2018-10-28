@@ -81,24 +81,27 @@
         [Authorize]
         public IHttpResponse Details(int id)
         {
-            var task =
+            var taskExists =
                 this.DbContext
-                .Tasks
-                .Include(t => t.AffectedSectors)
-                .Include(t => t.Participants)
-                .Include(t => t.Reports)
-                .FirstOrDefault(t => t.Id == id);
+                .Tasks.Any(t => t.Id == id);
 
-            if (task == null)
+            if (taskExists == false)
                 return this.BadRequestError("Task doesn't exist");
 
-            TaskDetailsViewModel viewModel = new TaskDetailsViewModel
-            {
-                Title = task.Title,
-                Level = task.AffectedSectors.Count,
-                DueDate = task.DueDate.ToString("d"),
-                Description = task.Description
-            };
+            TaskDetailsViewModel viewModel =
+                this.DbContext
+                .Tasks
+                .Where(t => t.Id == id)
+                .Select(t => new TaskDetailsViewModel()
+                {
+                    Title = t.Title,
+                    Level = t.AffectedSectors.Count,
+                    Description = t.Description,
+                    DueDate = t.DueDate.ToString("d"),
+                    AffectedSectors = string.Join(", ", t.AffectedSectors.Select(a => a.Sector.SectorType.ToString())),
+                    Participants = string.Join(", ", t.Participants.Select(p => p.Participant.Name))
+                })
+                .First();
 
             return this.View(viewModel);
         }
