@@ -3,7 +3,6 @@
     using SIS.HTTP.Cookies;
     using SIS.HTTP.Responses;
     using SIS.MvcFramework;
-    using System;
     using System.Linq;
     using System.Text.RegularExpressions;
     using Torshia.App.Models;
@@ -12,13 +11,12 @@
 
     public class UsersController : BaseController
     {
-        [HttpGet("/Users/Register")]
         public IHttpResponse Register()
         {
-            return this.View("Users/Register", "_GuestLayout");
+            return this.View("Users/Register");
         }
 
-        [HttpPost("/Users/Register")]
+        [HttpPost]
         public IHttpResponse Register(PostRegisterViewModel model)
         {
             Regex usernameAndPasswordRegex = new Regex(@"^\w+$");
@@ -38,11 +36,11 @@
                model.Username.Length > 30))
             {
 
-                return this.BadRequestError("Invalid username or password format!");
+                return this.BadRequestErrorWithView("Invalid username or password format!");
             }
             if (this.DbContext.Users.Any(user => user.Email == model.Email))
             {
-                return this.BadRequestError("Email is already in use!");
+                return this.BadRequestErrorWithView("Email is already in use!");
             }
             if (hashedConfirmPassword == hashedPassword)
             {
@@ -70,38 +68,31 @@
                 {
                     if (this.DbContext.Users.Any(u => u.Username == model.Username) == true)
                     {
-                        return this.BadRequestError("Username already exists!");
+                        return this.BadRequestErrorWithView("Username already exists!");
                     }
 
                     this.DbContext.Users.Add(user);
                     this.DbContext.SaveChanges();
                 }
 
-            }
-            //Adding cookie
-            HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(model.Username));
+                ////Adding cookie
+                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString() };
+                var cookieContent = this.UserCookieService.GetUserCookie(mvcUser);
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, cookieContent);
 
-            this.Request.Cookies.Add(cookie);
-            this.Response.Cookies.Add(cookie);
-            if (model.Role == Role.Admin)
-            {
-                return this.Redirect("/");
-
+                this.Request.Cookies.Add(cookie);
+                this.Response.Cookies.Add(cookie);
             }
-            else
-            {
-                return this.Redirect("/");
 
-            }
+            return this.Redirect("/");
         }
-
-        [HttpGet("/Users/Login")]
+        
         public IHttpResponse Login()
         {
             return this.View("Users/Login");
         }
 
-        [HttpPost("/Users/Login")]
+        [HttpPost]
         public IHttpResponse Login(PostRegisterViewModel model)
         {
             string hashedPassword = this.hashService.Hash(model.Password);
@@ -110,13 +101,16 @@
                 (user.Username == model.Username.Trim())
             && user.Password == hashedPassword)))
             {
-                return this.BadRequestError("Invalid user information!");
+                return this.BadRequestErrorWithView("Invalid user information!");
             }
             else
             {
-                model.Role = this.DbContext.Users.First(u => u.Username == model.Username.Trim()).Role;
-
-                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, this.UserCookieService.EncryptString(model.Username));
+                var user = this.DbContext.Users.First(u => u.Username == model.Username);
+                
+                //Adding cookie
+                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString() };
+                var cookieContent = this.UserCookieService.GetUserCookie(mvcUser);
+                HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, cookieContent);
 
                 this.Request.Cookies.Add(cookie);
                 this.Response.Cookies.Add(cookie);
@@ -124,8 +118,8 @@
 
             return this.Redirect("/");
         }
-
-        [HttpGet("/Users/Logout")]
+        
+        [Authorize]
         public IHttpResponse Logout()
         {
             if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))

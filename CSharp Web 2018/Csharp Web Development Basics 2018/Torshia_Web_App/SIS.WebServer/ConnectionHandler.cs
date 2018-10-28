@@ -14,9 +14,6 @@ namespace SIS.WebServer
     using HTTP.Responses;
     using HTTP.Sessions;
     using Routing;
-    using System.IO;
-    using System.Net;
-    using System.Reflection;
 
     public class ConnectionHandler
     {
@@ -71,31 +68,10 @@ namespace SIS.WebServer
             if (!this.serverRoutingTable.Routes.ContainsKey(httpRequest.RequestMethod)
                 || !this.serverRoutingTable.Routes[httpRequest.RequestMethod].ContainsKey(httpRequest.Path))
             {
-                return this.ReturnIfResource(httpRequest.Path);
+                return new TextResult($"Route with method {httpRequest.RequestMethod} and path \"{httpRequest.Path}\" not found.", HttpResponseStatusCode.NotFound);
             }
 
             return this.serverRoutingTable.Routes[httpRequest.RequestMethod][httpRequest.Path].Invoke(httpRequest);
-        }
-
-        private IHttpResponse ReturnIfResource(string path)
-        {
-            path = $"../{Assembly.GetEntryAssembly().GetName(true).Name}/wwwroot/" + path.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries)[1];
-            string fullpath = (Path.GetFullPath(path));
-
-            if (File.Exists(fullpath) && path.EndsWith(".css"))
-            {
-                byte[] resourceFileContent = File.ReadAllBytes(path);
-                return new CssResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
-            }
-            else if (File.Exists(fullpath) && path.EndsWith(".js"))
-            {
-                byte[] resourceFileContent = File.ReadAllBytes(path);
-                return new JsResourceResult(resourceFileContent, HttpResponseStatusCode.Ok);
-            }
-            else
-            {
-                return new HtmlResult("<h1>Error 404 Not Found!</h1>", HttpResponseStatusCode.NotFound);
-            }
         }
 
         private async Task PrepareResponse(IHttpResponse httpResponse)
@@ -142,6 +118,8 @@ namespace SIS.WebServer
 
                 if (httpRequest != null)
                 {
+                    Console.WriteLine($"Processing: {httpRequest.RequestMethod} {httpRequest.Path}...");
+
                     string sessionId = this.SetRequestSession(httpRequest);
 
                     var httpResponse = this.HandleRequest(httpRequest);

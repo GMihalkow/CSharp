@@ -2,12 +2,8 @@
 {
     public interface IUserCookieService
     {
-        string GetUserCookie(string userName);
+        string GetUserCookie(MvcUserInfo user);
 
-        string GetUserData(string cookieContent);
-
-        string EncryptString(string clearText, string keyString);
-
-        string DecryptString(string cipherText, string keyString);
+        MvcUserInfo GetUserData(string cookieContent);
     }
 }

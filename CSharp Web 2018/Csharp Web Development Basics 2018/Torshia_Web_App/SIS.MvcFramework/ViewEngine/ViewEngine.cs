@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Loader;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Emit;
 
 namespace SIS.MvcFramework.ViewEngine
 {
     public class ViewEngine : IViewEngine
     {
-        public string GetHtml<T>(string viewName, string viewCode, T model, string user = null)
+        public string GetHtml<T>(string viewName, string viewCode, T model, MvcUserInfo user = null)
         {
             var viewTypeName = viewName.Replace("/", "_") + "View";
             var csharpMethodBody = this.GenerateCSharpMethodBody(viewCode);
@@ -24,13 +21,14 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
+using SIS.MvcFramework;
 using SIS.MvcFramework.ViewEngine;
 using " + typeof(T).Namespace + @";
 namespace MyAppViews
 {
     public class " + viewTypeName + " : IView<" + typeof(T).FullName.Replace("+", ".") + @">
     {
-        public string GetHtml(" + typeof(T).FullName.Replace("+", ".") + @" model, string user)
+        public string GetHtml(" + typeof(T).FullName.Replace("+", ".") + @" model, MvcUserInfo user)
         {
             StringBuilder html = new StringBuilder();
             var Model = model;
@@ -46,7 +44,6 @@ namespace MyAppViews
                 this.GetInstance(viewCodeAsCSharpCode, "MyAppViews." + viewTypeName, typeof(T)) as IView<T>;
             var html = instanceOfViewClass.GetHtml(model, user);
             return html;
-            
         }
 
         private object GetInstance(string cSharpCode, string typeName, Type viewModelType)
@@ -122,7 +119,7 @@ namespace MyAppViews
                     while (htmlLine.Contains("@"))
                     {
                         var specialSymbolIndex = htmlLine.IndexOf("@", StringComparison.InvariantCulture);
-                        var endOfCode = new Regex(@"[\s<\\!,-]+").Match(htmlLine, specialSymbolIndex).Index;
+                        var endOfCode = new Regex(@"[\s&\+=()<\\!]+").Match(htmlLine, specialSymbolIndex).Index;
                         string expression = null;
                         if (endOfCode == 0 || endOfCode == -1)
                         {

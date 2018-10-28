@@ -1,7 +1,6 @@
 ﻿namespace Torshia.App
 {
     using SIS.MvcFramework;
-    using System;
 
     public class Program
     {

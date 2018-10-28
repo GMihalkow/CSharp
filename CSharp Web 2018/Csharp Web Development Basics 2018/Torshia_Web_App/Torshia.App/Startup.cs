@@ -7,15 +7,16 @@
 
     public class Startup : IMvcApplication
     {
-        public void Configure()
-        {
-        }
-
         public void ConfigureServices(IServiceCollection collection)
         {
             collection.AddService<IHashService, HashService>();
             collection.AddService<IUserCookieService, UserCookieService>();
             collection.AddService<ILogger>(() => new FileLogger($"log.txt"));
+        }
+
+        MvcFrameworkSettings IMvcApplication.Configure()
+        {
+            return new MvcFrameworkSettings();
         }
     }
 }

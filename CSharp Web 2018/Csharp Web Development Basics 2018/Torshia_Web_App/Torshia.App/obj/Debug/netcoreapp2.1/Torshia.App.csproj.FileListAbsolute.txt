@@ -12,11 +12,13 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.1\Torshia.App.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.1\Torshia.App.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\obj\Debug\netcoreapp2.1\Torshia.App.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\Home\GuestIndex.html
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\Home\LoggedIndex.html
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\_GuestLayout.html
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\_UserLayout.html
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Torshia.App.deps.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Torshia.App.runtimeconfig.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Torshia.App.runtimeconfig.dev.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\Error.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\_Layout.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\wwwroot\bootstrap.min.css
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\wwwroot\reset-css.css
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\wwwroot\style.css
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\Torshia.App\bin\Debug\netcoreapp2.1\Views\Home\Index.html

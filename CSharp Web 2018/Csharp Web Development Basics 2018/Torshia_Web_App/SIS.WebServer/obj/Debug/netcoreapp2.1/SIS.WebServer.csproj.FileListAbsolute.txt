@@ -1,14 +1,3 @@
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.deps.json
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.HTTP.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.HTTP.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.csprojResolveAssemblyReference.cache
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.csproj.CoreCompileInputs.cache
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.AssemblyInfoInputs.cache
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.AssemblyInfo.cs
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.dll
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\MishMashApp\SIS.WebServer\obj\Debug\netcoreapp2.1\SIS.WebServer.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.deps.json
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Torshia\SIS.WebServer\bin\Debug\netcoreapp2.1\SIS.WebServer.pdb

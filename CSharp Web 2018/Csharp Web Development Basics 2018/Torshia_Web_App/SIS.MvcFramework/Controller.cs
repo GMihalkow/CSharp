@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using SIS.HTTP.Cookies;
 using SIS.HTTP.Enums;
 using SIS.HTTP.Headers;
 using SIS.HTTP.Requests;
@@ -10,12 +12,9 @@ namespace SIS.MvcFramework
 {
     public abstract class Controller
     {
-        protected IHashService hashService;
-
         protected Controller()
         {
-            this.hashService = new HashService();
-            this.Response = new HttpResponse { StatusCode = HttpResponseStatusCode.Ok };
+            this.Response = new HttpResponse {StatusCode = HttpResponseStatusCode.Ok};
         }
 
         public IHttpRequest Request { get; set; }
@@ -24,34 +23,58 @@ namespace SIS.MvcFramework
 
         public IViewEngine ViewEngine { get; set; }
 
-        public UserCookieService UserCookieService { get; internal set; }
+        public IUserCookieService UserCookieService { get; internal set; }
 
-        protected string User
+        public static MvcUserInfo GetUserData(
+            IHttpCookieCollection cookieCollection,
+            IUserCookieService cookieService)
         {
-            get
+            if (!cookieCollection.ContainsCookie("-auth.torshia"))
             {
-                if (!this.Request.Cookies.ContainsCookie("-auth.torshia"))
-                {
-                    return null;
-                }
+                return new MvcUserInfo();
+            }
 
-                var cookie = this.Request.Cookies.GetCookie("-auth.torshia");
-                var cookieContent = cookie.Value;
-                var userName = this.UserCookieService.GetUserData(cookieContent);
+            var cookie = cookieCollection.GetCookie("-auth.torshia");
+            var cookieContent = cookie.Value;
+
+            try
+            {
+                var userName = cookieService.GetUserData(cookieContent);
                 return userName;
+            }
+            catch (Exception)
+            {
+                return new MvcUserInfo();
             }
         }
 
-        protected IHttpResponse View(string viewName, string layoutName = "_GuestLayout")
-        {
-            var allContent = this.GetViewContent(viewName, (object)null, layoutName);
-            this.PrepareHtmlResult(allContent);
-            return this.Response;
-        }
+        protected MvcUserInfo User => GetUserData(this.Request.Cookies, this.UserCookieService);
 
-        protected IHttpResponse View<T>(string viewName, T model = null, string layoutName = "_GuestLayout")
+        protected IHttpResponse View(string viewName = null, string layoutName = "_Layout")
+        {
+            return this.View(viewName, (object)null, layoutName);
+        }
+        
+        protected IHttpResponse View<T>(T model = null, string layoutName = "_Layout")
             where T : class
         {
+            return this.View(null, model, layoutName);
+        }
+
+        protected IHttpResponse View<T>(
+            string viewName = null,
+            T model = null,
+            string layoutName = "_Layout")
+            where T : class
+        {
+            if (viewName == null)
+            {
+                viewName = this.Request.Path.Trim('/', '\\');
+                if (string.IsNullOrWhiteSpace(viewName))
+                {
+                    viewName = "Home/Index";
+                }
+            }
 
             var allContent = this.GetViewContent(viewName, model, layoutName);
             this.PrepareHtmlResult(allContent);
@@ -80,11 +103,39 @@ namespace SIS.MvcFramework
             return this.Response;
         }
 
-        protected IHttpResponse BadRequestError(string errorMessage, int role = 0)
+        protected IHttpResponse BadRequestError(string errorMessage)
         {
-            var viewModel = new ErrorViewModel { Error = errorMessage, Role = role };
+            var viewModel = new ErrorViewModel { Error = errorMessage };
             var allContent = this.GetViewContent("Error", viewModel);
             this.PrepareHtmlResult(allContent);
+            this.Response.StatusCode = HttpResponseStatusCode.BadRequest;
+            return this.Response;
+        }
+
+        protected IHttpResponse BadRequestErrorWithView(string errorMessage)
+        {
+            return this.BadRequestErrorWithView(errorMessage, (object)null);
+        }
+
+        protected IHttpResponse BadRequestErrorWithView<T>(string errorMessage, T model, string layoutName = "_Layout")
+        {
+            var errorContent = this.GetViewContent("Error", new ErrorViewModel { Error = errorMessage }, null);
+
+            var viewName = this.Request.Path.Trim('/', '\\');
+            if (string.IsNullOrWhiteSpace(viewName))
+            {
+                viewName = "Home/Index";
+            }
+
+            var viewContent = this.GetViewContent(viewName, model, null);
+            var allViewContent = errorContent + Environment.NewLine + viewContent;
+            var errorAndViewContent = this.ViewEngine.GetHtml(viewName, allViewContent, model, this.User);
+
+            var layoutFileContent = System.IO.File.ReadAllText($"Views/{layoutName}.html");
+            var allContent = layoutFileContent.Replace("@RenderBody()", errorAndViewContent);
+            var layoutContent = this.ViewEngine.GetHtml("_Layout", allContent, model, this.User);
+
+            this.PrepareHtmlResult(layoutContent);
             this.Response.StatusCode = HttpResponseStatusCode.BadRequest;
             return this.Response;
         }
@@ -98,19 +149,20 @@ namespace SIS.MvcFramework
             return this.Response;
         }
 
-        private string GetViewContent<T>(string viewName, T model, string layoutName = "_UserLayout")
+        private string GetViewContent<T>(string viewName, T model, string layoutName = "_Layout")
         {
-            if (this.User == null)
-            {
-                layoutName = "_GuestLayout";
-            }
             var content = this.ViewEngine.GetHtml(viewName,
                 System.IO.File.ReadAllText("Views/" + viewName + ".html"), model, this.User);
 
-            var layoutFileContent = System.IO.File.ReadAllText($"Views/{layoutName}.html");
-            var allContent = layoutFileContent.Replace("@RenderBody()", content);
-            var layoutContent = this.ViewEngine.GetHtml(layoutName, allContent, model, this.User);
-            return layoutContent;
+            if (layoutName != null)
+            {
+                var layoutFileContent = System.IO.File.ReadAllText($"Views/{layoutName}.html");
+                var allContent = layoutFileContent.Replace("@RenderBody()", content);
+                var layoutContent = this.ViewEngine.GetHtml("_Layout", allContent, model, this.User);
+                return layoutContent;
+            }
+
+            return content;
         }
 
         private void PrepareHtmlResult(string content)

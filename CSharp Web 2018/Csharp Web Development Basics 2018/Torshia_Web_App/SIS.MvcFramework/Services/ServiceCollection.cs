@@ -1,8 +1,6 @@
-﻿using SIS.HTTP.Requests;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace SIS.MvcFramework.Services
 {
@@ -24,7 +22,7 @@ namespace SIS.MvcFramework.Services
 
         public T CreateInstance<T>()
         {
-            return (T)this.CreateInstance(typeof(T));
+            return (T) this.CreateInstance(typeof(T));
         }
 
         public object CreateInstance(Type type)
@@ -43,11 +41,9 @@ namespace SIS.MvcFramework.Services
             {
                 throw new Exception($"Type {type.FullName} cannot be instantiated.");
             }
-            ConstructorInfo constructor;
 
-            constructor = type.GetConstructors().OrderBy(x => x.GetParameters().Length).First();
-
-
+            // TODO: if empty -> use it 
+            var constructor = type.GetConstructors().OrderBy(x => x.GetParameters().Length).First();
             var constructorParameters = constructor.GetParameters();
             var constructorParameterObjects = new List<object>();
             foreach (var constructorParameter in constructorParameters)
@@ -63,7 +59,7 @@ namespace SIS.MvcFramework.Services
 
         public void AddService<T>(Func<T> p)
         {
-            this.dependencyContainerWithFunc.Add(typeof(T), () => p());
+            this.dependencyContainerWithFunc[typeof(T)] = () => p();
         }
     }
 }

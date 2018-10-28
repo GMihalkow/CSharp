@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Net;
 
 namespace SIS.HTTP.Cookies
 {
@@ -20,14 +19,7 @@ namespace SIS.HTTP.Cookies
         public void Add(HttpCookie cookie)
         {
             CoreValidator.ThrowIfNull(cookie, nameof(cookie));
-            if (this.cookies.ContainsKey(cookie.Key))
-            {
-                this.cookies[cookie.Key] = cookie;
-            }
-            else
-            {
-                this.cookies.Add(cookie.Key, cookie);
-            }
+            this.cookies.Add(cookie.Key, cookie);
         }
 
         public bool ContainsCookie(string key)

@@ -1,11 +1,10 @@
-﻿using System;
-using SIS.HTTP.Enums;
+﻿using SIS.HTTP.Enums;
 
 namespace SIS.MvcFramework
 {
     public class HttpPostAttribute : HttpAttribute
     {
-        public HttpPostAttribute(string path)
+        public HttpPostAttribute(string path = null)
             : base(path)
         {
         }

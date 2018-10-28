@@ -14,11 +14,6 @@ namespace SIS.MvcFramework.Services
             this.logger = logger;
         }
 
-        public HashService()
-        {
-
-        }
-
         public string StrongHash(string stringToHash)
         {
             var result = stringToHash;
@@ -39,7 +34,7 @@ namespace SIS.MvcFramework.Services
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(stringToHash));
                 // Get the hashed string.  
                 var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-                //this.logger.Log(hash);
+                this.logger.Log(hash);
                 return hash;
             }
         }
