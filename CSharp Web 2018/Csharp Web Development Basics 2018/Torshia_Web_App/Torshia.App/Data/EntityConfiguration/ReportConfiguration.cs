@@ -16,7 +16,7 @@
             builder
                 .HasOne(r => r.Reporter)
                 .WithMany(u => u.Reports)
-                .HasForeignKey(r => r.TaskId);
+                .HasForeignKey(r => r.ReporterId);
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Torshia.App.Data;
 
 namespace Torshia.App.Migrations
 {
     [DbContext(typeof(TorshiaDbContext))]
-    partial class TorshiaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181029124342_Last")]
+    partial class Last
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,8 +47,6 @@ namespace Torshia.App.Migrations
                     b.Property<int>("TaskId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ReporterId");
 
                     b.HasIndex("TaskId");
 
@@ -132,12 +132,12 @@ namespace Torshia.App.Migrations
 
             modelBuilder.Entity("Torshia.App.Models.Report", b =>
                 {
-                    b.HasOne("Torshia.App.Models.User", "Reporter")
+                    b.HasOne("Torshia.App.Models.Task", "Task")
                         .WithMany("Reports")
-                        .HasForeignKey("ReporterId")
+                        .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Torshia.App.Models.Task", "Task")
+                    b.HasOne("Torshia.App.Models.User", "Reporter")
                         .WithMany("Reports")
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade);

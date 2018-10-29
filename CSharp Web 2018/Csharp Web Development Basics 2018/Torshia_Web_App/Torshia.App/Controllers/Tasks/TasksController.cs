@@ -1,6 +1,5 @@
 ﻿namespace Torshia.App.Controllers.Tasks
 {
-    using Microsoft.EntityFrameworkCore;
     using SIS.HTTP.Responses;
     using SIS.MvcFramework;
     using System;
@@ -26,6 +25,11 @@
         [HttpPost]
         public IHttpResponse Create(PostTaskViewModel model)
         {
+            if (this.User.Role != "Admin")
+            {
+                return this.BadRequestError("404 Page Not Found");
+            }
+
             var tempSectors = new string[]
             {
                 model.Marketing,
@@ -36,6 +40,11 @@
             };
             tempSectors = tempSectors.Where(s => s != null).ToArray();
 
+            var tempParticipats =
+                    model.Participants
+                    .Split(new string[] { ",", ", " }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+
             Task task = model.To<Task>();
             if (this.DbContext.Tasks.Any(t => t.Title == task.Title))
             {
@@ -45,6 +54,46 @@
             this.DbContext.Add(task);
             this.DbContext.SaveChanges();
 
+            foreach (var participantName in tempParticipats.Select(p => p.Trim()))
+            {
+                if (this.DbContext.Participants.Any(p => p.Name == participantName))
+                {
+                    int existingParticipantId = this.DbContext.Participants.First(p => p.Name == participantName).Id;
+                    var taskId = this.DbContext.Tasks.First(t => t.Title == task.Title).Id;
+                    TaskParticitpant taskParticitpant = new TaskParticitpant()
+                    {
+                        TaskId = taskId,
+                        ParticipantId = existingParticipantId
+                    };
+
+                    this.DbContext.TaskParticipants.Add(taskParticitpant);
+                    this.DbContext.SaveChanges();
+                }
+                else
+                {
+                    Participant participant = new Participant { Name = participantName };
+                    this.DbContext.Participants.Add(participant);
+                    this.DbContext.SaveChanges();
+
+                    if (this.DbContext.TaskParticipants.Any(tp => tp.Task.Title == task.Title && tp.Participant.Name == participant.Name))
+                    {
+
+                    }
+                    else
+                    {
+                        var taskId = this.DbContext.Tasks.First(t => t.Title == task.Title).Id;
+                        TaskParticitpant taskParticitpant = new TaskParticitpant()
+                        {
+                            TaskId = taskId,
+                            ParticipantId = participant.Id
+                        };
+
+                        this.DbContext.TaskParticipants.Add(taskParticitpant);
+                        this.DbContext.SaveChanges();
+                    }
+                }
+            }
+
             foreach (var sector in tempSectors)
             {
                 Sector newSector = null;
@@ -52,6 +101,7 @@
                 if (this.DbContext.Sectors.Any(s => s.SectorType == (SectorType)Enum.Parse(typeof(SectorType), sector)))
                 {
                     newSector = this.DbContext.Sectors.First(s => s.SectorType == (SectorType)Enum.Parse(typeof(SectorType), sector));
+
                 }
                 else
                 {

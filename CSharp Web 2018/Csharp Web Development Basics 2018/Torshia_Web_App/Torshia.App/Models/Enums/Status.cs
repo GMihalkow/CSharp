@@ -2,7 +2,7 @@
 {
     public enum Status
     {
-        Completed = 1,
-        Archived = 2
+        Completed = 75,
+        Archived = 25
     }
 }

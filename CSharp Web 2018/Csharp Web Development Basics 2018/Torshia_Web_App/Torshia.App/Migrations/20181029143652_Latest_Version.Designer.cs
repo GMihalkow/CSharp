@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Torshia.App.Data;
 
 namespace Torshia.App.Migrations
 {
     [DbContext(typeof(TorshiaDbContext))]
-    partial class TorshiaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181029143652_Latest_Version")]
+    partial class Latest_Version
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

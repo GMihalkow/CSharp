@@ -9,7 +9,7 @@
 
         public Status Status { get; set; }
 
-        public DateTime ReportedOn { get; set; }
+        public DateTime ReportedOn => DateTime.UtcNow;
 
         public int TaskId { get; set; }
 
