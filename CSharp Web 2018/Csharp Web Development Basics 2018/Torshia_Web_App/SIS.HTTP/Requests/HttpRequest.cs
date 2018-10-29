@@ -153,8 +153,14 @@ namespace SIS.HTTP.Requests
             {
                 string[] parameterArguments = queryParameter
                     .Split('=', StringSplitOptions.RemoveEmptyEntries);
-
-                this.QueryData.Add(parameterArguments[0], parameterArguments[1]);
+                if(parameterArguments.Length < 2)
+                {
+                    this.QueryData.Add(parameterArguments[0], string.Empty);
+                }
+                else
+                {
+                    this.QueryData.Add(parameterArguments[0], parameterArguments[1]);
+                }
             }
         }
 
@@ -171,8 +177,14 @@ namespace SIS.HTTP.Requests
             {
                 string[] parameterArguments = formDataParameter
                     .Split(HttpRequestParameterNameValueSeparator, StringSplitOptions.RemoveEmptyEntries);
-
-                this.FormData.Add(parameterArguments[0], parameterArguments[1]);
+                if (parameterArguments.Length < 2)
+                {
+                    this.FormData.Add(parameterArguments[0], string.Empty);
+                }
+                else
+                {
+                    this.FormData.Add(parameterArguments[0], parameterArguments[1]);
+                }
             }
         }
 

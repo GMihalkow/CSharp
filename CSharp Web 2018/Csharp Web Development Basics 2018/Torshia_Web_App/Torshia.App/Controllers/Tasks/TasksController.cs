@@ -25,6 +25,11 @@
         [HttpPost]
         public IHttpResponse Create(PostTaskViewModel model)
         {
+            if(model.Description.Length < 3 || model.Participants.Length < 3 || model.Title.Length < 3 || model.DueDate.ToString("d") == "01/01/0001")
+            {
+                return this.BadRequestErrorWithView("Invalid input fields information!");
+            }
+
             if (this.User.Role != "Admin")
             {
                 return this.BadRequestError("404 Page Not Found");

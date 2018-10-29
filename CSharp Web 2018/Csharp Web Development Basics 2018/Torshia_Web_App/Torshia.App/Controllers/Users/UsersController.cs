@@ -23,7 +23,7 @@
             Regex emailRegex = new Regex(@"^[A-z]+\@[A-z]+\.[A-z]{1,4}$");
 
             string hashedPassword = this.hashService.Hash(model.Password);
-            string hashedConfirmPassword = this.hashService.Hash(model.Password);
+            string hashedConfirmPassword = this.hashService.Hash(model.ConfirmPassword);
 
             model.Email = StringExtensions.UrlDecode(model.Email);
 
@@ -35,8 +35,7 @@
                model.Username.Length < 3 ||
                model.Username.Length > 30))
             {
-
-                return this.BadRequestErrorWithView("Invalid username or password format!");
+                return this.BadRequestErrorWithView("Invalid registration information format!");
             }
             if (this.DbContext.Users.Any(user => user.Email == model.Email))
             {
@@ -96,7 +95,7 @@
         public IHttpResponse Login(PostRegisterViewModel model)
         {
             string hashedPassword = this.hashService.Hash(model.Password);
-
+            
             if (!(this.DbContext.Users.Any(user =>
                 (user.Username == model.Username.Trim())
             && user.Password == hashedPassword)))
