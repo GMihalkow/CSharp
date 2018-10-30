@@ -7,6 +7,8 @@
 
     public class BaseController : Controller
     {
+        protected const string AuthenticationCookieKey = "-auth.judge";
+
         protected JudgeDbContext DbContext;
 
         protected IHashService hashService;
