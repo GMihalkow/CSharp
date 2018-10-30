@@ -1,0 +1,17 @@
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Judge.App.deps.json
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Judge.App.runtimeconfig.json
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Judge.App.runtimeconfig.dev.json
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Judge.App.dll
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Judge.App.pdb
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.HTTP.dll
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.MvcFramework.dll
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.WebServer.dll
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.MvcFramework.pdb
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.HTTP.pdb
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\SIS.WebServer.pdb
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.csprojResolveAssemblyReference.cache
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.AssemblyInfo.cs
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.dll
+C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.pdb
