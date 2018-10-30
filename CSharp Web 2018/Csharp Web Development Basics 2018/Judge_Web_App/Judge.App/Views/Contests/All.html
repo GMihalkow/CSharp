@@ -19,8 +19,8 @@
                         <td>@contest.ContestName</td>
                         <td>@contest.SubmissionsCount</td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="/Contests/Edit?Id=@contest.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/Contests/Delete?Id=@contest.Id" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
                     }
@@ -58,8 +58,8 @@
                         @if(User.Username == contest.ContestOwner.FullName)
                         {
                         <td>
-                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="/Contests/Edit?Id=@contest.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/Contests/Delete?Id=@contest.Id" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                         }
                     </tr>

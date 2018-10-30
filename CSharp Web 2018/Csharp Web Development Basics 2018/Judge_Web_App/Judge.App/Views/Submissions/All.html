@@ -1,0 +1,37 @@
+﻿<main>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="list-group" id="myList" role="tablist">
+                    @foreach(var contest in Model)
+                    {
+                    <a class="list-group-item list-group-item-action list-group-item-dark" data-toggle="list" href="#@contest.Name" role="tab">@contest.Name</a>
+                    }
+                </div>
+                <hr />
+                <div class="col col-8 ml-auto mr-auto">
+                    <a href="/Submissions/Create" class="btn col btn-outline-dark">Create</a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content">
+                    @foreach(var contest in Model)
+                    {
+                    <div class="tab-pane fade" id="@contest.Name" role="tabpanel">
+                        <ul class="list-group">
+                            @foreach(var submission in contest.Submissions)
+                            {
+                            @if(submission.Build == "Build Success")
+                            <li class="list-group-item list-group-item-success">@submission.Build</li>
+                            @else
+                            <li class="list-group-item list-group-item-danger">@submission.Build</li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

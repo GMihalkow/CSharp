@@ -1,0 +1,14 @@
+﻿<main>
+    <div class="mx-auto w-50 pt-3">
+        <h1 class="display-1 text-center">@Model.Name</h1>
+        <hr />
+        <form class="form-group py-3" action="/Contests/Edit?Id=@Model.Id" method="post">
+            <label for="name">Contest Name</label>
+            <input class="form-control" type="text" id="name" name="name" />
+            <div class="btn-group d-flex p-3 my-3" role="group" aria-label="...">
+                <button type="submit" class="btn btn-lg btn-outline-warning w-100">Edit</button>
+                <button type="button" onclick="window.history.back()" class="btn btn-lg btn-outline-dark w-100">Back</button>
+            </div>
+        </form>
+    </div>
+</main>

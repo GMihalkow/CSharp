@@ -17,9 +17,10 @@
                 .Contests
                 .Select(c => new AllContestsViewModel()
                 {
+                    Id = c.Id,
                     ContestName = c.Name,
                     SubmissionsCount = c.Submissions.Count,
-                    ContestOwner = c.Users.First().User
+                    ContestOwner = c.Users.FirstOrDefault().User ?? new Models.User() { FullName = string.Empty}
                 })
                 .ToArray();
 
@@ -51,6 +52,57 @@
                 ContestId = this.DbContext.Contests.First(c => c.Name == contest.Name).Id
             };
             this.DbContext.UserContests.Add(userContest);
+            this.DbContext.SaveChanges();
+
+            return this.Redirect("/Contests/All");
+        }
+
+        [Authorize]
+        public IHttpResponse Edit(int Id)
+        {
+            var contest = this.DbContext.Contests.First(c => c.Id == Id);
+            return this.View(contest);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IHttpResponse Edit(int Id, PostContestViewModel model)
+        {
+            var contest = this.DbContext.Contests.Where(c => c.Id == Id).FirstOrDefault();
+            if (contest == null)
+                return this.BadRequestError("Contest doesn't exist!");
+
+            if (this.DbContext.Contests.Any(c => c.Name == model.Name))
+                return this.BadRequestErrorWithView("This contest already exists!", contest);
+
+            contest.Name = model.Name;
+
+
+            this.DbContext.Entry(contest).State = EntityState.Modified;
+            this.DbContext.SaveChanges();
+
+            return this.Redirect("/Contests/All");
+        }
+
+        [Authorize]
+        public IHttpResponse Delete(int Id)
+        {
+            var contest = this.DbContext.Contests.FirstOrDefault(c => c.Id == Id);
+            if (contest == null)
+                return this.BadRequestError("Contest doesn't exist!");
+
+            return this.View(contest);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IHttpResponse Delete(int Id, PostContestViewModel model)
+        {
+            var contest = this.DbContext.Contests.FirstOrDefault(c => c.Id == Id);
+            if (contest == null)
+                return this.BadRequestError("Contest doesn't exist!");
+
+            this.DbContext.Contests.Remove(contest).State = EntityState.Deleted;
             this.DbContext.SaveChanges();
 
             return this.Redirect("/Contests/All");

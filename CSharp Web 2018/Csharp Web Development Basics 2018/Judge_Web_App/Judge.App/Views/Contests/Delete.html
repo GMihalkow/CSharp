@@ -1,0 +1,14 @@
+﻿<main>
+    <div class="mx-auto w-50 pt-3">
+        <h1 class="display-1 text-center">@Model.Name</h1>
+        <hr />
+        <form class="form-group py-3" action="/Contests/Delete?Id=@Model.Id" method="post">
+            <label for="name">Contest Name</label>
+            <input class="form-control" type="text" id="name" name="name" value="@Model.Name"/>
+            <div class="btn-group d-flex p-3 my-3" role="group" aria-label="..." >
+                <button type="submit" class="btn btn-lg btn-outline-danger w-100">Delete</button>
+                <button type="button" onclick="window.history.back()" class="btn btn-lg btn-outline-dark w-100">Back</button>
+            </div>
+        </form>
+    </div>
+</main>
