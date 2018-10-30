@@ -1,0 +1,76 @@
+﻿@if(User.Role == "Admin")
+{
+<main>
+    <br />
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-active">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Submissions</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var contest in @Model)
+                    {
+                    <tr>
+                        <td>@contest.ContestName</td>
+                        <td>@contest.SubmissionsCount</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="col col-8 ml-auto mr-auto">
+                <a href="/Contests/Create" class="btn col btn-outline-dark" >Create</a>
+            </div>
+        </div>
+    </div>
+</main>
+}
+@else
+{
+<main>
+    <br />
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-active">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Submissions</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach(var contest in @Model)
+                    {
+                    <tr>
+                        <td>@contest.ContestName</td>
+                        <td>@contest.SubmissionsCount</td>
+                        @if(User.Username == contest.ContestOwner.FullName)
+                        {
+                        <td>
+                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                        }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="col col-8 ml-auto mr-auto">
+                <a href="/Contests/Create" class="btn col btn-outline-dark">Create</a>
+            </div>
+        </div>
+    </div>
+</main>
+}
