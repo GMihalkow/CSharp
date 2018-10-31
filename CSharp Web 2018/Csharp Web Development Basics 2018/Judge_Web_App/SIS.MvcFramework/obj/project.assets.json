@@ -5227,11 +5227,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\SIS.MvcFramework.csproj",
+      "projectUniqueName": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\SIS.MvcFramework.csproj",
       "projectName": "SIS.MvcFramework",
-      "projectPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\SIS.MvcFramework.csproj",
+      "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\SIS.MvcFramework.csproj",
       "packagesPath": "C:\\Users\\Georgi-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\obj\\",
+      "outputPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.MvcFramework\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -5252,11 +5252,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj": {
-              "projectPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj"
+            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj": {
+              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj"
             },
-            "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.WebServer\\SIS.WebServer.csproj": {
-              "projectPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.WebServer\\SIS.WebServer.csproj"
+            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.WebServer\\SIS.WebServer.csproj": {
+              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.WebServer\\SIS.WebServer.csproj"
             }
           }
         }

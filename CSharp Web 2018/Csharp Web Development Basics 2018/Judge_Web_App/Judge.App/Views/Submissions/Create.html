@@ -11,7 +11,21 @@
                     <select class="form-control" id="sel1" name="contestName">
                         @foreach(var contest in Model)
                         {
+                        @if(User.Role == "Admin")
+                        {
                         <option>@contest.Name</option>
+                        }
+                        @else
+                        {
+                        @if(contest.Users.FirstOrDefault().User.FullName == User.Username)
+                        {
+                        <option>@contest.Name</option>
+                        }
+                        @else
+                        {
+
+                        }
+                        }
                         }
                     </select>
                 </div>

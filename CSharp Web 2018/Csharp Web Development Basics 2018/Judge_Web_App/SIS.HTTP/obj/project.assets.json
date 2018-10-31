@@ -691,11 +691,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj",
+      "projectUniqueName": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj",
       "projectName": "SIS.HTTP",
-      "projectPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj",
+      "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\SIS.HTTP.csproj",
       "packagesPath": "C:\\Users\\Georgi-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Georgi-PC\\documents\\visual studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\obj\\",
+      "outputPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\JudgeApp\\SIS.HTTP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

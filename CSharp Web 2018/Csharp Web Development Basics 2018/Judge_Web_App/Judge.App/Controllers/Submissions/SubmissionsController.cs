@@ -20,7 +20,13 @@
         [Authorize]
         public IHttpResponse Create()
         {
-            var contests = this.DbContext.Contests.ToArray();
+            var contests =
+                this.DbContext
+                .Contests
+                .Include(c => c.Users)
+                .ThenInclude(c => c.User)
+                .ToArray();
+
             return this.View(contests);
         }
 
@@ -28,6 +34,9 @@
         [HttpPost]
         public IHttpResponse Create(PostSubmissionViewModel model)
         {
+            if (model.ContestName == null)
+                return this.BadRequestError("You must select a contest to continue.");
+                    
             var user = this.DbContext.Users.FirstOrDefault(u => u.FullName == this.User.Username);
             if (user == null)
                 return this.BadRequestError("User doesn't exist!");

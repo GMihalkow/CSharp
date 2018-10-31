@@ -15,3 +15,14 @@ C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\
 C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.AssemblyInfo.cs
 C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.dll
 C:\Users\Georgi-PC\documents\visual studio 2017\Projects\JudgeApp\Judge.App\obj\Debug\netcoreapp2.1\Judge.App.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Contests\All.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Contests\Create.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Contests\Delete.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Contests\Edit.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Error.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Home\Index.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Submissions\All.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Submissions\Create.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\_Layout.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Users\Login.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\JudgeApp\Judge.App\bin\Debug\netcoreapp2.1\Views\Users\Register.html

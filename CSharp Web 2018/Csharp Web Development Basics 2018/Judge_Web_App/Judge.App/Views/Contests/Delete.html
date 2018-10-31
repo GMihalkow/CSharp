@@ -4,7 +4,7 @@
         <hr />
         <form class="form-group py-3" action="/Contests/Delete?Id=@Model.Id" method="post">
             <label for="name">Contest Name</label>
-            <input class="form-control" type="text" id="name" name="name" value="@Model.Name"/>
+            <input class="form-control" type="text" id="name" name="name" value="@Model.Name" readonly/>
             <div class="btn-group d-flex p-3 my-3" role="group" aria-label="..." >
                 <button type="submit" class="btn btn-lg btn-outline-danger w-100">Delete</button>
                 <button type="button" onclick="window.history.back()" class="btn btn-lg btn-outline-dark w-100">Back</button>
