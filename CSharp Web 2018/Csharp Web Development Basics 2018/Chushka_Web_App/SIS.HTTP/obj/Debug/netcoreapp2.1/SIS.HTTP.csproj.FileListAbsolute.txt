@@ -6,3 +6,4 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\SIS.HTTP\ob
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\SIS.HTTP\obj\Debug\netcoreapp2.1\SIS.HTTP.csprojResolveAssemblyReference.cache
