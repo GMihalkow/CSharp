@@ -1,5 +1,6 @@
 ﻿namespace Chushka.App.Controllers.Home
 {
+    using Chushka.App.ViewModels.Products;
     using SIS.HTTP.Responses;
     using System.Linq;
 
@@ -7,13 +8,19 @@
     {
         public IHttpResponse Index()
         {
-            var user = this.DbContext.Users.FirstOrDefault(u => u.Username == this.User.Username);
-            if (user == null)
-            {
-                return this.View();
-            }
+            var products =
+                this.DbContext
+                .Products
+                .Select(p => new AllProductsViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price
+                })
+                .ToArray();
 
-            return this.View(user);
+            return this.View(products);
         }
     }
 }

@@ -37,15 +37,6 @@
             this.DbContext.Products.Add(product);
             this.DbContext.SaveChanges();
 
-            Order order = new Order()
-            {
-                ClientId = user.Id,
-                Product = product,
-            };
-
-            this.DbContext.Orders.Add(order);
-            this.DbContext.SaveChanges();
-
             return this.Redirect($"/products/details?id={product.Id}");
         }
 

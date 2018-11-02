@@ -19,142 +19,34 @@
     <hr class="hr-2 bg-dark" />
     <div class="container-fluid product-holder">
         <div class="row d-flex justify-content-around">
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Chushkopek</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for peking chushkas.
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$500</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Chushkopek</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for peking chushkas.
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$500</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Chushkopek</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for peking chushkas.
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$500</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Chushkopek</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for peking chushkas.
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$500</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Chushkopek</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for peking chushkas.
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$500</h6>
-                </div>
-            </a>
+            @for(int index = 0; index < @Model.Count(); index++)
+            {var product = @Model.ElementAt(index);
+            @if(index % 5 == 0 && (index != 1 || index != 0))
+            {
         </div>
         <div class="row d-flex justify-content-around mt-4">
-            <a href="/products/details" class="col-md-2">
+            }
+            <a href="/products/details?id=@product.Id" class="col-md-2">
                 <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Injektoplqktor</h5>
+                    <h5 class="text-center mt-3">@product.Name</h5>
                     <hr class="hr-1 bg-white" />
                     <p class="text-white text-center">
-                        A universal tool for basically everything. It's ba...
+                        @if(product.Description.Length > 50)
+                        {
+                        { string longDescription = product.Description.Substring(0, 50) + "..."; }
+                        @longDescription
+                        }
+                        @else
+                        {
+                        { string shortDescription = product.Description + "..."; }
+                        @shortDescription
+                        }
                     </p>
                     <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1.56</h6>
+                    <h6 class="text-center text-white mb-3">$@product.Price</h6>
                 </div>
             </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Injektoplqktor</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for basically everything. It's ba...
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1.56</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Injektoplqktor</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for basically everything. It's ba...
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1.56</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Injektoplqktor</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for basically everything. It's ba...
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1.56</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Injektoplqktor</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        A universal tool for basically everything. It's ba...
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1.56</h6>
-                </div>
-            </a>
-        </div>
-        <div class="row d-flex justify-content-around mt-4">
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Something</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        Something
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1000</h6>
-                </div>
-            </a>
-            <a href="/products/details" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">Something</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        Something
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$1000</h6>
-                </div>
-            </a>
+            }
         </div>
     </div>
 </main>
