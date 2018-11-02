@@ -23,3 +23,6 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\obj\Debug\netcoreapp2.1\Chushka.App.AssemblyInfo.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\obj\Debug\netcoreapp2.1\Chushka.App.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\obj\Debug\netcoreapp2.1\Chushka.App.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\bin\Debug\netcoreapp2.1\Views\Products\Create.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\bin\Debug\netcoreapp2.1\Views\Products\Details.html
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Chushka.App\Chushka.App\bin\Debug\netcoreapp2.1\Views\Products\Edit.html
