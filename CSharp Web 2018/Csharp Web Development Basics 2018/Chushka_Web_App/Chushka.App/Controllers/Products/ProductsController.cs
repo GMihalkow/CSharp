@@ -25,6 +25,8 @@
                 return BadRequestErrorWithView("You must select a product type.");
             if (model.Price == default(decimal) || model.Price < 0)
                 return BadRequestErrorWithView("You must enter a valid number larger than 0.");
+            if (model.Name.Trim().Length < 3 || model.Description.Trim().Length < 3 || model.Name.Contains(" "))
+                return BadRequestErrorWithView("Invalid product information.");
 
             var user = this.DbContext.Users.First(u => u.Username == this.User.Username);
 
@@ -67,6 +69,13 @@
             var product = this.DbContext.Products.FirstOrDefault(p => p.Id == model.Id);
             if (product == null)
                 return this.BadRequestError("Product doesn't exist!");
+
+            if (model.ProductType == null)
+                return BadRequestError("You must select a product type.");
+            if (model.Price == default(decimal) || model.Price < 0)
+                return BadRequestError("You must enter a valid number larger than 0.");
+            if (model.Name.Trim().Length < 3 || model.Description.Trim().Length < 3 || model.Name.Contains(" "))
+                return BadRequestError("Invalid product information.");
 
             product.Name = model.Name;
             product.Price = model.Price;
