@@ -13,6 +13,9 @@
     {
         public IHttpResponse Login()
         {
+            if (this.User.IsLoggedIn)
+                return this.Redirect("/");
+
             return this.View();
         }
 
@@ -32,7 +35,7 @@
                 var user = this.DbContext.Users.First(u => u.Username == model.Username);
 
                 //Adding cookie
-                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString() };
+                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString(), Info = user.FullName };
                 var cookieContent = this.UserCookieService.GetUserCookie(mvcUser);
                 HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, cookieContent);
 
@@ -45,6 +48,9 @@
 
         public IHttpResponse Register()
         {
+            if (this.User.IsLoggedIn)
+                return this.Redirect("/");
+
             return this.View();
         }
 
@@ -113,7 +119,7 @@
                 }
 
                 ////Adding cookie
-                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString() };
+                var mvcUser = new MvcUserInfo { Username = user.Username, Role = user.Role.ToString(), Info = user.FullName };
                 var cookieContent = this.UserCookieService.GetUserCookie(mvcUser);
                 HttpCookie cookie = new HttpCookie(AuthenticationCookieKey, cookieContent);
 
@@ -124,6 +130,7 @@
             return this.Redirect("/");
         }
 
+        [Authorize]
         public IHttpResponse Logout()
         {
             if (this.Request.Cookies.ContainsCookie(AuthenticationCookieKey))
