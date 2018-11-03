@@ -31,7 +31,15 @@
             var user = this.DbContext.Users.First(u => u.Username == this.User.Username);
 
             Product product = model.To<Product>();
-            product.Type = (ProductType)Enum.Parse(typeof(ProductType), model.ProductType);
+
+            //Use Enum.TryParse to check if the enum exists.
+
+            object type;
+            Enum.TryParse(typeof(ProductType), model.ProductType, out type);
+            if (type == null)
+                return this.BadRequestErrorWithView("Invalid product type.");
+
+            product.Type = (ProductType)type;
 
             if (this.DbContext.Products.Any(p => p.Name == product.Name))
                 return this.BadRequestErrorWithView("Product already exists!");
