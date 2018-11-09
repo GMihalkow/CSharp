@@ -43,3 +43,8 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\b
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\bin\Debug\netcoreapp2.1\Panda.Data.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\bin\Debug\netcoreapp2.1\Panda.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\bin\Debug\netcoreapp2.1\Panda.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Create.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Receipts\Index.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Pending.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Delivered.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Shipped.g.cshtml.cs
