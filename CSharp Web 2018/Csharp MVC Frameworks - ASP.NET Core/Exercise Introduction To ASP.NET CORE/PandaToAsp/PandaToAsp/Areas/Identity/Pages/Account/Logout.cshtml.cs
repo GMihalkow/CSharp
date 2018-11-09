@@ -23,8 +23,10 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            await _signInManager.SignOutAsync();
+            return this.Redirect("/");
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
