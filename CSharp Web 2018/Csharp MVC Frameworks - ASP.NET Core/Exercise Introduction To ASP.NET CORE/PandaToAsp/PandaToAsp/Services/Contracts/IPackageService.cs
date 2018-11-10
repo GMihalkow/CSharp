@@ -8,5 +8,11 @@
         void AddPackage(Package package);
 
         Package GetPackage(string id);
+
+        void ShipPackage(Package package);
+
+        void DeliverPackage(Package package);
+
+        void AcquirePackage(Package package, PandaUser user);
     }
 }

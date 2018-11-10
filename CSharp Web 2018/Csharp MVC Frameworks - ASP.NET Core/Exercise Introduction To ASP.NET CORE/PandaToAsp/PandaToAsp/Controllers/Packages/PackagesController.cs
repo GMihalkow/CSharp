@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Panda.Models;
-using Panda.Models.Enums;
-using PandaToAsp.Services.Contracts;
-using PandaToAsp.ViewModels.Packages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PandaToAsp.Controllers.Packages
+﻿namespace PandaToAsp.Controllers.Packages
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Panda.Models;
+    using Panda.Models.Enums;
+    using PandaToAsp.Services.Contracts;
+    using PandaToAsp.ViewModels.Packages;
+
     public class PackagesController : Controller
     {
         private readonly IPackageService packageService;
@@ -62,6 +58,7 @@ namespace PandaToAsp.Controllers.Packages
             return this.Redirect($"/Packages/Details?id={package.Id}");
         }
 
+        [Authorize]
         public IActionResult Details(string id)
         {
             Package package = this.packageService.GetPackage(id);
@@ -105,6 +102,54 @@ namespace PandaToAsp.Controllers.Packages
             var delivered = getPackagesService.GetDelvieredPackages();
 
             return this.View(delivered);
+        }
+
+        [Authorize("Admin")]
+        public IActionResult Ship(string id)
+        {
+            var package = this.packageService.GetPackage(id);
+            if (package == null)
+            {
+                return this.BadRequest("Invalid package id");
+            }
+
+            this.packageService.ShipPackage(package);
+
+            return this.Redirect("/");
+        }
+
+        [Authorize("Admin")]
+        public IActionResult Deliver(string id)
+        {
+            var package = this.packageService.GetPackage(id);
+            if (package == null)
+            {
+                return this.BadRequest("Invalid package id");
+            }
+
+            this.packageService.DeliverPackage(package);
+
+            return this.Redirect("/");
+        }
+
+        [Authorize]
+        public IActionResult Acquire(string id)
+        {
+            var user = this.getUserService.GetUser(this.User.Identity.Name);
+            if (user == null)
+            {
+                return this.BadRequest("Invalid user id");
+            }
+
+            var package = this.packageService.GetPackage(id);
+            if (package == null)
+            {
+                return this.BadRequest("Invalid package id");
+            }
+
+            this.packageService.AcquirePackage(package, user);
+
+            return this.Redirect("/");
         }
     }
 }

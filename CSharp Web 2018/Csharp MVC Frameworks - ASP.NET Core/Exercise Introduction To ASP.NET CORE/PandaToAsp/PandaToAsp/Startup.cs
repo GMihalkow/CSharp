@@ -79,6 +79,7 @@
             services.AddScoped<IGetPackagesService, GetPackagesService>();
             services.AddScoped<IGetUserService, GetUserService>();
             services.AddScoped<IPackageService, PackageService>();
+            services.AddScoped<IReceiptService, ReceiptService>();
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();

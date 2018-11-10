@@ -64,7 +64,7 @@ using PandaToAsp.Areas.Identity.Pages.Account;
             WriteLiteral("\r\n<main class=\"mt-3\">\r\n    <h1 class=\"text-center text-torshia\">Login</h1>\r\n    <hr class=\"bg-panda w-50 hr-2\" />\r\n    ");
             EndContext();
             BeginContext(145, 686, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b3c1605fc5fd4c2eb3c901698a2a3b02", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f904469aa0cf4f34ac2050728d2c3e16", async() => {
                 BeginContext(187, 637, true);
                 WriteLiteral(@"
         <div class=""form-group"">
@@ -105,7 +105,7 @@ using PandaToAsp.Areas.Identity.Pages.Account;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(868, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "343c89a3efe34d1987fae0a6ad5fb791", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "83102dd6932c4e9a99fc4db8744ad999", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

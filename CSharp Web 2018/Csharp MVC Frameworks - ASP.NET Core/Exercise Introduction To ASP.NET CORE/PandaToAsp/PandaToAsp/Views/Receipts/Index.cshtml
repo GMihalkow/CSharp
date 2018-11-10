@@ -19,14 +19,16 @@
             <tbody>
                 @{ int index = 0; }
                 @{ decimal Total = 0;}
+                @{string totalF2 = null;}
                 @foreach (var item in Model)
                 {
                     { index++; }
                     { Total = item.Fee * 2.67m; }
+                    { totalF2 = $"{Total:f2}"; }
 
                     <tr class="row">
                         <th scope="row" class="col-lg-5 d-flex justify-content-center"><h5>@item.Id</h5></th>
-                        <td class="col-lg-2 d-flex justify-content-center"><h5>$@Total</h5></td>
+                        <td class="col-lg-2 d-flex justify-content-center"><h5>$@totalF2</h5></td>
                         <td class="col-lg-2 d-flex justify-content-center"><h5>@item.IssuedOn.ToString("d")</h5></td>
                         <td class="col-lg-2 d-flex justify-content-center"><h5>@item.Recipient.UserName</h5></td>
                         <td class="col-lg-1 d-flex justify-content-center">

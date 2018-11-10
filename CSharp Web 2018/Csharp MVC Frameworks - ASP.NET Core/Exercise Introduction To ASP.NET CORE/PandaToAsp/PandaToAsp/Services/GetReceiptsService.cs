@@ -15,10 +15,26 @@
             this.dbContext = dbContext;
         }
 
-        public Receipt[] GetReceipts()
+        public Receipt[] GetAllReceipts()
         {
-            var receipts = this.dbContext.Receipts.Include(r => r.Recipient).ToArray();
-                
+            var receipts = 
+                this.dbContext
+                .Receipts
+                .Include(r => r.Recipient)
+                .ToArray();
+
+            return receipts;
+        }
+
+        public Receipt[] GetCurrentUserReceipts(string username)
+        {
+            var receipts = 
+                this.dbContext
+                .Receipts
+                .Where(x => x.Recipient.UserName == username)
+                .Include(r => r.Recipient)
+                .ToArray();
+
             return receipts;
         }
     }

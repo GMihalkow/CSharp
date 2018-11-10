@@ -4,6 +4,8 @@
 
     public interface IGetReceiptsService
     {
-        Receipt[] GetReceipts();
+        Receipt[] GetCurrentUserReceipts(string username);
+
+        Receipt[] GetAllReceipts();
     }
 }
