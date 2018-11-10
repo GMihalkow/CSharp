@@ -9,5 +9,7 @@
         Package[] GetShippedPackages();
 
         Package[] GetDelvieredPackages();
+
+        Package[] GetCurrentUserPackages(string id);
     }
 }

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaToAsp", "PandaToAsp\PandaToAsp.csproj", "{5D2C89F3-3DFA-43B1-8F35-956E8CB1D8FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandaToAsp", "PandaToAsp\PandaToAsp.csproj", "{5D2C89F3-3DFA-43B1-8F35-956E8CB1D8FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Data", "Panda.Data\Panda.Data.csproj", "{7BD8B592-A71A-4A73-B7BA-ECA368C0490C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Data", "Panda.Data\Panda.Data.csproj", "{7BD8B592-A71A-4A73-B7BA-ECA368C0490C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Models", "Panda.Models\Panda.Models.csproj", "{9C3C07D5-EB6E-4678-B3F9-B1E581324772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Models", "Panda.Models\Panda.Models.csproj", "{9C3C07D5-EB6E-4678-B3F9-B1E581324772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

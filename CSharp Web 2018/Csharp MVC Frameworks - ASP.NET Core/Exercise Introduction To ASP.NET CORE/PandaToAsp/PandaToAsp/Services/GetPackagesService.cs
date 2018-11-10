@@ -1,5 +1,6 @@
 ﻿namespace PandaToAsp.Services
 {
+    using Microsoft.EntityFrameworkCore;
     using Panda.Models;
     using PandaToAsp.Data;
     using PandaToAsp.Services.Contracts;
@@ -14,11 +15,24 @@
             this.dbContext = dbContext;
         }
 
+        public Package[] GetCurrentUserPackages(string id)
+        {
+            var packages = 
+                this.dbContext
+                .Packages
+                .Where(p => p.RecipientId == id)
+                .Include(p => p.Recipient)
+                .ToArray();
+
+            return packages;
+        }
+
         public Package[] GetDelvieredPackages()
         {
             var delivered = 
                 this.dbContext
                 .Packages
+                .Include(p => p.Recipient)
                 .Where(p => p.Status.ToString() == "Delivered")
                 .ToArray();
 
@@ -30,6 +44,7 @@
             var pending =
                this.dbContext
                .Packages
+               .Include(p => p.Recipient)
                .Where(p => p.Status.ToString() == "Pending")
                .ToArray();
 
@@ -41,10 +56,11 @@
             var shipped =
                   this.dbContext
                   .Packages
+                  .Include(p => p.Recipient)
                   .Where(p => p.Status.ToString() == "Shipped")
                   .ToArray();
 
             return shipped;
-        }
+        }        
     }
 }

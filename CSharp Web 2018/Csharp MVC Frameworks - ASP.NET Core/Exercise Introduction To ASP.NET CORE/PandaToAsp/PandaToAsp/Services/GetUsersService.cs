@@ -1,5 +1,6 @@
 ﻿namespace PandaToAsp.Services
 {
+    using Microsoft.EntityFrameworkCore;
     using Panda.Models;
     using PandaToAsp.Data;
     using PandaToAsp.Services.Contracts;
@@ -16,7 +17,12 @@
 
         public PandaUser[] GetUsers()
         {
-            var users = this.db.Users.ToArray();
+            var users = 
+                this.db
+                .Users
+                .Include(u => u.Receipts)
+                .ThenInclude(r => r.Package)
+                .ToArray();
 
             return users;
         }

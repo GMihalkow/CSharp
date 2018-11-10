@@ -4,12 +4,29 @@
     using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using PandaToAsp.Models;
+    using PandaToAsp.Services.Contracts;
 
     public class HomeController : Controller
     {
+        private readonly IGetUserService getUserService;
+        private readonly IGetPackagesService packagesService;
+
+        public HomeController(IGetUserService getUserService, IGetPackagesService packagesService)
+        {
+            this.getUserService = getUserService;
+            this.packagesService = packagesService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var user = this.getUserService.GetUser(this.User.Identity.Name);
+            if(user == null)
+            {
+                return this.View();
+            }
+            var packages = this.packagesService.GetCurrentUserPackages(user.Id);
+
+            return this.View(packages);
         }
 
         public IActionResult About()

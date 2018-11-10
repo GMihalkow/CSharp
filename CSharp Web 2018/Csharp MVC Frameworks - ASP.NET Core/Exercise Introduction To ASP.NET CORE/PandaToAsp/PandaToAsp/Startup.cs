@@ -65,9 +65,20 @@
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin",
+                    authbuilder =>
+                    {
+                        authbuilder.RequireRole("Admin");
+                    });
+            });
+
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<IGetReceiptsService, GetReceiptsService>();
             services.AddScoped<IGetPackagesService, GetPackagesService>();
+            services.AddScoped<IGetUserService, GetUserService>();
+            services.AddScoped<IPackageService, PackageService>();
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();
