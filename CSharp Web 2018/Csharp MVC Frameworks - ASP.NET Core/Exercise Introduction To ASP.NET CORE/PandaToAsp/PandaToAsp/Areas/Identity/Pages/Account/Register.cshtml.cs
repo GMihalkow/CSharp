@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Panda.Models;
+using PandaToAsp.Data;
 
 namespace PandaToAsp.Areas.Identity.Pages.Account
 {
@@ -20,17 +22,23 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
         private readonly UserManager<PandaUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly PandaDbContext _dbContext;
 
         public RegisterModel(
+            PandaDbContext _dbContext,
             UserManager<PandaUser> userManager,
             SignInManager<PandaUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
+            this._dbContext = _dbContext;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this._roleManager = roleManager;
         }
 
         [BindProperty]
@@ -76,6 +84,26 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if (this._dbContext.Users.Count() == 1)
+                    {
+                        var role = new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = "0" };
+                        var roleResult = await this._roleManager.CreateAsync(role);
+                        if (roleResult.Succeeded)
+                        {
+                            await this._userManager.AddToRoleAsync(user, "Admin");
+                        }
+                    }
+                    else
+                    {
+                        var role = new IdentityRole() { Name = "User", NormalizedName = "USER", ConcurrencyStamp = "1" };
+                        var roleResult = await this._roleManager.CreateAsync(role);
+                        if (roleResult.Succeeded)
+                        {
+                            await this._userManager.AddToRoleAsync(user, "User");
+                        }
+                    }
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -89,6 +117,7 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

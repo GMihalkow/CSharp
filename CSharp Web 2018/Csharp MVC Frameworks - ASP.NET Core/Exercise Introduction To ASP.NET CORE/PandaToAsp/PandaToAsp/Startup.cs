@@ -36,6 +36,7 @@
             services.AddDbContext<PandaDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<PandaUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
