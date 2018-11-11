@@ -6,4 +6,3 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\Panda.Models
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\Panda.Models\bin\Debug\netcoreapp2.1\Panda.Models.pdb
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\Panda.Models\obj\Debug\netcoreapp2.1\Panda.Models.dll
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\Panda.Models\obj\Debug\netcoreapp2.1\Panda.Models.pdb
-C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\Panda.Models\obj\Debug\netcoreapp2.1\Panda.Models.csprojAssemblyReference.cache

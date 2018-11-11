@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="/css/reset-css.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="~/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -53,12 +52,12 @@
                         }
                         else
                         {
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-white active" href="/identity/account/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-white active" href="/identity/account/register">Register</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-white active" href="/identity/account/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-white active" href="/identity/account/register">Register</a>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -97,6 +96,7 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
+    <script src="~/js/jquery-3.3.1.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
