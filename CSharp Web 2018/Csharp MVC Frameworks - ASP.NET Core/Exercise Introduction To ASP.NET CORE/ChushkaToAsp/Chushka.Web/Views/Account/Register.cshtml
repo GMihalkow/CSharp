@@ -1,0 +1,43 @@
+﻿@using Chushka.Web.ViewModels.Account;
+@model RegisterUserViewModel
+
+<main class="mt-3">
+    <h1 class="text-center">Register</h1>
+    <hr class="bg-secondary half-width" />
+    <form class="mx-auto half-width" asp-controller="Account" asp-action="Register">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username..." name="username">
+            <span asp-validation-for="Username"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" ></label>
+            <input asp-for="Password"  type="password" class="form-control" placeholder="Password..." name="password">
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password..." name="confirmPassword">
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName">Full name</label>
+            <input asp-for="FullName" type="text" class="form-control" placeholder="Full Name..." name="fullName">
+            <span asp-validation-for="FullName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="Email..." name="email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn chushka-bg-color">Register</button>
+        </div>
+    </form>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</main>

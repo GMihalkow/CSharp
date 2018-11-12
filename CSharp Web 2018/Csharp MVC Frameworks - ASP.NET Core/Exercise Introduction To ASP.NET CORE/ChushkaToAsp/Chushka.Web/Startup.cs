@@ -8,6 +8,10 @@ using Chushka.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Chushka.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Chushka.Web.Utilities;
+using Chushka.Web.Services;
+using Chushka.Web.Services.Contracts;
 
 namespace Chushka.Web
 {
@@ -30,17 +34,52 @@ namespace Chushka.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ChushkaDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ChushkaUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddIdentity<ChushkaUser, IdentityRole>(
+                opt =>
+                {
+                    //Password constraints
+                    opt.Password.RequireDigit = false;
+                    opt.Password.RequiredLength = 5;
+                    opt.Password.RequireUppercase = false;
+                    opt.Password.RequiredUniqueChars = 0;
+                    opt.Password.RequireNonAlphanumeric = false;
+
+                    //Unique email constraint
+                    opt.User.RequireUniqueEmail = true;
+                })
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<ChushkaDbContext>();
+
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options =>
+                {
+                    options.AllowAreas = true;
+                    options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+                    options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+                });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Account/Login";
+                options.LogoutPath = $"/Account/Logout";
+                options.AccessDeniedPath = $"/Account/AccessDenied";
+            });
+
+            //Defining services
+            services.AddScoped<IAccountService, AccountService>();
+
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +104,8 @@ namespace Chushka.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Seeder.SeedRoles(roleManager).Wait();
         }
     }
 }
