@@ -42,6 +42,7 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Password)]
+            [StringLength(100, ErrorMessage = "Password length must be between 6 and 100 characters", MinimumLength = 6)]
             public string Password { get; set; }
 
             [Display(Name = "Remember me?")]

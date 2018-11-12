@@ -66,7 +66,7 @@ using Panda.Models;
             WriteLiteral("\r\n<main class=\"mt-3\">\r\n    <h1 class=\"text-center text-torshia\">Create Package</h1>\r\n    <hr class=\"bg-panda w-50 hr-2\" />\r\n    ");
             EndContext();
             BeginContext(173, 1672, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "075342c0317d4351b4d335751a8092d8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27d094426f62437c89ba3c5444a6ca05", async() => {
                 BeginContext(240, 1114, true);
                 WriteLiteral(@"
         <div class=""form-group"">
@@ -91,7 +91,7 @@ using Panda.Models;
                 WriteLiteral("           <select class=\"form-control\" id=\"recepient\" name=\"recepient\">\r\n                ");
                 EndContext();
                 BeginContext(1354, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2ec1c9abcc24867a665a7fde236b96b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f18a1df69ebd4747ace401a9f06fe05d", async() => {
                     BeginContext(1380, 20, true);
                     WriteLiteral("--Choose Recipient--");
                     EndContext();
@@ -126,7 +126,7 @@ using Panda.Models;
                 WriteLiteral("                    ");
                 EndContext();
                 BeginContext(1501, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38ab215a7a5e4d31b91373873b35533d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f6be004d4ee4d989f121ae594c5133e", async() => {
                     BeginContext(1538, 18, false);
 #line 31 "C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\Views\Packages\Create.cshtml"
                                                    Write(recepient.UserName);
