@@ -13,6 +13,8 @@
     using Microsoft.AspNetCore.Identity.UI.Services;
     using PandaToAsp.Services;
     using PandaToAsp.Services.Contracts;
+    using System;
+    using PandaToAsp.Utilities;
 
     public class Startup
     {
@@ -82,13 +84,15 @@
             services.AddScoped<IGetUserService, GetUserService>();
             services.AddScoped<IPackageService, PackageService>();
             services.AddScoped<IReceiptService, ReceiptService>();
+            services.AddScoped<UserManager<PandaUser>>();
+            services.AddScoped<RoleManager<IdentityRole>>();
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -112,6 +116,10 @@
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+             Seeder
+                .SeedRoles(roleManager).Wait();
+
         }
     }
 }

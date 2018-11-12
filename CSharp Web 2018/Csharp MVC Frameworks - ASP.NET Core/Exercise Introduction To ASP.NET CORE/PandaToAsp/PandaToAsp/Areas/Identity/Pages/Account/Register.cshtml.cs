@@ -86,23 +86,12 @@ namespace PandaToAsp.Areas.Identity.Pages.Account
                 {
                     if (this._dbContext.Users.Count() == 1)
                     {
-                        var role = new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = "0" };
-                        var roleResult = await this._roleManager.CreateAsync(role);
-                        if (roleResult.Succeeded)
-                        {
-                            await this._userManager.AddToRoleAsync(user, "Admin");
-                        }
+                        await this._userManager.AddToRoleAsync(user, "Admin");
                     }
                     else
                     {
-                        var role = new IdentityRole() { Name = "User", NormalizedName = "USER", ConcurrencyStamp = "1" };
-                        var roleResult = await this._roleManager.CreateAsync(role);
-                        if (roleResult.Succeeded)
-                        {
-                            await this._userManager.AddToRoleAsync(user, "User");
-                        }
+                        await this._userManager.AddToRoleAsync(user, "User");
                     }
-
 
                     _logger.LogInformation("User created a new account with password.");
 

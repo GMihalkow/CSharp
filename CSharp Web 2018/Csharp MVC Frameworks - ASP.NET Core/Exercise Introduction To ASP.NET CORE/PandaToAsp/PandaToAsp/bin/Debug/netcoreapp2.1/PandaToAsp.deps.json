@@ -28,7 +28,8 @@
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.5",
-          "Panda.Data": "1.0.0"
+          "Panda.Data": "1.0.0",
+          "Panda.Models": "1.0.0"
         },
         "runtime": {
           "PandaToAsp.dll": {}

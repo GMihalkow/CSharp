@@ -12256,7 +12256,8 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.5",
-      "Panda.Data >= 1.0.0"
+      "Panda.Data >= 1.0.0",
+      "Panda.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12291,6 +12292,9 @@
           "projectReferences": {
             "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\PandaToAsp\\Panda.Data\\Panda.Data.csproj": {
               "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\PandaToAsp\\Panda.Data\\Panda.Data.csproj"
+            },
+            "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\PandaToAsp\\Panda.Models\\Panda.Models.csproj": {
+              "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\PandaToAsp\\Panda.Models\\Panda.Models.csproj"
             }
           }
         }
