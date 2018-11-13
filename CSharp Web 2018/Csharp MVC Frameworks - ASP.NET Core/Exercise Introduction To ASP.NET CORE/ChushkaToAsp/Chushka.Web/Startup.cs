@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Chushka.Web.Utilities;
 using Chushka.Web.Services;
 using Chushka.Web.Services.Contracts;
+using Chushka.Web.Middewares;
 
 namespace Chushka.Web
 {
@@ -110,14 +111,14 @@ namespace Chushka.Web
 
             app.UseAuthentication();
 
+            app.UseMiddleware<SeederMiddleware>();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            Seeder.SeedRoles(roleManager).Wait();
         }
     }
 }
