@@ -63,7 +63,7 @@ using Chushka.Web.ViewModels.Products;
             WriteLiteral("\r\n<main class=\"mt-3\">\r\n    <h1 class=\"text-center\">Edit Product</h1>\r\n    <hr class=\"bg-secondary hr-2\" />\r\n    ");
             EndContext();
             BeginContext(189, 2113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "715ab0d19ebb48f282ed91d983d67292", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e736d0ff99a94c1c8dfa9c66abbcf8e6", async() => {
                 BeginContext(280, 40, true);
                 WriteLiteral("\r\n        <input type=\"hidden\" name=\"Id\"");
                 EndContext();
