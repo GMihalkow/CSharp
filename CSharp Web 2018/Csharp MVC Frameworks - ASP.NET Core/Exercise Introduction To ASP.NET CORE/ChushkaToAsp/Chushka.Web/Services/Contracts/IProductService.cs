@@ -6,6 +6,10 @@
 
     public interface IProductService
     {
+        IActionResult EditProduct(EditDeleteProductViewModel model);
+
+        IActionResult DeleteProduct(string id);
+
         AllProductsViewModel GetAllProducts(string username);
 
         IActionResult AddProduct(CreateProductViewModel model);

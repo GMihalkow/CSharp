@@ -14,53 +14,49 @@
 }
 else
 {
-<main class="mt-3 mb-5">
-    <div class="container-fluid text-center">
-        @if (User.IsInRole("Admin"))
-        {
-            <h2>Greetings, admin!</h2>
-            <h4>Enjoy your work today!</h4>
-        }
-        else
-        {
-        <h2>Greetings, @User.Identity.Name!</h2>
-        <h4>Feel free to view and order any of our products.</h4>
-        }
-    </div>
-    <hr class="hr-2 bg-dark" />
-    <div class="container-fluid product-holder">
-        <div class="row d-flex justify-content-around">
-            @for (int index = 0; index < @Model.Products.Count(); index++)
+    <main class="mt-3 mb-5">
+        <div class="container-fluid text-center">
+            @if (User.IsInRole("Admin"))
             {
-                var product = @Model.Products.ElementAt(index);
-                if(index % 5 == 0 && (index != 1 || index != 0))
-                {
-       @Html.Raw(" </div><div class=\"row d-flex justify-content-around mt-4\">")
-                }
-            <a href="/products/details?id=@product.Id" class="col-md-2">
-                <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
-                    <h5 class="text-center mt-3">@product.Name</h5>
-                    <hr class="hr-1 bg-white" />
-                    <p class="text-white text-center">
-                        @if (product.Description.Length > 50)
-                        {
-                           string longDescription = product.Description.Substring(0, 50) + "..."; 
-                           
-                            @longDescription
-                        }
-                        else
-                        {
-                            string shortDescription = product.Description + "...";
-
-                            @shortDescription
-                        }
-                    </p>
-                    <hr class="hr-1 bg-white" />
-                    <h6 class="text-center text-white mb-3">$@product.Price</h6>
-                </div>
-            </a>
+                <h2>Greetings, admin!</h2>
+                <h4>Enjoy your work today!</h4>
+            }
+            else
+            {
+                <h2>Greetings, @User.Identity.Name!</h2>
+                <h4>Feel free to view and order any of our products.</h4>
             }
         </div>
-    </div>
-</main>
+        <hr class="hr-2 bg-dark" />
+        <div class="container-fluid product-holder">
+            <div class="row d-flex justify-content-around">
+                @for (int index = 0; index < @Model.Products.Count(); index++)
+                {
+                    var product = @Model.Products.ElementAt(index);
+                    if (index % 5 == 0 && (index != 1 || index != 0))
+                    {
+                        @Html.Raw(" </div><div class=\"row d-flex justify-content-around mt-4\">")
+                    }
+                    <a href="/products/details?id=@product.Id" class="col-md-2">
+                        <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
+                            <h5 class="text-center mt-3">@product.Name</h5>
+                            <hr class="hr-1 bg-white" />
+                            <p class="text-white text-center">
+                                @if (product.Description.Length > 50)
+                                {
+                                    @product.LongDescription
+                                }
+                                else
+                                {
+                                    @product.ShortDescription
+                                }
+                            </p>
+                            <hr class="hr-1 bg-white" />
+                            <h6 class="text-center text-white mb-3">$@product.Price</h6>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </main>
 }

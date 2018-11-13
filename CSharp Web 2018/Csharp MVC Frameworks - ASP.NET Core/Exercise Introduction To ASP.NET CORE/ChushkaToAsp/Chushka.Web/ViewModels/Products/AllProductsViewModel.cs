@@ -4,7 +4,7 @@
 
     public class AllProductsViewModel
     {
-        public Product[] Products { get; set; }
+        public EditDeleteProductViewModel[] Products { get; set; }
 
         public string OwnerFullName { get; set; }
     }

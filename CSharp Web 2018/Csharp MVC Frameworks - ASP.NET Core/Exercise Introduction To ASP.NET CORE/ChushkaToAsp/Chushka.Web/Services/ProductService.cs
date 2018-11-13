@@ -37,9 +37,45 @@
             return this.Redirect($"/products/details?id={product.Id}");
         }
 
+        public IActionResult DeleteProduct(string id)
+        {
+            Product product = this.dbContext.Products.FirstOrDefault(p => p.Id == id);
+
+            this.dbContext.Products.Remove(product).State = EntityState.Deleted;
+            this.dbContext.SaveChanges();
+
+            return this.Redirect("/");
+        }
+
+        public IActionResult EditProduct(EditDeleteProductViewModel model)
+        {
+            Product product = this.dbContext.Products.FirstOrDefault(p => p.Id == model.Id);
+
+            product.Name = model.Name;
+            product.Description = model.Description;
+            product.Price = model.Price;
+            product.Type = (ProductType)Enum.Parse(typeof(ProductType), model.ProductType);
+
+            this.dbContext.Entry(product).State = EntityState.Modified;
+            this.dbContext.SaveChanges();
+
+            return this.Redirect("/");
+        }
+
         public AllProductsViewModel GetAllProducts(string username)
         {
-            Product[] products = this.dbContext.Products.ToArray();
+            EditDeleteProductViewModel[] products = this.dbContext.Products
+                .Select(x =>
+                new EditDeleteProductViewModel
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    Name = x.Name,
+                    Price = x.Price,
+                    ProductType = x.Type.ToString()
+                })
+                .ToArray();
+
             var user = this.accountService.GetUser(username);
 
             AllProductsViewModel viewModel = new AllProductsViewModel()
