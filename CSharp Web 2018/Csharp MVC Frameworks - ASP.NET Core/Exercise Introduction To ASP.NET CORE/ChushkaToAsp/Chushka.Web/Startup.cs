@@ -84,6 +84,7 @@ namespace Chushka.Web
             //Defining services
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();

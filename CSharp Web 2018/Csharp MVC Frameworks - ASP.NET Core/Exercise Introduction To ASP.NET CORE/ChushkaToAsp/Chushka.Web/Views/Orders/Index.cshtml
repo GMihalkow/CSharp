@@ -1,0 +1,34 @@
+﻿@using Chushka.Models;
+@model Order[];
+
+<main>
+    <h1 class="text-center mt-3">All Orders</h1>
+    <hr class="chushka-bg-color hr-2" />
+    <div class="container-fluid w-75">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Ordered On</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int index = 0; index < Model.Length; index++)
+                {
+                    var order = Model[index];
+                    int realIndex = index + 1; 
+                    <tr>
+                        <th scope="row">@realIndex</th>
+                        <td>@order.Id</td>
+                        <td>@order.Client.FullName</td>
+                        <td>@order.Product.Name</td>
+                        <td>@order.OrderedOn.ToString("d")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>

@@ -50,7 +50,7 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new ChushkaUser { UserName = model.Username, Email = model.Email };
+                var user = new ChushkaUser { UserName = model.Username, FullName = model.FullName, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
