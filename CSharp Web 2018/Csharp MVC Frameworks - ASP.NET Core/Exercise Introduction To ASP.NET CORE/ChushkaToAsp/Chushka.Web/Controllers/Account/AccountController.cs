@@ -20,7 +20,7 @@
         }
 
         [HttpPost]
-        public IActionResult Login(RegisterUserViewModel model)
+        public IActionResult Login(LoginUserViewModel model)
         {
             return this.accountService.Login(model);
         }

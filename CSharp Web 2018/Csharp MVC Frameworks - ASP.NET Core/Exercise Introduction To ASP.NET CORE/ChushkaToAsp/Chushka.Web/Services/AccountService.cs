@@ -31,7 +31,7 @@
             this._logger = _logger;
         }
 
-        public IActionResult Login(RegisterUserViewModel model)
+        public IActionResult Login(LoginUserViewModel model)
         {
             return OnLoginPostAsync(model).Result;
         }
@@ -80,7 +80,7 @@
             return Page();
         }
 
-        public async Task<IActionResult> OnLoginPostAsync(RegisterUserViewModel model)
+        public async Task<IActionResult> OnLoginPostAsync(LoginUserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@
                 }
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -119,6 +119,12 @@
             await _signInManager.SignOutAsync();
 
             return this.Redirect("/");
+        }
+
+        public ChushkaUser GetUser(string username)
+        {
+            ChushkaUser user = this.dbContext.Users.FirstOrDefault(x => x.UserName == username);
+            return user;
         }
     }
 }

@@ -71,8 +71,19 @@ namespace Chushka.Web
                 options.AccessDeniedPath = $"/Account/AccessDenied";
             });
 
+            //Defining authorization
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Admin");
+                    });
+            });
+
             //Defining services
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IProductService, ProductService>();
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();

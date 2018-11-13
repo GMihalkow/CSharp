@@ -1,18 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Chushka.Web.Models;
-
-namespace Chushka.Web.Controllers.Home
+﻿namespace Chushka.Web.Controllers.Home
 {
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using Chushka.Web.Models;
+    using Chushka.Web.Services.Contracts;
+    using Chushka.Models;
+    using Chushka.Web.ViewModels.Products;
+
     public class HomeController : Controller
     {
+        private readonly IProductService productService;
+
+        public HomeController(IProductService productService)
+        {
+            this.productService = productService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            if (this.User.Identity.IsAuthenticated)
+            {
+                AllProductsViewModel viewModel = this.productService.GetAllProducts(this.User.Identity.Name);
+                return View(viewModel);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult About()

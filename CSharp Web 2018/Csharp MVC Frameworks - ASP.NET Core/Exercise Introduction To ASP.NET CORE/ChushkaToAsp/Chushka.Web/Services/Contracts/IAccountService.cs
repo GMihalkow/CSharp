@@ -1,5 +1,6 @@
 ﻿namespace Chushka.Web.Services.Contracts
 {
+    using Chushka.Models;
     using Chushka.Web.ViewModels.Account;
     using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +8,10 @@
     {
         IActionResult Register(RegisterUserViewModel user);
 
-        IActionResult Login(RegisterUserViewModel model);
+        IActionResult Login(LoginUserViewModel model);
 
         IActionResult Logout();
+
+        ChushkaUser GetUser(string username);
     }
 }

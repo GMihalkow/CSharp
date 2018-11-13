@@ -1,5 +1,5 @@
 ﻿@using Chushka.Web.ViewModels.Account;
-@model RegisterUserViewModel
+@model LoginUserViewModel
 
 <main class="mt-3">
     <h1 class="text-center">Login</h1>
@@ -20,4 +20,9 @@
             <button type="submit" class="btn chushka-bg-color">Login</button>
         </div>
     </form>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
 </main>
