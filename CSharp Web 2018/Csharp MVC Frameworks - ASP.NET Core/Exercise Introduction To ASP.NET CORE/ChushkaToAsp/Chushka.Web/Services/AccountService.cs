@@ -111,7 +111,7 @@
             }
 
             // If we got this far, something failed, redisplay form
-            return Page();
+            return this.Page();
         }
 
         public async Task<IActionResult> OnLogoutGetAsync()

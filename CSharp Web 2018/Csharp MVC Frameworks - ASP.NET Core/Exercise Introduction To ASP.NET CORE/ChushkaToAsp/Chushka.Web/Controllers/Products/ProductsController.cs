@@ -40,12 +40,6 @@
             return this.View(product);
         }
 
-        [AllowAnonymous]
-        public IActionResult Order()
-        {
-            return this.View();
-        }
-
         public IActionResult Delete(string id)
         {
             Product product = this.productService.GetProduct(id);

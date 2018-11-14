@@ -52,3 +52,4 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ChushkaToAsp\Chushka.We
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ChushkaToAsp\Chushka.Web\obj\Debug\netcoreapp2.1\Razor\Views\Orders\Index.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ChushkaToAsp\Chushka.Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_IndexPartial.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ChushkaToAsp\Chushka.Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_OrdersPartial.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\ChushkaToAsp\Chushka.Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_TestError.g.cshtml.cs
