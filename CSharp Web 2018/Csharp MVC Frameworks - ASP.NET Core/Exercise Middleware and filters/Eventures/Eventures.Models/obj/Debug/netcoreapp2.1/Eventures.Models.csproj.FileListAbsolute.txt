@@ -1,0 +1,8 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.pdb
