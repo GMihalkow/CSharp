@@ -12,6 +12,42 @@ body {
     padding-right: 15px;
 }
 
+html{
+    height:100%;
+}
+
+footer {
+    background-color: #ccffff;
+    width:100%;
+    height:50px;
+    padding:15px;
+    text-align:center;
+    position:fixed;
+    bottom:0;
+}
+
+ul > li > a {
+    font-weight:bold;
+    color:black;
+}
+
+#index-container {
+    border-radius: 5px;
+    background-color: #ccffff;
+    width: 90%;
+    margin: 40px auto;
+    padding: 70px;
+}
+
+#index-container > h1,h2{
+    font-weight:bold;
+}
+
+.index-hr {
+    height: 4px;
+    background-color: black;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
