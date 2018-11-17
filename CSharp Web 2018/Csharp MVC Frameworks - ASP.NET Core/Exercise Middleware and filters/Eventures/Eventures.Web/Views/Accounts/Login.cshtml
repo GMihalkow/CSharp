@@ -1,0 +1,33 @@
+﻿<main class="mt-5">
+    <h1 class="text-center text-eventure">Login</h1>
+    <form class="mx-auto third-width text-center" asp-controller="Accounts" asp-action="Login">
+        <hr class="bg-eventure hr-eventure mt-5" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group text-center">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username..." name="username">
+            <span></span>
+        </div>
+        <div class="form-group text-center">
+            <label> Password</label>
+            <input type="password" class="form-control" placeholder="Password..." name="password">
+            <span></span>
+        </div>
+        <hr class="bg-eventure hr-eventure" />
+        <div class="text-center">
+            <input type="checkbox" id="rememberMe" name="rememberMe" value="RememberMe" /> <label for="rememberMe">Remember me?</label>
+        </div>
+        <hr class="bg-eventure hr-eventure" />
+        <div class="button-holder d-flex justify-content-center text-center">
+            <button type="submit" class="btn bg-eventure">Login</button>
+        </div>
+
+        <p class="mx-auto"><a href="#">Forgot your password?</a></p>
+        <p class="mx-auto"><a href="#">Register as a new user</a></p>
+    </form>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</main>

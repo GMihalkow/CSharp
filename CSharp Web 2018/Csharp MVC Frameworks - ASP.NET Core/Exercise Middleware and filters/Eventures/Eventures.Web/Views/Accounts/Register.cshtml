@@ -1,0 +1,60 @@
+﻿@using Eventures.Web.ViewModels.Accounts;
+@model RegisterUserViewModel
+
+<main class="mt-5">
+    <h1 class="text-center text-eventure">Register</h1>
+    <form class="mx-auto half-width text-center" asp-controller="Accounts" asp-action="Register">
+        <hr class="bg-eventure hr-eventure mt-5" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="Username">Username</label>
+                <input asp-for="Username" type="text" class="form-control" placeholder="Username..." name="username">
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email..." name="email">
+                <span asp-validation-for="Email"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password..." name="password">
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password..." name="confirmPassword">
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+        </div>
+
+        <hr class="bg-eventure hr-eventure" />
+        <div class="row">
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name..." name="firstName">
+                <span asp-validation-for="FirstName"></span>
+            </div>
+            <div class="col-md-6 form-group text-center">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name..." name="lastName">
+                <span asp-validation-for="LastName"></span>
+            </div>
+        </div>
+        <label asp-for="UCN">UCN</label>
+        <input asp-for="UCN" type="text" class="form-control" placeholder="Universal Citizen Number..." name="ucn">
+        <span asp-validation-for="UCN"></span>
+        <hr class="bg-eventure hr-eventure" />
+        <div class="button-holder d-flex justify-content-center text-center">
+            <button type="submit" class="btn bg-eventure">Register</button>
+        </div>
+    </form>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</main>

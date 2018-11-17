@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Eventures.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Eventures.Web.Middlewares;
+using Eventures.Web.Services.Accounts.Contracts;
+using Eventures.Web.Services.Accounts;
+using Eventures.Web.Services.DbContext;
 
 namespace Eventures.Web
 {
@@ -34,7 +38,17 @@ namespace Eventures.Web
             services.AddDbContext<EventuresDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<EventureUser, IdentityRole>()
+            services.AddIdentity<EventureUser, IdentityRole>(
+                options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 5;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredUniqueChars = 0;
+
+                    options.User.RequireUniqueEmail = false;
+                })
                 .AddEntityFrameworkStores<EventuresDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -48,16 +62,20 @@ namespace Eventures.Web
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = $"/Identity/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+                options.LoginPath = $"/Accounts/Login";
+                options.LogoutPath = $"/Accounts/Logout";
+                options.AccessDeniedPath = $"/Accounts/AccessDenied";
             });
+
+            //Initializing services
+            services.AddScoped<IAccountsService, AccountsService>();
+            services.AddScoped<DbService>();
 
             services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -75,6 +93,8 @@ namespace Eventures.Web
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseMiddleware(typeof(SeederMiddleware));
 
             app.UseMvc(routes =>
             {

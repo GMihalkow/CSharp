@@ -16,14 +16,25 @@ html{
     height:100%;
 }
 
+.text-eventure{
+    font-weight:bold;
+}
+
+.mt-5{
+    margin-top:40px
+}
+
 footer {
-    background-color: #ccffff;
     width:100%;
     height:50px;
     padding:15px;
     text-align:center;
     position:fixed;
     bottom:0;
+}
+
+.third-width{
+    width:30%;
 }
 
 ul > li > a {
@@ -33,7 +44,6 @@ ul > li > a {
 
 #index-container {
     border-radius: 5px;
-    background-color: #ccffff;
     width: 90%;
     margin: 40px auto;
     padding: 70px;
@@ -43,15 +53,26 @@ ul > li > a {
     font-weight:bold;
 }
 
-.index-hr {
+.hr-eventure {
     height: 4px;
-    background-color: black;
+}
+
+.half-width{
+    width:50%;
+}
+
+.mx-auto{
+    margin:20px auto;
 }
 
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+}
+
+.bg-eventure {
+    background-color: #99ddff;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
