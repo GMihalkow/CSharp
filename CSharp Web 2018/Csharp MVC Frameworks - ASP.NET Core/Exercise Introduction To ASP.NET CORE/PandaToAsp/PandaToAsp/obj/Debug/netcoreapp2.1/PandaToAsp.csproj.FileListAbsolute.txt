@@ -50,3 +50,6 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\o
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Shipped.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Packages\Details.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Receipts\Details.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PackagesViewComponent\DeliveredViewComponent.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PackagesViewComponent\PendingViewComponent.g.cshtml.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\PandaToAsp\PandaToAsp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PackagesViewComponent\ShippedViewComponent.g.cshtml.cs

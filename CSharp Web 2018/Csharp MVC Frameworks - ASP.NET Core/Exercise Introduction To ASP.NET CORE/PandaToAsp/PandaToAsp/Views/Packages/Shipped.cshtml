@@ -14,21 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{int index = 0;}
-                @foreach (var item in Model)
-                {
-                    { index++; }
-                    <tr class="row">
-                        <td class="col-lg-1 d-flex justify-content-center"><h5>@index</h5></td>
-                        <td class="col-lg-4 d-flex justify-content-center"><h5>@item.Description</h5></td>
-                        <td class="col-lg-1 d-flex justify-content-center"><h5>@item.Weight KG</h5></td>
-                        <td class="col-lg-3 d-flex justify-content-center"><h5>@item.DeliveryDate</h5></td>
-                        <td class="col-lg-2 d-flex justify-content-center"><h5>@item.Recipient</h5></td>
-                        <td class="col-lg-1 d-flex justify-content-center">
-                            <a href="/packages/deliver?id=@item.Id" class="btn bg-panda text-white">Deliver</a>
-                        </td>
-                    </tr>
-                }
+               @await Component.InvokeAsync("PackagesViewComponent", "Shipped");
             </tbody>
         </table>
     </div>
