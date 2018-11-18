@@ -42,11 +42,25 @@ ul > li > a {
     color:black;
 }
 
+#events-dropdown{
+    display:inline;
+}
+
+
+ul > li > div > a {
+    font-weight: bold;
+    color: black;
+}
+
 #index-container {
     border-radius: 5px;
     width: 90%;
     margin: 40px auto;
-    padding: 70px;
+    padding: 100px;
+}
+
+.text-gray{
+    color:dimgray;
 }
 
 #index-container > h1,h2{
@@ -55,6 +69,14 @@ ul > li > a {
 
 .hr-eventure {
     height: 4px;
+}
+
+.bg-black{
+    background-color:black;
+}
+
+.bg-gray{
+    background-color:dimgray;
 }
 
 .half-width{

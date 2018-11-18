@@ -79,7 +79,7 @@ using Eventures.Models;
             WriteLiteral("    <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>");
             EndContext();
             BeginContext(265, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7655339900554f2c85b57380e309b6d8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86280d597b9e4dc8b0399e868cdc5a3a", async() => {
                 BeginContext(314, 6, true);
                 WriteLiteral("Logout");
                 EndContext();
@@ -113,7 +113,7 @@ else
             WriteLiteral("    <ul class=\"nav navbar-nav navbar-right\" >\r\n        <li>");
             EndContext();
             BeginContext(413, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c24378c1921485c84ca40c2e1422101", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b95ee830229c4778b45a7b05ebd976d0", async() => {
                 BeginContext(464, 8, true);
                 WriteLiteral("Register");
                 EndContext();
@@ -137,7 +137,7 @@ else
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(495, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "edbed55d779e48a896a79ce1d196b99a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62d08c32a51d4e6f8b5610cc8cf830c4", async() => {
                 BeginContext(544, 5, true);
                 WriteLiteral("Login");
                 EndContext();

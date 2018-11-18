@@ -42,7 +42,7 @@
         public IActionResult Register(RegisterUserViewModel model)
         {
             var result = this.accountsService.Register(model);
-
+            
             return result;
         }
 

@@ -43,7 +43,7 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email };
+                var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -55,7 +55,7 @@
                     {
                         await this.userManager.AddToRoleAsync(user, "User");
                     }
-                    
+
                     var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
 
                     await signInManager.SignInAsync(user, isPersistent: false);
@@ -65,10 +65,16 @@
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+
+
+                var test = new ViewResult();
+                test.ViewName = "Register";
+
+                // If we got this far, something failed, redisplay form
+                return test;
             }
 
-            // If we got this far, something failed, redisplay form
-            return Page();
+            return this.Page();
         }
 
         public async Task<IActionResult> OnLoginPostAsync(RegisterUserViewModel model)
