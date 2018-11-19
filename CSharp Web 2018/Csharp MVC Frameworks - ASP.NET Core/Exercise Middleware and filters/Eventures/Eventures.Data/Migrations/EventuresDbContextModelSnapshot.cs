@@ -36,7 +36,11 @@ namespace Eventures.Data.Migrations
 
                     b.Property<int>("TotalTickets");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
                 });
@@ -206,6 +210,13 @@ namespace Eventures.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Eventures.Models.Event", b =>
+                {
+                    b.HasOne("Eventures.Models.EventureUser", "User")
+                        .WithMany("Events")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

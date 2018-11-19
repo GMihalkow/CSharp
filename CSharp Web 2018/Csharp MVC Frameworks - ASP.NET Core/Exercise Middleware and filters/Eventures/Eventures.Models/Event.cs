@@ -17,5 +17,9 @@
         public int TotalTickets { get; set; }
 
         public decimal PricePerTicket { get; set; }
+
+        public EventureUser User { get; set; }
+
+        public string UserId { get; set; }
     }
 }
