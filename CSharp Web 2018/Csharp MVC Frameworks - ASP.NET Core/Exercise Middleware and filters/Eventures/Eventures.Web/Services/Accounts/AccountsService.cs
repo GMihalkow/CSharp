@@ -10,7 +10,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class AccountsService : PageModel, IAccountsService
+    public class AccountsService : PageModel, IAccountService
     {
         private readonly DbService dbService;
         private readonly UserManager<EventureUser> userManager;
@@ -23,7 +23,7 @@
             this.signInManager = signInManager;
         }
 
-        public IActionResult Login(RegisterUserViewModel model)
+        public IActionResult Login(LoginUserInputModel model)
         {
             return this.OnLoginPostAsync(model).Result;
         }
@@ -34,9 +34,11 @@
         }
 
 
-        public async void Logout()
+        public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
+
+            return this.Redirect("/");
         }
 
         public async Task<IActionResult> OnRegisterPostAsync(RegisterUserViewModel model)
@@ -77,7 +79,7 @@
             return this.Page();
         }
 
-        public async Task<IActionResult> OnLoginPostAsync(RegisterUserViewModel model)
+        public async Task<IActionResult> OnLoginPostAsync(LoginUserInputModel model)
         {
             if (ModelState.IsValid)
             {

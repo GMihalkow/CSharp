@@ -36,8 +36,14 @@
                                 <li>
                                     <ul class="list-inline">
                                         <li>
-                                            <a href="#">Test</a>
+                                            <a asp-controller="Events" asp-action="All">Events</a>
                                         </li>
+                                        @if (this.User.IsInRole("Admin"))
+                                        {
+                                            <li>
+                                                <a asp-controller="Events" asp-action="Create">Create Event</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                             </ul>

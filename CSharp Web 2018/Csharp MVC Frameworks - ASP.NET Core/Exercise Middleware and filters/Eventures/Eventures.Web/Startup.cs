@@ -13,6 +13,8 @@ using Eventures.Web.Middlewares;
 using Eventures.Web.Services.Accounts.Contracts;
 using Eventures.Web.Services.Accounts;
 using Eventures.Web.Services.DbContext;
+using Eventures.Web.Services.Events;
+using Eventures.Web.Services.Events.Contracts;
 
 namespace Eventures.Web
 {
@@ -68,10 +70,21 @@ namespace Eventures.Web
             });
 
             //Initializing services
-            services.AddScoped<IAccountsService, AccountsService>();
+            services.AddScoped<IEventsService, EventsService>();
+            services.AddScoped<IAccountService, AccountsService>();
             services.AddScoped<DbService>();
 
             services.AddSingleton<IEmailSender, EmailSender>();
+
+            //Defining authorization
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Admin");
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

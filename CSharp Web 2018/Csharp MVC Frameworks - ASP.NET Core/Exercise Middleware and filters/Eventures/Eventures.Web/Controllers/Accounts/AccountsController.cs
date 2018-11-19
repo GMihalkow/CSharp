@@ -8,9 +8,9 @@
 
     public class AccountsController : BaseController
     {
-        private readonly IAccountsService accountsService;
+        private readonly IAccountService accountsService;
 
-        public AccountsController(IAccountsService accountsService)
+        public AccountsController(IAccountService accountsService)
         {
             this.accountsService = accountsService;
         }
@@ -21,16 +21,23 @@
         }
 
         [HttpPost]
-        public IActionResult Login(RegisterUserViewModel model)
+        public IActionResult Login(LoginUserInputModel model)
         {
-            var result = this.accountsService.Login(model);
-
-            if(result is PageResult)
+            if(ModelState.IsValid)
             {
-                result = this.View("Error", new ErrorViewModel { ErrorMessage = "Invalid login attempt." });
-            }
+                var result = this.accountsService.Login(model);
 
-            return result;
+                if (result is PageResult)
+                {
+                    result = this.View("Error", new ErrorViewModel { ErrorMessage = "Invalid login attempt." });
+                }
+
+                return result;
+            }
+            else
+            {
+                return this.View(model);
+            }
         }
 
         public IActionResult Register()
@@ -42,15 +49,13 @@
         public IActionResult Register(RegisterUserViewModel model)
         {
             var result = this.accountsService.Register(model);
-            
+
             return result;
         }
 
         public IActionResult Logout()
         {
-            this.accountsService.Logout();
-
-            return this.Redirect("/");
+            return this.accountsService.Logout().Result;
         }
     }
 }

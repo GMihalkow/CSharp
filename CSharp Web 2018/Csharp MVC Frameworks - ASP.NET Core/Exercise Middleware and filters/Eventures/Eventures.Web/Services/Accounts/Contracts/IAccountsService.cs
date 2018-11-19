@@ -2,13 +2,14 @@
 {
     using Eventures.Web.ViewModels.Accounts;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
-    public interface IAccountsService
+    public interface IAccountService
     {
         IActionResult Register(RegisterUserViewModel model);
 
-        IActionResult Login(RegisterUserViewModel model);
+        IActionResult Login(LoginUserInputModel model);
 
-        void Logout();
+        Task<IActionResult> Logout();
     }
 }

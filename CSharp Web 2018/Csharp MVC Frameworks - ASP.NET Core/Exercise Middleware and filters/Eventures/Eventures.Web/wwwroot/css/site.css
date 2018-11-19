@@ -37,6 +37,22 @@ footer {
     width:30%;
 }
 
+ul > li > p {
+    font-weight: bold;
+    color: black;
+    margin-top: 15px;
+}
+
+.list-inline > li {
+    display:block;
+}
+
+
+.list-inline > li > a{
+    display: block;
+    font-weight: normal;
+}
+
 ul > li > a {
     font-weight:bold;
     color:black;
@@ -83,6 +99,10 @@ ul > li > div > a {
     width:50%;
 }
 
+.two-thirds-width{
+    width:70%;
+}
+
 .mx-auto{
     margin:20px auto;
 }
@@ -94,7 +114,7 @@ ul > li > div > a {
 }
 
 .bg-eventure {
-    background-color: #99ddff;
+    background-color: #AFEEEE;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
