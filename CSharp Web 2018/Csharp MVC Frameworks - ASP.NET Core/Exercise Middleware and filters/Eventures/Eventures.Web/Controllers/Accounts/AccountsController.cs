@@ -29,7 +29,7 @@
 
                 if (result is PageResult)
                 {
-                    result = this.View("Error", new ErrorViewModel { ErrorMessage = "Invalid login attempt." });
+                    result = this.View(model);
                 }
 
                 return result;
@@ -48,9 +48,21 @@
         [HttpPost]
         public IActionResult Register(RegisterUserViewModel model)
         {
-            var result = this.accountsService.Register(model);
+            if (ModelState.IsValid)
+            {
+                var result = this.accountsService.Register(model);
 
-            return result;
+                if(result is PageResult)
+                {
+                    return this.View(model);
+                }
+
+                return result;
+            }
+            else
+            {
+                return this.View(model);
+            }
         }
 
         public IActionResult Logout()

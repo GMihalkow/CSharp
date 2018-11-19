@@ -43,73 +43,56 @@
 
         public async Task<IActionResult> OnRegisterPostAsync(RegisterUserViewModel model)
         {
-            if (ModelState.IsValid)
+            var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
-                var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
-                var result = await userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (this.dbService.DbContext.Users.Count() == 1)
                 {
-                    if (this.dbService.DbContext.Users.Count() == 1)
-                    {
-                        await this.userManager.AddToRoleAsync(user, "Admin");
-                    }
-                    else
-                    {
-                        await this.userManager.AddToRoleAsync(user, "User");
-                    }
-
-                    var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return this.Redirect("/");
+                    await this.userManager.AddToRoleAsync(user, "Admin");
                 }
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    await this.userManager.AddToRoleAsync(user, "User");
                 }
 
+                var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                var test = new ViewResult();
-                test.ViewName = "Register";
-
-                // If we got this far, something failed, redisplay form
-                return test;
+                await signInManager.SignInAsync(user, isPersistent: false);
+                return this.Redirect("/");
+            }
+            else
+            {
+                return this.Redirect("/accounts/register");
             }
 
-            return this.Page();
         }
 
         public async Task<IActionResult> OnLoginPostAsync(LoginUserInputModel model)
         {
-            if (ModelState.IsValid)
+            var user = this.dbService.DbContext.Users.FirstOrDefault(x => x.UserName == model.Username);
+            if (user == null)
             {
-                var user = this.dbService.DbContext.Users.FirstOrDefault(x => x.UserName == model.Username);
-                if (user == null)
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return this.Page();
-                }
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                bool RememberMe = model.RememberMe == "RememberMe";
-                var result = await signInManager.PasswordSignInAsync(user, model.Password, RememberMe, lockoutOnFailure: true);
-                if (result.Succeeded)
-                {
-                    return this.Redirect("/");
-                }
-                if (result.IsLockedOut)
-                {
-                    return RedirectToPage("./Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return this.Page();
-                }
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return this.Page();
             }
-
-            // If we got this far, something failed, redisplay form
-            return this.Page();
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+            bool RememberMe = model.RememberMe == "RememberMe";
+            var result = await signInManager.PasswordSignInAsync(user, model.Password, RememberMe, lockoutOnFailure: true);
+            if (result.Succeeded)
+            {
+                return this.Redirect("/");
+            }
+            if (result.IsLockedOut)
+            {
+                return RedirectToPage("./Lockout");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return this.Page();
+            }
         }
     }
 }

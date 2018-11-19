@@ -2,6 +2,12 @@
 @model LoginUserInputModel;
 
 <main class="mt-5">
+
+    @if (Model != null)
+    {
+        @await Html.PartialAsync("Error", new ErrorViewModel {ErrorMessage=  "Invalid login attempt" });
+    }
+
     <h1 class="text-center text-eventure">Login</h1>
     <form class="mx-auto third-width text-center" asp-controller="Accounts" asp-action="Login">
         <hr class="bg-eventure hr-eventure mt-5" />
