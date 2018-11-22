@@ -1,6 +1,7 @@
 ﻿namespace Eventures.Models
 {
     using System;
+    using System.Collections.Generic;
 
     public class Event
     {
@@ -18,8 +19,6 @@
 
         public decimal PricePerTicket { get; set; }
 
-        public EventureUser User { get; set; }
-
-        public string UserId { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

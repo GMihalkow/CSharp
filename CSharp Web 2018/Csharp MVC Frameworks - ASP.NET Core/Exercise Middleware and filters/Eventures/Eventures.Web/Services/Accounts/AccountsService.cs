@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     public class AccountsService : PageModel, IAccountService
@@ -93,6 +94,13 @@
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return this.Page();
             }
+        }
+
+        public EventureUser GetUser(ClaimsPrincipal principal)
+        {
+            EventureUser user = this.userManager.GetUserAsync(principal).GetAwaiter().GetResult();
+
+            return user;
         }
     }
 }

@@ -15,6 +15,8 @@ using Eventures.Web.Services.Accounts;
 using Eventures.Web.Services.DbContext;
 using Eventures.Web.Services.Events;
 using Eventures.Web.Services.Events.Contracts;
+using Eventures.Web.Services.Orders.Contracts;
+using Eventures.Web.Services.Orders;
 
 namespace Eventures.Web
 {
@@ -72,6 +74,7 @@ namespace Eventures.Web
             //Initializing services
             services.AddScoped<IEventsService, EventsService>();
             services.AddScoped<IAccountService, AccountsService>();
+            services.AddScoped<IOrdersService, OrdersService>();
             services.AddScoped<DbService>();
 
             services.AddSingleton<IEmailSender, EmailSender>();
