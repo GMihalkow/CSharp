@@ -26,13 +26,15 @@
             if(ModelState.IsValid)
             {
                 var result = this.accountsService.Login(model);
-
-                if (result is PageResult)
+                
+                if(result == true)
                 {
-                    result = this.View(model);
+                    return this.Redirect("/");
                 }
-
-                return result;
+                else
+                {
+                    return this.View(model);
+                }
             }
             else
             {

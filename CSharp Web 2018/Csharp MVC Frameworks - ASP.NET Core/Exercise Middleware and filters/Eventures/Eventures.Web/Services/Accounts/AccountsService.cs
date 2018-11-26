@@ -10,6 +10,7 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
     public class AccountsService : PageModel, IAccountService
     {
@@ -24,9 +25,17 @@
             this.signInManager = signInManager;
         }
 
-        public IActionResult Login(LoginUserInputModel model)
+        public bool Login(LoginUserInputModel model)
         {
-            return this.OnLoginPostAsync(model).Result;
+            var result = this.OnLoginPostAsync(model).Result;
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public IActionResult Register(RegisterUserViewModel model)
@@ -69,31 +78,18 @@
 
         }
 
-        public async Task<IActionResult> OnLoginPostAsync(LoginUserInputModel model)
+        public async Task<SignInResult> OnLoginPostAsync(LoginUserInputModel model)
         {
             var user = this.dbService.DbContext.Users.FirstOrDefault(x => x.UserName == model.Username);
-            if (user == null)
+            if(user == null)
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return this.Page();
+                return SignInResult.Failed;
             }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
             bool RememberMe = model.RememberMe == "RememberMe";
             var result = await signInManager.PasswordSignInAsync(user, model.Password, RememberMe, lockoutOnFailure: true);
-            if (result.Succeeded)
-            {
-                return this.Redirect("/");
-            }
-            if (result.IsLockedOut)
-            {
-                return RedirectToPage("./Lockout");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return this.Page();
-            }
+            return result;
         }
 
         public EventureUser GetUser(ClaimsPrincipal principal)

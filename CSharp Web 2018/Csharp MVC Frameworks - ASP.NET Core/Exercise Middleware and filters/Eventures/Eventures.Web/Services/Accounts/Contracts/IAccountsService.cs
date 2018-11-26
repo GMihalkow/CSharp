@@ -10,7 +10,7 @@
     {
         IActionResult Register(RegisterUserViewModel model);
 
-        IActionResult Login(LoginUserInputModel model);
+        bool Login(LoginUserInputModel model);
 
         Task<IActionResult> Logout();
 
