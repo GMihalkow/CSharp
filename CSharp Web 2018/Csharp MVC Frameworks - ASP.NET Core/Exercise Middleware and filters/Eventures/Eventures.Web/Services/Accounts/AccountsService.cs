@@ -5,14 +5,12 @@
     using Eventures.Web.Services.DbContext;
     using Eventures.Web.ViewModels.Accounts;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
-    public class AccountsService : PageModel, IAccountService
+    public class AccountsService : IAccountService
     {
         private readonly DbService dbService;
         private readonly UserManager<EventureUser> userManager;
@@ -23,6 +21,48 @@
             this.dbService = dbService;
             this.userManager = userManager;
             this.signInManager = signInManager;
+        }
+
+
+        public async Task<bool> EmailExists(string email)
+        {
+            EventureUser user = await this.userManager.FindByEmailAsync(email);
+
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool UserExists(string username)
+        {
+            var result = this.dbService.DbContext.Users.Any(u => u.UserName == username);
+
+            return result;
+        }
+
+        public async Task<bool> UserWithPasswordExists(string username, string password)
+        {
+            if (!this.UserExists(username))
+            {
+                return false;
+            }
+
+            var User = this.dbService.DbContext.Users.First(u => u.UserName == username);
+
+            var result = await this.signInManager.PasswordSignInAsync(User, password, false, false);
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Login(LoginUserInputModel model)
@@ -38,50 +78,45 @@
             }
         }
 
-        public IActionResult Register(RegisterUserViewModel model)
+        public bool Register(RegisterUserViewModel model)
         {
-            return OnRegisterPostAsync(model).Result;
-        }
+            var result = OnRegisterPostAsync(model).Result;
 
-
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-
-            return this.Redirect("/");
-        }
-
-        public async Task<IActionResult> OnRegisterPostAsync(RegisterUserViewModel model)
-        {
-            var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
-            var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                if (this.dbService.DbContext.Users.Count() == 1)
-                {
-                    await this.userManager.AddToRoleAsync(user, "Admin");
-                }
-                else
-                {
-                    await this.userManager.AddToRoleAsync(user, "User");
-                }
-
-                var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                await signInManager.SignInAsync(user, isPersistent: false);
-                return this.Redirect("/");
+                return true;
             }
             else
             {
-                return this.Redirect("/accounts/register");
+                return false;
             }
+        }
 
+        public async Task Logout()
+        {
+            await signInManager.SignOutAsync();
+        }
+
+        public async Task<IdentityResult> OnRegisterPostAsync(RegisterUserViewModel model)
+        {
+            var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await signInManager.SignInAsync(user, isPersistent: false);
+                return result;
+            }
+            else
+            {
+                return IdentityResult.Failed();
+            }
         }
 
         public async Task<SignInResult> OnLoginPostAsync(LoginUserInputModel model)
         {
             var user = this.dbService.DbContext.Users.FirstOrDefault(x => x.UserName == model.Username);
-            if(user == null)
+            if (user == null)
             {
                 return SignInResult.Failed;
             }

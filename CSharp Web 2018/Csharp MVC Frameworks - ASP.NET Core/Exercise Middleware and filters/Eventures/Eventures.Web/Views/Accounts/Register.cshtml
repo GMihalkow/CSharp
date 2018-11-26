@@ -2,12 +2,6 @@
 @model RegisterUserViewModel
 
 <main class="mt-5">
-
-    @if (Model != null)
-    {
-        @await Html.PartialAsync("Error", new ErrorViewModel { ErrorMessage = "Invalid registration attempt" });
-    }
-
     <h1 class="text-center text-eventure">Register</h1>
     <form class="mx-auto half-width text-center" asp-controller="Accounts" asp-action="Register">
         <hr class="bg-eventure hr-eventure mt-5" />

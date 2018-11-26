@@ -1,16 +1,20 @@
 ﻿namespace Eventures.Web.ViewModels.Accounts
 {
+    using Eventures.Web.Attributes;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class RegisterUserViewModel : IValidatableObject
     {
         [Required]
+        [UsernameExists(ErrorMessage = "Username already exists.")]
         [StringLength(50, ErrorMessage = "{0} must be between {2} and {1} characters long.", MinimumLength = 3)]
         [RegularExpression(@"[a-zA-Z_\-.*~0-9]*")]
         public string Username { get; set; }
 
         [Required]
+        [EmailAddress]
+        [EmailExists(ErrorMessage = "Email already in use.")]
         public string Email { get; set; }
 
         [Required]

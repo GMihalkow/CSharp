@@ -1,10 +1,8 @@
 ﻿namespace Eventures.Web.Controllers.Accounts
 {
-    using Eventures.Web.Models;
     using Eventures.Web.Services.Accounts.Contracts;
     using Eventures.Web.ViewModels.Accounts;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
 
     public class AccountsController : BaseController
     {
@@ -54,12 +52,14 @@
             {
                 var result = this.accountsService.Register(model);
 
-                if(result is PageResult)
+                if(result == true)
+                {
+                    return this.Redirect("/");
+                }
+                else
                 {
                     return this.View(model);
                 }
-
-                return result;
             }
             else
             {
@@ -69,7 +69,8 @@
 
         public IActionResult Logout()
         {
-            return this.accountsService.Logout().Result;
+            this.accountsService.Logout();
+            return this.Redirect("/");
         }
     }
 }
