@@ -1,0 +1,31 @@
+﻿@using Eventures.Web.ViewModels.Orders;
+@model IEnumerable<OrderViewModel>;
+
+<main class="mt-5">
+    <h1 class="text-center font-weight-bold">All Orders</h1>
+    <hr class="hr-eventure two-thirds-width bg-eventure" />
+    <table class="table two-thirds-width mx-auto">
+        <thead>
+            <tr>
+                <th class="col-lg-1">#</th>
+                <th class="col-lg-4">Event</th>
+                <th class="col-lg-2">Customer</th>
+                <th class="col-lg-2">Ordered On</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int index = 0; index < Model.Count(); index++)
+            {
+                int realIndex = index + 1;
+                OrderViewModel currentModel = Model.ElementAt(index);
+                <tr>
+                    <td>@realIndex</td>
+                    <td>@currentModel.EventName</td>
+                    <td>@currentModel.CustomerName</td>
+                    <td>@currentModel.OrderedOne.ToString("dd-MMM-yy hh:mm:ss")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr class="hr-eventure two-thirds-width bg-eventure" />
+</main>

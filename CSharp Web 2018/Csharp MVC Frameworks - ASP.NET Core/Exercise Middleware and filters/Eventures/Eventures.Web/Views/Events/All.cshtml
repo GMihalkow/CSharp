@@ -1,0 +1,47 @@
+﻿@using Eventures.Models;
+@model Event[];
+
+<main class="mt-5">
+    <h1 class="text-center font-weight-bold">All Events</h1>
+
+    <hr class="hr-eventure two-thirds-width bg-eventure" />
+    <table class="table two-thirds-width mx-auto">
+        <thead>
+            <tr>
+                <th class="col-lg-1">#</th>
+                <th class="col-lg-3">Name</th>
+                <th class="col-lg-2">Start</th>
+                <th class="col-lg-2">End</th>
+                <th class="col-lg-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int index = 0; index < Model.Length; index++)
+            {
+                int realIndex = index + 1;
+                Event currentEvent = Model[index];
+                <tr>
+                    <td>@realIndex</td>
+                    <td>@currentEvent.Name</td>
+                    <td>@currentEvent.Start.ToString("dd-MMM-yy hh:mm:ss")</td>
+                    <td>@currentEvent.End.ToString("dd-MMM-yy hh:mm:ss")</td>
+                    <td>
+                        <form class="form-group" asp-controller="Orders" asp-action="Order" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <input hidden="hidden" type="text" name="eventName" value="@currentEvent.Name" />
+                            <label for="ticketsCount" class="font-weight-bold">Tickets</label>
+                            <input class="form-group" type="number" name="ticketsCount" id="ticketsCount" />
+                            <button class="btn bg-eventure">Order</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr class="hr-eventure two-thirds-width bg-eventure" />
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</main>
