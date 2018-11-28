@@ -29,6 +29,13 @@
         <p class="mx-auto"><a href="#">Forgot your password?</a></p>
         <p class="mx-auto"><a asp-controller="Accounts" asp-action="Register">Register as a new user</a></p>
     </form>
+    <hr class="bg-eventure hr-eventure" />
+    <div class="button-holder d-flex justify-content-center text-center">
+        <form asp-controller="Accounts" asp-action="ExternalLogin" method="post">
+            <button type="submit" name="provider" value="Facebook" class="btn bg-eventure">Facebook</button>
+        </form>
+    </div>
+    <hr class="bg-eventure hr-eventure" />
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />

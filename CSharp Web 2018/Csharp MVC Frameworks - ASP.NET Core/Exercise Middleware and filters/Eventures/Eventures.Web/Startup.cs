@@ -17,6 +17,8 @@ using Eventures.Web.Services.Events;
 using Eventures.Web.Services.Events.Contracts;
 using Eventures.Web.Services.Orders.Contracts;
 using Eventures.Web.Services.Orders;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using AutoMapper;
 
 namespace Eventures.Web
 {
@@ -42,6 +44,16 @@ namespace Eventures.Web
             services.AddDbContext<EventuresDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+                
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    facebookOptions.CallbackPath = "/Accounts/signin-facebook";
+                    facebookOptions.SaveTokens = true;
+                });
+
             services.AddIdentity<EventureUser, IdentityRole>(
                 options =>
                 {
@@ -79,6 +91,8 @@ namespace Eventures.Web
 
             services.AddSingleton<IEmailSender, EmailSender>();
 
+            services.AddAutoMapper();
+
             //Defining authorization
             services.AddAuthorization(options =>
             {
@@ -88,6 +102,7 @@ namespace Eventures.Web
                         authBuilder.RequireRole("Admin");
                     });
             });
+
 
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
         }

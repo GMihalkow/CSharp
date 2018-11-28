@@ -1,10 +1,12 @@
 ﻿namespace Eventures.Web.ViewModels.Accounts
 {
+    using Eventures.Models;
     using Eventures.Web.Attributes;
+    using Eventures.Web.MappingConfigurations;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class RegisterUserViewModel : IValidatableObject
+    public class RegisterUserViewModel : IMapTo<EventureUser> ,IValidatableObject
     {
         [Required]
         [UsernameExists(ErrorMessage = "Username already exists.")]

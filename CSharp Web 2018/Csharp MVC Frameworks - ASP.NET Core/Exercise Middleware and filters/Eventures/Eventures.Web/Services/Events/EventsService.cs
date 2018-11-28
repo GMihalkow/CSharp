@@ -1,5 +1,6 @@
 ﻿namespace Eventures.Web.Services.Events
 {
+    using AutoMapper;
     using Eventures.Models;
     using Eventures.Web.Services.Accounts.Contracts;
     using Eventures.Web.Services.DbContext;
@@ -13,11 +14,13 @@
 
     public class EventsService : IEventsService
     {
+        private readonly IMapper mapper;
         private readonly DbService dbService;
         private readonly IAccountService accountService;
 
-        public EventsService(DbService dbService, IAccountService accountService)
+        public EventsService(IMapper mapper, DbService dbService, IAccountService accountService)
         {
+            this.mapper = mapper;
             this.dbService = dbService;
             this.accountService = accountService;
         }
@@ -29,15 +32,7 @@
                 return new PageResult();
             }
 
-            Event eventModel = new Event
-            {
-                Name = model.Name,
-                Place = model.Place,
-                TotalTickets = model.TotalTickets,
-                Start = model.Start,
-                End = model.End,
-                PricePerTicket = model.PricePerTicket
-            };
+            var eventModel = this.mapper.Map<Event>(model);
 
             this.dbService.DbContext.Events.Add(eventModel);
             this.dbService.DbContext.SaveChanges();

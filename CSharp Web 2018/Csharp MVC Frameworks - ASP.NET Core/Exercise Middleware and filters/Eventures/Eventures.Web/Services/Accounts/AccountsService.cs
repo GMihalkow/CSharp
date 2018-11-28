@@ -1,5 +1,6 @@
 ﻿namespace Eventures.Web.Services.Accounts
 {
+    using AutoMapper;
     using Eventures.Models;
     using Eventures.Web.Services.Accounts.Contracts;
     using Eventures.Web.Services.DbContext;
@@ -12,18 +13,42 @@
 
     public class AccountsService : IAccountService
     {
+        private readonly IMapper mapper;
         private readonly DbService dbService;
         private readonly UserManager<EventureUser> userManager;
         private readonly SignInManager<EventureUser> signInManager;
 
-        public AccountsService(DbService dbService, UserManager<EventureUser> userManager, SignInManager<EventureUser> signInManager)
+        public AccountsService(IMapper mapper, DbService dbService, UserManager<EventureUser> userManager, SignInManager<EventureUser> signInManager)
         {
+            this.mapper = mapper;
             this.dbService = dbService;
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
 
+        public async Task ExternalLogin()
+        {
+            var info = await this.signInManager.GetExternalLoginInfoAsync();
 
+            string email = info.Principal.Claims.First(x => x.Type.Contains("emailaddress")).Value;
+
+            var user = new EventureUser { UserName = email, Email = email};
+            if (!(this.dbService.DbContext.Users.Any(x => x.UserName == user.UserName)))
+            {
+                var createUserResult = await userManager.CreateAsync(user);
+                if (createUserResult.Succeeded)
+                {
+                    createUserResult = await userManager.AddLoginAsync(user, info);
+                    if (createUserResult.Succeeded)
+                    {
+                        await signInManager.SignInAsync(user, isPersistent: false);
+                    }
+                }
+            }
+
+            var result = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false, true);
+        }
+        
         public async Task<bool> EmailExists(string email)
         {
             EventureUser user = await this.userManager.FindByEmailAsync(email);
@@ -99,7 +124,7 @@
 
         public async Task<IdentityResult> OnRegisterPostAsync(RegisterUserViewModel model)
         {
-            var user = new EventureUser { UserName = model.Username, FirstName = model.FirstName, UCN = model.UCN, LastName = model.LastName, Email = model.Email };
+            var user = this.mapper.Map<EventureUser>(model);
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
@@ -115,7 +140,7 @@
 
         public async Task<SignInResult> OnLoginPostAsync(LoginUserInputModel model)
         {
-            var user = this.dbService.DbContext.Users.FirstOrDefault(x => x.UserName == model.Username);
+            var user = this.dbService.DbContext.Users.FirstOrDefault(u => u.UserName == model.Username);
             if (user == null)
             {
                 return SignInResult.Failed;

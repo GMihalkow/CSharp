@@ -7,6 +7,8 @@
 
     public interface IAccountService
     {
+        Task ExternalLogin();
+
         bool Register(RegisterUserViewModel model);
 
         bool Login(LoginUserInputModel model);
