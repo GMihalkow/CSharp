@@ -1,7 +1,6 @@
-﻿namespace Eventures.Web.Services.Accounts.Contracts
+﻿namespace Eventures.Services.Accounts.Contracts
 {
     using Eventures.Models;
-    using Eventures.Web.ViewModels.Accounts;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -9,9 +8,9 @@
     {
         Task ExternalLogin();
 
-        bool Register(RegisterUserViewModel model);
+        bool Register(EventureUser model, string password);
 
-        bool Login(LoginUserInputModel model);
+        bool Login(EventureUser model, string password);
 
         Task<bool> UserWithPasswordExists(string username, string password);
 

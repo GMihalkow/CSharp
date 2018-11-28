@@ -1,8 +1,8 @@
 ﻿namespace Eventures.Web.Attributes
 {
     using Eventures.Models;
-    using Eventures.Web.Services.Events.Contracts;
-    using Eventures.Web.Services.Orders.Contracts;
+    using Eventures.Services.Events.Contracts;
+    using Eventures.Services.Orders.Contracts;
     using Eventures.Web.ViewModels.Orders;
     using System;
     using System.ComponentModel.DataAnnotations;

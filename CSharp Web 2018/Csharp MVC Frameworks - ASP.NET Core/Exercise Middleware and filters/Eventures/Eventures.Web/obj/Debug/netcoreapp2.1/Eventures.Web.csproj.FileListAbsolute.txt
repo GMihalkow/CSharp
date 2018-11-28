@@ -50,3 +50,5 @@ C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\obj\Debug\netcoreapp2.1\Razor\Views\Orders\All.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ExternalLogin.g.cshtml.cs
 C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\bin\Debug\netcoreapp2.1\Eventures.Services.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\bin\Debug\netcoreapp2.1\Eventures.Services.pdb

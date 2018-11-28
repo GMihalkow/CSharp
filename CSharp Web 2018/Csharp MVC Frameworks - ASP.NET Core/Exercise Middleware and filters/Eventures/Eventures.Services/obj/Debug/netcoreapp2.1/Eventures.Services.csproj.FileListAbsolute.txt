@@ -1,0 +1,16 @@
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Services.deps.json
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Services.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.csprojAssemblyReference.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.csproj.CoreCompileInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.AssemblyInfoInputs.cache
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.AssemblyInfo.cs
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Models.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.csproj.CopyComplete
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Services.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Data.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Eventures.Data.pdb
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.dll
+C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Services\obj\Debug\netcoreapp2.1\Eventures.Services.pdb

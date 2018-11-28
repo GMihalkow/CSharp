@@ -1,20 +1,25 @@
 ﻿namespace Eventures.Web.Controllers.Events
 {
+    using AutoMapper;
+    using Eventures.Models;
+    using Eventures.Services.Events.Contracts;
     using Eventures.Web.Filters;
-    using Eventures.Web.Services.Events.Contracts;
     using Eventures.Web.ViewModels.Events;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+    using System.Linq;
 
     public class EventsController : BaseController
     {
+        private readonly IMapper mapper;
         private readonly IEventsService eventsService;
         private readonly ILogger<EventsController> logger;
 
-        public EventsController(IEventsService eventsService, ILogger<EventsController> logger)
+        public EventsController(IMapper mapper, IEventsService eventsService, ILogger<EventsController> logger)
         {
+            this.mapper = mapper;
             this.eventsService = eventsService;
             this.logger = logger;
         }
@@ -30,18 +35,15 @@
         [Authorize("Admin")]
         public IActionResult Create(CreateEventInputModel model)
         {
+            var eventuresEvent = this.mapper.Map<Event>(model);
+
             if (ModelState.IsValid)
             {
-                var result = this.eventsService.AddEvent(model, this.User);
+                this.eventsService.AddEvent(eventuresEvent, this.User);
 
                 this.logger.LogInformation($"Event created: {model.Name}");
                
-                if(result is PageResult)
-                {
-                    result = this.View(model);
-                }
-
-                return result;
+                return this.Redirect("/");
             }
             else
             {
@@ -60,7 +62,12 @@
         {
             var events = this.eventsService.MyEvents(this.User);
 
-            return this.View(events);
+            var mappedEvents =
+                events
+                .Select(e => this.mapper.Map<MyEventsViewModel>(e))
+                .ToArray();
+
+            return this.View(mappedEvents);
         }
     }
 }

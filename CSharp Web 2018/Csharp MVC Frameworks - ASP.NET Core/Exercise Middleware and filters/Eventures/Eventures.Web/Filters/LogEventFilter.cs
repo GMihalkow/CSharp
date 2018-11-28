@@ -1,10 +1,8 @@
 ﻿namespace Eventures.Web.Filters
 {
-    using Eventures.Web.Services.Events.Contracts;
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.Logging;
     using System;
-    using System.Globalization;
 
     public class LogEventFilter : Attribute, IResultFilter
     {

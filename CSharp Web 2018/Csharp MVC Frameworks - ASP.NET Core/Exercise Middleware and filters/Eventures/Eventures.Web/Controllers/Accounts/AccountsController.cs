@@ -1,21 +1,22 @@
 ﻿namespace Eventures.Web.Controllers.Accounts
 {
+    using AutoMapper;
     using Eventures.Models;
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.ViewModels.Accounts;
-    using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class AccountsController : BaseController
     {
+        private readonly IMapper mapper;
         private readonly IAccountService accountsService;
         private readonly SignInManager<EventureUser> signInManager;
 
-        public AccountsController(IAccountService accountsService, SignInManager<EventureUser> signInManager)
+        public AccountsController(IMapper mapper, IAccountService accountsService, SignInManager<EventureUser> signInManager)
         {
+            this.mapper = mapper;
             this.accountsService = accountsService;
             this.signInManager = signInManager;
         }
@@ -28,9 +29,11 @@
         [HttpPost]
         public IActionResult Login(LoginUserInputModel model)
         {
+            var user = this.mapper.Map<EventureUser>(model);
+
             if (ModelState.IsValid)
             {
-                var result = this.accountsService.Login(model);
+                var result = this.accountsService.Login(user, model.Password);
 
                 if (result == true)
                 {
@@ -55,9 +58,11 @@
         [HttpPost]
         public IActionResult Register(RegisterUserViewModel model)
         {
+            var user = this.mapper.Map<EventureUser>(model);
+
             if (ModelState.IsValid)
             {
-                var result = this.accountsService.Register(model);
+                var result = this.accountsService.Register(user, model.Password);
 
                 if (result == true)
                 {

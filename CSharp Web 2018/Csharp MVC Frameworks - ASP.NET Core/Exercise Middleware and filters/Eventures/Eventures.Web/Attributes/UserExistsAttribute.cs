@@ -1,6 +1,6 @@
 ﻿namespace Forum.Web.Attributes
 {
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.ViewModels.Accounts;
     using System;
     using System.ComponentModel.DataAnnotations;

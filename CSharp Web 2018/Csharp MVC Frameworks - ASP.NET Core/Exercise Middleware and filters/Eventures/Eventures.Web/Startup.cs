@@ -1,27 +1,26 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Eventures.Web.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Eventures.Models;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Eventures.Web.Middlewares;
-using Eventures.Web.Services.Accounts.Contracts;
-using Eventures.Web.Services.Accounts;
-using Eventures.Web.Services.DbContext;
-using Eventures.Web.Services.Events;
-using Eventures.Web.Services.Events.Contracts;
-using Eventures.Web.Services.Orders.Contracts;
-using Eventures.Web.Services.Orders;
-using Microsoft.AspNetCore.Authentication.Facebook;
-using AutoMapper;
-
-namespace Eventures.Web
+﻿namespace Eventures.Web
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Eventures.Web.Data;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Eventures.Models;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Eventures.Web.Middlewares;
+    using Eventures.Web.Services.DbContext;
+    using Eventures.Web.Services.Events;
+    using AutoMapper;
+    using Eventures.Services.Accounts;
+    using Eventures.Services.Events.Contracts;
+    using Eventures.Services.Accounts.Contracts;
+    using Eventures.Services.Orders;
+    using Eventures.Services.Orders.Contracts;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -82,6 +81,7 @@ namespace Eventures.Web
                 options.LogoutPath = $"/Accounts/Logout";
                 options.AccessDeniedPath = $"/Accounts/AccessDenied";
             });
+
 
             //Initializing services
             services.AddScoped<IEventsService, EventsService>();

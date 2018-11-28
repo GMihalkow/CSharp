@@ -2,12 +2,10 @@
 {
     using AutoMapper;
     using Eventures.Models;
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
+    using Eventures.Services.Events.Contracts;
     using Eventures.Web.Services.DbContext;
-    using Eventures.Web.Services.Events.Contracts;
-    using Eventures.Web.ViewModels.Events;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using System.Security.Claims;
@@ -25,21 +23,12 @@
             this.accountService = accountService;
         }
 
-        public IActionResult AddEvent(CreateEventInputModel model, ClaimsPrincipal user)
+        public void AddEvent(Event model, ClaimsPrincipal user)
         {
-            if (this.dbService.DbContext.Events.Any(e => e.Name == model.Name))
-            {
-                return new PageResult();
-            }
-
             var eventModel = this.mapper.Map<Event>(model);
 
             this.dbService.DbContext.Events.Add(eventModel);
             this.dbService.DbContext.SaveChanges();
-
-            var result = new RedirectResult("/");
-
-            return result;
         }
 
         public Event[] AllEvents()
@@ -73,20 +62,17 @@
             return currentTicketsCount;
         }
 
-        public MyEventsViewModel[] MyEvents(ClaimsPrincipal principal)
+        public Event[] MyEvents(ClaimsPrincipal principal)
         {
+            var user = this.accountService.GetUser(principal);
+
             var events =
                this.dbService
                .DbContext
                .Orders
-               .Where(o => o.Customer.UserName == this.accountService.GetUser(principal).UserName)
-               .Select(o => new MyEventsViewModel
-               {
-                   EventName = o.Event.Name,
-                   EndDate = o.Event.End,
-                   StartDate = o.Event.Start,
-                   MyTickets = o.TicketsCount
-               })
+               .Where(o => o.Customer.UserName == user.UserName)
+               .Select(o => o.Event)
+               .Include(o => o.Orders)
                .ToArray();
 
             return events;

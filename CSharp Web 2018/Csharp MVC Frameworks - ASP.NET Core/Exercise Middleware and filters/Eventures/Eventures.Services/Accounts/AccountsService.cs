@@ -1,16 +1,14 @@
-﻿namespace Eventures.Web.Services.Accounts
+﻿namespace Eventures.Services.Accounts
 {
     using AutoMapper;
     using Eventures.Models;
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.Services.DbContext;
-    using Eventures.Web.ViewModels.Accounts;
     using Microsoft.AspNetCore.Identity;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
-
+    
     public class AccountsService : IAccountService
     {
         private readonly IMapper mapper;
@@ -90,9 +88,9 @@
             }
         }
 
-        public bool Login(LoginUserInputModel model)
+        public bool Login(EventureUser model, string password)
         {
-            var result = this.OnLoginPostAsync(model).Result;
+            var result = this.OnLoginPostAsync(model, password).Result;
             if (result.Succeeded)
             {
                 return true;
@@ -103,9 +101,9 @@
             }
         }
 
-        public bool Register(RegisterUserViewModel model)
+        public bool Register(EventureUser model, string password)
         {
-            var result = OnRegisterPostAsync(model).Result;
+            var result = OnRegisterPostAsync(model, password).Result;
 
             if (result.Succeeded)
             {
@@ -122,10 +120,10 @@
             await signInManager.SignOutAsync();
         }
 
-        public async Task<IdentityResult> OnRegisterPostAsync(RegisterUserViewModel model)
+        public async Task<IdentityResult> OnRegisterPostAsync(EventureUser model, string password)
         {
             var user = this.mapper.Map<EventureUser>(model);
-            var result = await userManager.CreateAsync(user, model.Password);
+            var result = await userManager.CreateAsync(user, password);
 
             if (result.Succeeded)
             {
@@ -138,17 +136,16 @@
             }
         }
 
-        public async Task<SignInResult> OnLoginPostAsync(LoginUserInputModel model)
+        public async Task<SignInResult> OnLoginPostAsync(EventureUser model, string password)
         {
-            var user = this.dbService.DbContext.Users.FirstOrDefault(u => u.UserName == model.Username);
+            var user = this.dbService.DbContext.Users.FirstOrDefault(u => u.UserName == model.UserName);
             if (user == null)
             {
                 return SignInResult.Failed;
             }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-            bool RememberMe = model.RememberMe == "RememberMe";
-            var result = await signInManager.PasswordSignInAsync(user, model.Password, RememberMe, lockoutOnFailure: true);
+            var result = await signInManager.PasswordSignInAsync(user, password, false, lockoutOnFailure: true);
             return result;
         }
 

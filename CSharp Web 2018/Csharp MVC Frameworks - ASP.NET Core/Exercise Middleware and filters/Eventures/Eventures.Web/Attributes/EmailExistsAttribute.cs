@@ -1,6 +1,6 @@
 ﻿namespace Eventures.Web.Attributes
 {
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
     using System;
     using System.ComponentModel.DataAnnotations;
 

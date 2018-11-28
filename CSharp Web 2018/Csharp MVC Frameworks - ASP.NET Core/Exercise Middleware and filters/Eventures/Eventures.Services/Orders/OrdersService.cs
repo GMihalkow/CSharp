@@ -1,13 +1,13 @@
-﻿namespace Eventures.Web.Services.Orders
+﻿namespace Eventures.Services.Orders
 {
     using Eventures.Models;
-    using Eventures.Web.Services.Accounts.Contracts;
+    using Eventures.Services.Accounts.Contracts;
+    using Eventures.Services.Events.Contracts;
+    using Eventures.Services.Orders.Contracts;
     using Eventures.Web.Services.DbContext;
-    using Eventures.Web.Services.Events.Contracts;
-    using Eventures.Web.Services.Orders.Contracts;
-    using Eventures.Web.ViewModels.Orders;
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using System.Security.Claims;
 
@@ -46,17 +46,17 @@
             }
         }
 
-        public IEnumerable<OrderViewModel> GetAllOrders()
+        public IEnumerable<Order> GetAllOrders()
         {
             var orders =
                 this.dbService
                 .DbContext
                 .Orders
-                .Select(o => new OrderViewModel
+                .Select(x => new Order
                 {
-                    CustomerName = o.Customer.UserName,
-                    EventName = o.Event.Name,
-                    OrderedOne = o.OrderedOn
+                    Customer = x.Customer,
+                    Event = x.Event,
+                    OrderedOn = x.OrderedOn
                 })
                 .ToArray();
 
