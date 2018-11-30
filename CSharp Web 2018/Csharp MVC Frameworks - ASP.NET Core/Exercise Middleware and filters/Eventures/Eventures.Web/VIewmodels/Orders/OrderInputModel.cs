@@ -2,11 +2,11 @@
 {
     using Eventures.Web.Attributes;
 
-    [CheckTickets(ErrorMessage ="TEST")]
+    [CheckTickets]
     public class OrderInputModel
     {
         public string EventName { get; set; }
-        
+
         public int TicketsCount { get; set; }
     }
 }

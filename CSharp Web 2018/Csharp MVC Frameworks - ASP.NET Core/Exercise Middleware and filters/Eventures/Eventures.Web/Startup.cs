@@ -81,8 +81,7 @@
                 options.LogoutPath = $"/Accounts/Logout";
                 options.AccessDeniedPath = $"/Accounts/AccessDenied";
             });
-
-
+            
             //Initializing services
             services.AddScoped<IEventsService, EventsService>();
             services.AddScoped<IAccountService, AccountsService>();
@@ -102,7 +101,6 @@
                         authBuilder.RequireRole("Admin");
                     });
             });
-
 
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
         }

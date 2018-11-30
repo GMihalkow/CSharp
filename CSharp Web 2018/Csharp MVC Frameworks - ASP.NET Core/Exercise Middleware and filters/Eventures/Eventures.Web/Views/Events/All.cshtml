@@ -26,7 +26,7 @@
                     <td>@currentEvent.Start.ToString("dd-MMM-yy hh:mm:ss")</td>
                     <td>@currentEvent.End.ToString("dd-MMM-yy hh:mm:ss")</td>
                     <td>
-                        <form class="form-group" asp-controller="Orders" asp-action="Order" method="post">
+                        <form class="form-group" asp-controller="Events" asp-action="All" method="post">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <input hidden="hidden" type="text" name="eventName" value="@currentEvent.Name" />
                             <label for="ticketsCount" class="font-weight-bold">Tickets</label>

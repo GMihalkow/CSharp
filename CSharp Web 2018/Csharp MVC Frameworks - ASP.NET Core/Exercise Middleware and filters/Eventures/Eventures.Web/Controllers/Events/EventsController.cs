@@ -3,8 +3,10 @@
     using AutoMapper;
     using Eventures.Models;
     using Eventures.Services.Events.Contracts;
+    using Eventures.Services.Orders.Contracts;
     using Eventures.Web.Filters;
     using Eventures.Web.ViewModels.Events;
+    using Eventures.Web.ViewModels.Orders;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,12 +15,14 @@
 
     public class EventsController : BaseController
     {
+        private readonly IOrdersService ordersService;
         private readonly IMapper mapper;
         private readonly IEventsService eventsService;
         private readonly ILogger<EventsController> logger;
 
-        public EventsController(IMapper mapper, IEventsService eventsService, ILogger<EventsController> logger)
+        public EventsController(IOrdersService ordersService, IMapper mapper, IEventsService eventsService, ILogger<EventsController> logger)
         {
+            this.ordersService = ordersService;
             this.mapper = mapper;
             this.eventsService = eventsService;
             this.logger = logger;
@@ -68,6 +72,23 @@
                 .ToArray();
 
             return this.View(mappedEvents);
+        }
+
+        [HttpPost]
+        public IActionResult All(OrderInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.ordersService.AddOrder(model.TicketsCount, this.User, model.EventName);
+
+                return this.Redirect("/");
+            }
+            else
+            {
+                var events = this.eventsService.AllEvents();
+
+                return this.View(events);
+            }
         }
     }
 }

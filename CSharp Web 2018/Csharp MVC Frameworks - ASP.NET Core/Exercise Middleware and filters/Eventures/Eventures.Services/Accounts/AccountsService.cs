@@ -127,6 +127,15 @@
 
             if (result.Succeeded)
             {
+                if (this.dbService.DbContext.Users.Count() == 1)
+                {
+                    this.userManager.AddToRoleAsync(model, "Admin").GetAwaiter().GetResult();
+                }
+                else
+                {
+                    this.userManager.AddToRoleAsync(model, "User").GetAwaiter().GetResult();
+                }
+
                 await signInManager.SignInAsync(user, isPersistent: false);
                 return result;
             }

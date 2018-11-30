@@ -20,21 +20,6 @@
             this.ordersService = ordersService;
         }
 
-        [HttpPost]
-        public IActionResult Order(OrderInputModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                this.ordersService.AddOrder(model.TicketsCount, this.User, model.EventName);
-
-                return this.Redirect("/");
-            }
-            else
-            {
-                return this.Redirect("/Events/All");
-            }
-        }
-
         [Authorize("Admin")]
         public IActionResult All()
         {

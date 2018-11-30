@@ -15,7 +15,6 @@
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-
             this.eventsService = (IEventsService)validationContext.GetService(typeof(IEventsService));
             this.ordersService = (IOrdersService)validationContext.GetService(typeof(IOrdersService));
 
