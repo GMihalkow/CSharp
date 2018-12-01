@@ -1,6 +1,7 @@
 ﻿namespace Eventures.Services.Accounts.Contracts
 {
     using Eventures.Models;
+    using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -20,6 +21,16 @@
         
         Task Logout();
 
+        EventureUser GetUserById(string id);
+
+        string GetRoleById(string id);
+
         EventureUser GetUser(ClaimsPrincipal principal);
+
+        Dictionary<EventureUser, string> GetUsersWithRoles(string currentUser);
+
+        void Promote(string id);
+
+        void Demote(string id);
     }
 }

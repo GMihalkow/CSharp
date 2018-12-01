@@ -9,7 +9,6 @@
     using Eventures.Web.ViewModels.Orders;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
     using System.Linq;
 
@@ -47,7 +46,7 @@
 
                 this.logger.LogInformation($"Event created: {model.Name}");
                
-                return this.Redirect("/");
+                return this.Redirect("/Events/All");
             }
             else
             {
@@ -55,16 +54,31 @@
             }
         }
 
-        public IActionResult All()
+        public IActionResult All(int start)
         {
-            var events = this.eventsService.AllEvents();
+            var totalEventsCount = 
+                this.eventsService
+                .AllEventsCount();
+
+            var events = 
+                this.eventsService
+                .EventsOnOnePage(start);
+
+            var viewModel = new EventsOnPageViewModel
+            {
+                Events = events,
+                Start = start,
+                TotalEventsCount = totalEventsCount
+            };
             
-            return this.View(events);
+            return this.View(viewModel);
         }
 
         public IActionResult My()
         {
-            var events = this.eventsService.MyEvents(this.User);
+            var events = 
+                this.eventsService
+                .MyEvents(this.User);
 
             var mappedEvents =
                 events
@@ -75,7 +89,7 @@
         }
 
         [HttpPost]
-        public IActionResult All(OrderInputModel model)
+        public IActionResult All(OrderInputModel model, int start)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +99,22 @@
             }
             else
             {
-                var events = this.eventsService.AllEvents();
+                var totalEventsCount =
+                    this.eventsService
+                    .AllEventsCount();
 
-                return this.View(events);
+                var events = 
+                    this.eventsService
+                    .EventsOnOnePage(start);
+
+                var viewModel = new EventsOnPageViewModel
+                {
+                    Events = events,
+                    Start = start,
+                    TotalEventsCount = totalEventsCount
+                };
+
+                return this.View(viewModel);
             }
         }
     }

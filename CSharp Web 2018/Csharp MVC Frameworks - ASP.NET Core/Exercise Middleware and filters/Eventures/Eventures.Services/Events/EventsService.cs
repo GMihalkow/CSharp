@@ -12,6 +12,8 @@
 
     public class EventsService : IEventsService
     {
+        private const int EventsDisplayedOnPageCount = 10;
+        
         private readonly IMapper mapper;
         private readonly DbService dbService;
         private readonly IAccountService accountService;
@@ -31,15 +33,15 @@
             this.dbService.DbContext.SaveChanges();
         }
 
-        public Event[] AllEvents()
+        public int AllEventsCount()
         {
-            var events =
+            var eventsCount =
                 this.dbService
                 .DbContext
                 .Events
-                .ToArray();
+                .Count();
 
-            return events;
+            return eventsCount;
         }
 
         public Event GetEvent(string eventName)
@@ -74,6 +76,19 @@
                .Select(o => o.Event)
                .Include(o => o.Orders)
                .ToArray();
+
+            return events;
+        }
+
+        public Event[] EventsOnOnePage(int start)
+        {
+            var events =
+                this.dbService
+                .DbContext
+                .Events
+                .Skip(start)
+                .Take(EventsDisplayedOnPageCount)
+                .ToArray();
 
             return events;
         }

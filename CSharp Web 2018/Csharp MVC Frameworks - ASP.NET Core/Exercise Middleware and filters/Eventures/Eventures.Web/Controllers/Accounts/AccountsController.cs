@@ -4,8 +4,10 @@
     using Eventures.Models;
     using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.ViewModels.Accounts;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class AccountsController : BaseController
@@ -105,6 +107,37 @@
             await this.accountsService.ExternalLogin();
 
             return this.Redirect("/");
+        }
+
+        [Authorize("Admin")]
+        public IActionResult EditRoles(string currentUser)
+        {
+            var users =
+                this.accountsService
+                .GetUsersWithRoles(this.User.Identity.Name)
+                .Select(u => new EditUserRoleViewModel
+                {
+                    Role = u.Value,
+                    Username = u.Key.UserName,
+                    UserId = u.Key.Id
+                })
+                .ToArray();
+
+            return this.View(users);
+        }
+
+        [Authorize("Admin")]
+        public IActionResult Promote(string id)
+        {
+            this.accountsService.Promote(id);
+            return this.Redirect("/Accounts/EditRoles");
+        }
+
+        [Authorize("Admin")]    
+        public IActionResult Demote(string id)
+        {
+            this.accountsService.Demote(id);
+            return this.Redirect("/Accounts/EditRoles");
         }
     }
 }

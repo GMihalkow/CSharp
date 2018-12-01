@@ -8,7 +8,9 @@
     {
         void AddEvent(Event model, ClaimsPrincipal user);
 
-        Event[] AllEvents();
+        Event[] EventsOnOnePage(int start);
+
+        int AllEventsCount();
 
         Event GetEvent(string eventName);
 

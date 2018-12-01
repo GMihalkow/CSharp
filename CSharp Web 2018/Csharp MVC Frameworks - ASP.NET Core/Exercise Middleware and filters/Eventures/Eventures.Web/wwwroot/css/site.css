@@ -20,8 +20,28 @@ html {
     height: 100%;
 }
 
+.dropdown-item{
+    text-decoration:none;
+    padding:5px 0px 5px 0px;
+    text-align:center;
+}
+
+    .dropdown-item:hover {
+        background-color: #f2f2f2;
+        text-decoration: none;
+    }
+
+a:hover {
+    text-decoration: none;
+    color:black;
+}
+
 .text-eventure {
     font-weight: bold;
+}
+
+.text-black{
+    color:black;
 }
 
 .mt-5 {
@@ -41,10 +61,18 @@ footer {
     width: 30%;
 }
 
+.p-0{
+    padding:0px;
+}
+
 ul > li > p {
     font-weight: bold;
     color: black;
     margin-top: 15px;
+}
+
+.list-inline{
+    margin:0px;
 }
 
 .list-inline > li {

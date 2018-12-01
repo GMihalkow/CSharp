@@ -1,45 +1,75 @@
-﻿@using Eventures.Models;
-@model Event[];
+﻿@using Eventures.Web.ViewModels.Events;
+@using Eventures.Models;
+@model EventsOnPageViewModel;
 
 <main class="mt-5">
     <h1 class="text-center font-weight-bold">All Events</h1>
 
     <hr class="hr-eventure two-thirds-width bg-eventure" />
-    <table class="table two-thirds-width mx-auto">
-        <thead>
-            <tr>
-                <th class="col-lg-1">#</th>
-                <th class="col-lg-3">Name</th>
-                <th class="col-lg-2">Start</th>
-                <th class="col-lg-2">End</th>
-                <th class="col-lg-3">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int index = 0; index < Model.Length; index++)
-            {
-                int realIndex = index + 1;
-                Event currentEvent = Model[index];
-                <tr>
-                    <td>@realIndex</td>
-                    <td>@currentEvent.Name</td>
-                    <td>@currentEvent.Start.ToString("dd-MMM-yy hh:mm:ss")</td>
-                    <td>@currentEvent.End.ToString("dd-MMM-yy hh:mm:ss")</td>
-                    <td>
-                        <form class="form-group" asp-controller="Events" asp-action="All" method="post">
-                            <div asp-validation-summary="All" class="text-danger"></div>
-                            <input hidden="hidden" type="text" name="eventName" value="@currentEvent.Name" />
-                            <label for="ticketsCount" class="font-weight-bold">Tickets</label>
-                            <input class="form-group" type="number" name="ticketsCount" id="ticketsCount" />
-                            <button class="btn bg-eventure">Order</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <hr class="hr-eventure two-thirds-width bg-eventure" />
+    @if (Model.Events.Count() == 0)
+    {
+        @await Html.PartialAsync("Error", new ErrorViewModel { ErrorMessage = "No events found."})
+    }
+    else
+    {
 
+        <table class="table two-thirds-width mx-auto">
+            <thead>
+                <tr>
+                    <th class="col-lg-1">#</th>
+                    <th class="col-lg-3">Name</th>
+                    <th class="col-lg-2">Start</th>
+                    <th class="col-lg-2">End</th>
+                    <th class="col-lg-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int index = 0; index < Model.Events.Length; index++)
+                {
+                    int realIndex = index + 1 + Model.Start;
+                    Event currentEvent = Model.Events[index];
+                    <tr>
+                        <td>@realIndex</td>
+                        <td>@currentEvent.Name</td>
+                        <td>@currentEvent.Start.ToString("dd-MMM-yy hh:mm:ss")</td>
+                        <td>@currentEvent.End.ToString("dd-MMM-yy hh:mm:ss")</td>
+                        <td>
+                            <form class="form-group" asp-controller="Events" asp-action="All" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <input hidden="hidden" type="text" name="eventName" value="@currentEvent.Name" />
+                                <label for="ticketsCount" class="font-weight-bold">Tickets</label>
+                                <input class="form-group" type="number" name="ticketsCount" id="ticketsCount" />
+                                <button class="btn bg-eventure">Order</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+    @{
+        int pageNumber = 0;
+    }
+    <div class="text-center">
+        @for (int index = 0; index < Model.TotalEventsCount; index++)
+        {
+            if (index == 0)
+            {
+                pageNumber++;
+                <a class="btn bg-eventure text-black" asp-controller="Events" asp-action="All" asp-route-start="@index">@pageNumber</a>
+                continue;
+            }
+            if ((index + 1) % 10 == 0)
+            {
+                pageNumber++;
+                int nextStep = index + 1;
+                <a class="btn bg-eventure text-black" asp-controller="Events" asp-action="All" asp-route-start="@nextStep">@pageNumber</a>
+            }
+        }
+    </div>
+    <hr class="hr-eventure two-thirds-width bg-eventure" />
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />
     }

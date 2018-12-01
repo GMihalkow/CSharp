@@ -82,7 +82,7 @@ else
             WriteLiteral("    <main>\r\n        <div id=\"index-container\" class=\"container-fluid bg-eventure p-5\">\r\n            <h1>Eventures - The best ticket service in the world.</h1>\r\n            <hr class=\"hr-eventure bg-black\" />\r\n            <h2>");
             EndContext();
             BeginContext(597, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39253c877a764e33bac7c81e55a48566", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d764b088ae394ade814f9f647a1f8084", async() => {
                 BeginContext(645, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -106,7 +106,7 @@ else
             WriteLiteral(" to start \"eventing\".</h2>\r\n            <h2>");
             EndContext();
             BeginContext(698, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6eaea2a583a34e5dab350f3fe323a7a4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "982c79c9811043ffbd22080a1ed4ce9a", async() => {
                 BeginContext(749, 8, true);
                 WriteLiteral("Register");
                 EndContext();

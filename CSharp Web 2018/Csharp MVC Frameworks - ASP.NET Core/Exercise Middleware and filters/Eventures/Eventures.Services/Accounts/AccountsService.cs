@@ -5,10 +5,11 @@
     using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.Services.DbContext;
     using Microsoft.AspNetCore.Identity;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    
+
     public class AccountsService : IAccountService
     {
         private readonly IMapper mapper;
@@ -30,7 +31,7 @@
 
             string email = info.Principal.Claims.First(x => x.Type.Contains("emailaddress")).Value;
 
-            var user = new EventureUser { UserName = email, Email = email};
+            var user = new EventureUser { UserName = email, Email = email };
             if (!(this.dbService.DbContext.Users.Any(x => x.UserName == user.UserName)))
             {
                 var createUserResult = await userManager.CreateAsync(user);
@@ -46,7 +47,7 @@
 
             var result = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false, true);
         }
-        
+
         public async Task<bool> EmailExists(string email)
         {
             EventureUser user = await this.userManager.FindByEmailAsync(email);
@@ -163,6 +164,79 @@
             EventureUser user = this.userManager.GetUserAsync(principal).GetAwaiter().GetResult();
 
             return user;
+        }
+
+        public EventureUser GetUserById(string id)
+        {
+            var user = 
+                this.
+                dbService
+                .DbContext
+                .Users
+                .FirstOrDefault(u => u.Id == id);
+
+            return user;
+        }
+
+        public Dictionary<EventureUser, string> GetUsersWithRoles(string currentUser)
+        {
+            Dictionary<EventureUser, string> result = new Dictionary<EventureUser, string>();
+
+            var usersWithRoles =
+                this.dbService
+                .DbContext
+                .UserRoles
+                .ToArray();
+
+            foreach (var userRole in usersWithRoles)
+            {
+                var user =
+                    this.GetUserById(userRole.UserId);
+
+                if (user.UserName == currentUser)
+                {
+                    continue;
+                }
+
+                var roleName =
+                    this.GetRoleById(userRole.RoleId);
+
+                result.Add(user, roleName);
+            }
+
+            return result;
+        }
+
+        public void Promote(string id)
+        {
+            var user = this.GetUserById(id);
+            if (user != null)
+            {
+                this.userManager.RemoveFromRoleAsync(user, "User").GetAwaiter().GetResult();
+                this.userManager.AddToRoleAsync(user, "Admin").GetAwaiter().GetResult();
+            }
+        }
+
+        public void Demote(string id)
+        {
+            var user = this.GetUserById(id);
+            if (user != null)
+            {
+                this.userManager.RemoveFromRoleAsync(user, "Admin").GetAwaiter().GetResult();
+                this.userManager.AddToRoleAsync(user, "User").GetAwaiter().GetResult();
+            }
+        }
+
+        public string GetRoleById(string id)
+        {
+            var role =
+                this.dbService
+                .DbContext
+                .Roles
+                .FirstOrDefault(r => r.Id == id)
+                .Name;
+
+            return role;
         }
     }
 }

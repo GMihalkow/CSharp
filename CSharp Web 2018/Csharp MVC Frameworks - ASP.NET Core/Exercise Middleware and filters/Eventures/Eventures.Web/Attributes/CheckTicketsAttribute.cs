@@ -21,7 +21,6 @@
             OrderInputModel model = (OrderInputModel)value;
             Event currentEvent = this.eventsService.GetEvent(model.EventName);
             
-
             var currentTicketsCountForEvent = this.eventsService.GetCurrentBoughtTicketsCount(model.EventName);
             if (!((currentTicketsCountForEvent + model.TicketsCount) >= currentEvent.TotalTickets))
             {
