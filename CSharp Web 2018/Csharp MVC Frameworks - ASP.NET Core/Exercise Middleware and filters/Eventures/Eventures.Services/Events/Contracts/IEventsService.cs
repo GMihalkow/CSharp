@@ -3,10 +3,11 @@
     using Eventures.Models;
     using Microsoft.AspNetCore.Mvc;
     using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public interface IEventsService
     {
-        void AddEvent(Event model, ClaimsPrincipal user);
+        int AddEvent(Event model, ClaimsPrincipal user);
 
         Event[] EventsOnOnePage(int start);
 

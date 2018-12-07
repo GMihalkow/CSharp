@@ -162,12 +162,12 @@ using Eventures.Models;
             WriteLiteral("</td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(1411, 620, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c19a3bd491d041fa85b757fa9fd1bf55", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e8b3909e5124467b9578cb4ef8cf5eb", async() => {
                 BeginContext(1491, 34, true);
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(1525, 60, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "223e665549c84264bc074177a5d69500", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f7999ac67b34d439714340ae348cc73", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -267,7 +267,7 @@ WriteAttributeValue("", 1678, currentEvent.Name, 1678, 18, false);
             WriteLiteral("                ");
             EndContext();
             BeginContext(2409, 119, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50ed040697784bc98e86e5474c916bfd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d1cc34769b00442f8f96ac3645c995f5", async() => {
                 BeginContext(2514, 10, false);
 #line 61 "C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\Views\Events\All.cshtml"
                                                                                                                    Write(pageNumber);
@@ -322,7 +322,7 @@ WriteAttributeValue("", 1678, currentEvent.Name, 1678, 18, false);
             WriteLiteral("                ");
             EndContext();
             BeginContext(2717, 122, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5fbabe12a9b4780a02d957119a393b9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "583c2e6bc6624d49b3b4fa2a716f1483", async() => {
                 BeginContext(2825, 10, false);
 #line 68 "C:\Users\Georgi-PC\Documents\Visual Studio 2017\Projects\Eventures\Eventures.Web\Views\Events\All.cshtml"
                                                                                                                       Write(pageNumber);
@@ -377,7 +377,7 @@ WriteAttributeValue("", 1678, currentEvent.Name, 1678, 18, false);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(2972, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "07246948815447efb2723a061812e568", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ea05caa991194301b6fa3993ec76e38e", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

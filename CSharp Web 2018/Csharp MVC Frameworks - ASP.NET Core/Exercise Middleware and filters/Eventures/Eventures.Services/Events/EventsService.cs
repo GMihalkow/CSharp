@@ -9,6 +9,7 @@
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public class EventsService : IEventsService
     {
@@ -25,12 +26,12 @@
             this.accountService = accountService;
         }
 
-        public void AddEvent(Event model, ClaimsPrincipal user)
+        public int AddEvent(Event model, ClaimsPrincipal user)
         {
             var eventModel = this.mapper.Map<Event>(model);
 
             this.dbService.DbContext.Events.Add(eventModel);
-            this.dbService.DbContext.SaveChanges();
+            return this.dbService.DbContext.SaveChanges();
         }
 
         public int AllEventsCount()
