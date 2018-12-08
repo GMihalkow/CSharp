@@ -8203,9 +8203,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\Eventures\\Eventures.Tests\\Eventures.Tests.csproj",
-      "projectName": "Eventures.Tests",
-      "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\Eventures\\Eventures.Tests\\Eventures.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\Eventures\\Eventures.Tests\\Eventures.UnitTests.csproj",
+      "projectName": "Eventures.UnitTests",
+      "projectPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\Eventures\\Eventures.Tests\\Eventures.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Georgi-PC\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Georgi-PC\\Documents\\Visual Studio 2017\\Projects\\Eventures\\Eventures.Tests\\obj\\",
       "projectStyle": "PackageReference",

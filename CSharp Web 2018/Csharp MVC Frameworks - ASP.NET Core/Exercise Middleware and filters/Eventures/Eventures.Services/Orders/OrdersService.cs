@@ -24,7 +24,7 @@
             this.eventsService = eventsService;
         }
 
-        public void AddOrder(int ticketsCount, ClaimsPrincipal principal, string eventName)
+        public int AddOrder(int ticketsCount, ClaimsPrincipal principal, string eventName)
         {
             Event currentEvent = this.eventsService.GetEvent(eventName);
             if (currentEvent != null)
@@ -42,7 +42,11 @@
                 };
 
                 this.dbService.DbContext.Orders.Add(order);
-                this.dbService.DbContext.SaveChanges();
+                return this.dbService.DbContext.SaveChanges();
+            }
+            else
+            {
+                return 0;
             }
         }
 

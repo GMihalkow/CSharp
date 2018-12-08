@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventures.Web", "Eventures.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventures.Services", "Eventures.Services\Eventures.Services.csproj", "{0B4050E4-DEBA-4F17-93F9-3E137065094B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventures.Tests", "Eventures.Tests\Eventures.Tests.csproj", "{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventures.UnitTests", "Eventures.Tests\Eventures.UnitTests.csproj", "{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A8EDAF2C-8089-4817-BF89-FB3C5F8E3A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventures.IntegrationTests", "Eventures.IntegrationTests\Eventures.IntegrationTests.csproj", "{3EDC2297-30FC-47B6-81D1-C90975DB15A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,17 @@ Global
 		{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EDC2297-30FC-47B6-81D1-C90975DB15A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EDC2297-30FC-47B6-81D1-C90975DB15A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EDC2297-30FC-47B6-81D1-C90975DB15A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EDC2297-30FC-47B6-81D1-C90975DB15A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F86B3A2-226A-42AA-A95D-3C2FC686B6CC} = {A8EDAF2C-8089-4817-BF89-FB3C5F8E3A0F}
+		{3EDC2297-30FC-47B6-81D1-C90975DB15A9} = {A8EDAF2C-8089-4817-BF89-FB3C5F8E3A0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10E4F89D-719C-4CE6-9D63-28B1952B26B5}

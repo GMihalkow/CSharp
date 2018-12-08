@@ -6,7 +6,7 @@
 
     public interface IOrdersService
     {
-        void AddOrder(int ticketsCount, ClaimsPrincipal principal, string eventName);
+        int AddOrder(int ticketsCount, ClaimsPrincipal principal, string eventName);
 
         IEnumerable<Order> GetAllOrders();
     }

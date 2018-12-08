@@ -209,6 +209,7 @@
 
         public void Promote(string id)
         {
+            //TODO: unit test the promote/demote actions
             var user = this.GetUserById(id);
             if (user != null)
             {

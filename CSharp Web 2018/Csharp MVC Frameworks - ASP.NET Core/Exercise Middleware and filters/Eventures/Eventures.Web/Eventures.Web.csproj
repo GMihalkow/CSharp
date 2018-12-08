@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-Eventures.Web-0C656B7E-258B-4A9A-82E6-9826106B55C5</UserSecretsId>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
