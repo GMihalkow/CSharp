@@ -4,6 +4,7 @@
     using Eventures.Models;
     using Eventures.Services.Accounts.Contracts;
     using Eventures.Web.Services.DbContext;
+    using Microsoft.AspNet.Identity;
     using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
     using System.Linq;
@@ -14,10 +15,10 @@
     {
         private readonly IMapper mapper;
         private readonly DbService dbService;
-        private readonly UserManager<EventureUser> userManager;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<EventureUser> userManager;
         private readonly SignInManager<EventureUser> signInManager;
 
-        public AccountsService(IMapper mapper, DbService dbService, UserManager<EventureUser> userManager, SignInManager<EventureUser> signInManager)
+        public AccountsService(IMapper mapper, DbService dbService, Microsoft.AspNetCore.Identity.UserManager<EventureUser> userManager, SignInManager<EventureUser> signInManager)
         {
             this.mapper = mapper;
             this.dbService = dbService;
@@ -121,7 +122,7 @@
             await signInManager.SignOutAsync();
         }
 
-        public async Task<IdentityResult> OnRegisterPostAsync(EventureUser model, string password)
+        public async Task<Microsoft.AspNetCore.Identity.IdentityResult> OnRegisterPostAsync(EventureUser model, string password)
         {
             var user = this.mapper.Map<EventureUser>(model);
             var result = await userManager.CreateAsync(user, password);
@@ -142,7 +143,7 @@
             }
             else
             {
-                return IdentityResult.Failed();
+                return Microsoft.AspNetCore.Identity.IdentityResult.Failed();
             }
         }
 
@@ -207,24 +208,33 @@
             return result;
         }
 
-        public void Promote(string id)
+        public Microsoft.AspNetCore.Identity.IdentityResult Promote(string id)
         {
-            //TODO: unit test the promote/demote actions
             var user = this.GetUserById(id);
             if (user != null)
             {
                 this.userManager.RemoveFromRoleAsync(user, "User").GetAwaiter().GetResult();
                 this.userManager.AddToRoleAsync(user, "Admin").GetAwaiter().GetResult();
+                return Microsoft.AspNetCore.Identity.IdentityResult.Success;
+            }
+            else
+            {
+                return Microsoft.AspNetCore.Identity.IdentityResult.Failed();
             }
         }
 
-        public void Demote(string id)
+        public Microsoft.AspNetCore.Identity.IdentityResult Demote(string id)
         {
             var user = this.GetUserById(id);
             if (user != null)
             {
                 this.userManager.RemoveFromRoleAsync(user, "Admin").GetAwaiter().GetResult();
                 this.userManager.AddToRoleAsync(user, "User").GetAwaiter().GetResult();
+                return Microsoft.AspNetCore.Identity.IdentityResult.Success;
+            }
+            else
+            {
+                return Microsoft.AspNetCore.Identity.IdentityResult.Failed();
             }
         }
 
@@ -239,5 +249,6 @@
 
             return role;
         }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Eventures.Services.Accounts.Contracts
 {
     using Eventures.Models;
+    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -29,8 +30,8 @@
 
         Dictionary<EventureUser, string> GetUsersWithRoles(string currentUser);
 
-        void Promote(string id);
+        IdentityResult Promote(string id);
 
-        void Demote(string id);
+        IdentityResult Demote(string id);
     }
 }

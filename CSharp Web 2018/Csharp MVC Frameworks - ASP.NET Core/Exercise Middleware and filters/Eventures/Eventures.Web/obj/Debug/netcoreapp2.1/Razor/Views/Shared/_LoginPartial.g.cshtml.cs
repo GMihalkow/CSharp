@@ -89,7 +89,7 @@ using Eventures.Models;
             WriteLiteral("!</p></li>\r\n        <li>");
             EndContext();
             BeginContext(322, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1e7b48fc0294849b537998660057df8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a9bbcf922984373933004752b40e105", async() => {
                 BeginContext(371, 6, true);
                 WriteLiteral("Logout");
                 EndContext();
@@ -123,7 +123,7 @@ else
             WriteLiteral("    <ul class=\"nav navbar-nav navbar-right\" >\r\n        <li>");
             EndContext();
             BeginContext(470, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1349dff02b134ccfbc85fefd03e38d13", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afdb2296160b4495ac5c08a77af115a3", async() => {
                 BeginContext(521, 8, true);
                 WriteLiteral("Register");
                 EndContext();
@@ -147,7 +147,7 @@ else
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(552, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a0ea24960bbb405b9bb96e9480505c38", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d2be8c07fa3d4bc8893ec153da5d62fb", async() => {
                 BeginContext(601, 5, true);
                 WriteLiteral("Login");
                 EndContext();
