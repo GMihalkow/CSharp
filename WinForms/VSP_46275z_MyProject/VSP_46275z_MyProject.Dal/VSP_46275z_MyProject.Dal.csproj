@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VSP_46275z_MyProject.Data\VSP_46275z_MyProject.Data.csproj" />
+    <ProjectReference Include="..\VSP_46275z_MyProject.Models\VSP_46275z_MyProject.Models.csproj" />
+  </ItemGroup>
+
+</Project>
