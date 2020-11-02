@@ -12,7 +12,7 @@ namespace VSP_46275z_MyProject
         private string _username;
         private string _password;
         private readonly IUsersService _usersService;
-        public delegate void OnHideHandler(object sender, object e);
+        public delegate void OnHideHandler(object sender);
 
         public LoginForm()
         {
@@ -45,8 +45,8 @@ namespace VSP_46275z_MyProject
 
             if (!loginSucceeded)
                 this.Error_Prov.SetError(this.Login_Btn, "Login failed.");
-            else 
-                this.Close();
+            else
+                this.Dispose();
         }
 
         private void ValidateForm()
@@ -67,7 +67,7 @@ namespace VSP_46275z_MyProject
         private void Register_Btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            this.OnHide?.Invoke(this, null);
+            this.OnHide?.Invoke(this);
         }
     }
 }
