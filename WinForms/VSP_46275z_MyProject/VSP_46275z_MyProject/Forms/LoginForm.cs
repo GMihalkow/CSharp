@@ -12,12 +12,15 @@ namespace VSP_46275z_MyProject
         private string _username;
         private string _password;
         private readonly IUsersService _usersService;
+        public delegate void OnHideHandler(object sender, object e);
 
         public LoginForm()
         {
             this.InitializeComponent();
             this._usersService = new UsersService();
         }
+
+        public event OnHideHandler OnHide;
 
         private void Username_Input_TextChanged(object sender, EventArgs e)
             => this._username = (sender as TextBox).Text;
@@ -59,6 +62,12 @@ namespace VSP_46275z_MyProject
 
             if (user == null)
                 this.Error_Prov.SetError(this.Login_Btn, "User not found.");
+        }
+
+        private void Register_Btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.OnHide?.Invoke(this, null);
         }
     }
 }

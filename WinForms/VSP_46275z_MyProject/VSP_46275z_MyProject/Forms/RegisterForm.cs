@@ -70,15 +70,21 @@ namespace VSP_46275z_MyProject
 
         private void Login_Btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            
             var loginForm = new LoginForm();
-            loginForm.Show();
+
+            loginForm.OnHide += this.On_Login_Form_Hide;
+
+            this.Hide();
+
+            loginForm.ShowDialog(this);
 
             loginForm.FormClosed += this.On_Login_Form_Close;
         }
 
         private void On_Login_Form_Close(object sender, EventArgs e)
             => this.Close();
+
+        private void On_Login_Form_Hide(object sender, object e)
+            => this.Show();
     }
 }
